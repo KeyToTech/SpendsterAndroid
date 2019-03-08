@@ -3,11 +3,11 @@ package com.example.firstproject;
 import java.util.Date;
 
 public class User {
-    private int userId;
-    private String userName;
-    private String password;
-    private int balance;
-    private Date createdDate;
+    private final int userId;
+    private final String userName;
+    private final String password;
+    private final int balance;
+    private final Date createdDate;
 
     public User(int userId, String userName, String password, int balance, Date createdDate) {
         this.userId = userId;
