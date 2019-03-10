@@ -6,10 +6,10 @@ public class User {
     private final int userId;
     private final String userName;
     private final String password;
-    private final int balance;
+    private final double balance;
     private final Date createdDate;
 
-    public User(int userId, String userName, String password, int balance, Date createdDate) {
+    public User(int userId, String userName, String password, double balance, Date createdDate) {
         this.userId = userId;
         this.userName = userName;
         this.password = password;
