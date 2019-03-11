@@ -1,4 +1,4 @@
-package com.example.firstproject;
+package com.spendster;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

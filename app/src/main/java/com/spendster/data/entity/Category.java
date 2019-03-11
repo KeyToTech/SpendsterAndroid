@@ -1,4 +1,4 @@
-package com.example.firstproject;
+package com.spendster.data.entity;
 
 import java.util.Date;
 

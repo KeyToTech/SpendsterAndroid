@@ -1,4 +1,4 @@
-package com.example.firstproject;
+package com.spendster;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
