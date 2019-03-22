@@ -6,19 +6,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class MyViewPagerAdapter extends PagerAdapter {
-    private LayoutInflater layoutInflater;
+public class ViewPagerAdapter extends PagerAdapter {
     private int[] layouts;
-    private WelcomeActivity welcomeActivity;
 
-    public MyViewPagerAdapter(int[] layouts, WelcomeActivity welcomeActivity) {
+    public ViewPagerAdapter(int[] layouts) {
         this.layouts = layouts;
-        this.welcomeActivity = welcomeActivity;
     }
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        layoutInflater = (LayoutInflater) welcomeActivity.getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater layoutInflater = (LayoutInflater) container.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(layouts[position], container, false);
         container.addView(view);
         return view;
