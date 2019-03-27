@@ -1,4 +1,4 @@
-package com.spendster.presentation;
+package com.spendster.presentation.welcomeScreen;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -6,13 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class SlideFragment extends Fragment {
+public class SlideLayuot extends Fragment {
     private int slide;
 
-    public static SlideFragment newInstance(int slide){
-        SlideFragment slideFragment = new SlideFragment();
-        slideFragment.slide = slide;
-        return slideFragment;
+    public static SlideLayuot newInstance(int slide){
+        SlideLayuot slideLayuot = new SlideLayuot();
+        slideLayuot.slide = slide;
+        return slideLayuot;
     }
 
     @Override

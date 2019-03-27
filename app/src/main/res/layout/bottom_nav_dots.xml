@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
         android:id="@+id/bottom_nav_dot_1"
-        android:layout_width="12dp"
-        android:layout_height="12dp"
-        android:layout_marginLeft="16dp"
+        android:layout_width="@dimen/dot_size"
+        android:layout_height="@dimen/dot_size"
+        android:layout_marginLeft="@dimen/dots_margin_right"
         android:src="@drawable/default_dot"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <ImageView
         android:id="@+id/bottom_nav_dot_2"
-        android:layout_width="12dp"
-        android:layout_height="12dp"
+        android:layout_width="@dimen/dot_size"
+        android:layout_height="@dimen/dot_size"
         android:src="@drawable/default_dot"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toRightOf="@id/bottom_nav_dot_1"
@@ -25,10 +26,10 @@
 
     <ImageView
         android:id="@+id/bottom_nav_dot_3"
-        android:layout_width="12dp"
-        android:layout_height="12dp"
+        android:layout_width="@dimen/dot_size"
+        android:layout_height="@dimen/dot_size"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginRight="16dp"
+        android:layout_marginRight="@dimen/dots_margin_right"
         android:src="@drawable/default_dot"
         app:layout_constraintRight_toRightOf="parent" />
 

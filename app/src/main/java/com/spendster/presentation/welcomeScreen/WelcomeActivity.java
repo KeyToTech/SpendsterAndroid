@@ -1,4 +1,4 @@
-package com.spendster.presentation;
+package com.spendster.presentation.welcomeScreen;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -12,13 +12,14 @@ import android.widget.ImageView;
 import com.spendster.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class WelcomeActivity extends AppCompatActivity {
 
     private ViewPager viewPager;
     private Button btnSkip, btnNext;
     private Button btnSignUp, btnLogin;
-    private ArrayList<Fragment> slideFragments;
+    private List<Fragment> slideFragments;
     private ImageView[] dots;
     private View dotsLayout;
 
@@ -26,10 +27,30 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+        initUI();
+    }
 
-        initWelcomeActivity();
+    private void initViewPager() {
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), slideFragments);
+        viewPager.setAdapter(viewPagerAdapter);
+        viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
+    }
+
+    private void initUI() {
+        viewPager = findViewById(R.id.view_pager);
+        btnSkip = findViewById(R.id.btnSkip);
+        btnNext = findViewById(R.id.btnNext);
+        dotsLayout = findViewById(R.id.bottom_nav_dots);
+        btnSignUp = findViewById(R.id.btnSignUp);
+        btnLogin = findViewById(R.id.btnLogin);
+        initSlideFragments();
+        initBottomNavDots();
+        selectActivePageDot(0);
         initViewPager();
+        initSkipNextButtons();
+    }
 
+    private void initSkipNextButtons() {
         btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,29 +71,11 @@ public class WelcomeActivity extends AppCompatActivity {
         });
     }
 
-    private void initViewPager() {
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), slideFragments);
-        viewPager.setAdapter(viewPagerAdapter);
-        viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
-    }
-
-    private void initWelcomeActivity() {
-        viewPager = findViewById(R.id.view_pager);
-        btnSkip = findViewById(R.id.btnSkip);
-        btnNext = findViewById(R.id.btnNext);
-        dotsLayout = findViewById(R.id.bottom_nav_dots);
-        btnSignUp = findViewById(R.id.btnSignUp);
-        btnLogin = findViewById(R.id.btnLogin);
-        initSlideFragments();
-        initBottomNavDots();
-        selectActivePageDot(0);
-    }
-
     private void initSlideFragments(){
         slideFragments = new ArrayList<>();
-        slideFragments.add(SlideFragment.newInstance(R.layout.slide1));
-        slideFragments.add(SlideFragment.newInstance(R.layout.slide2));
-        slideFragments.add(SlideFragment.newInstance(R.layout.slide3));
+        slideFragments.add(SlideLayuot.newInstance(R.layout.welcome_slide_1));
+        slideFragments.add(SlideLayuot.newInstance(R.layout.welcome_slide_2));
+        slideFragments.add(SlideLayuot.newInstance(R.layout.welcome_slide_3));
     }
 
     private void initBottomNavDots() {
@@ -84,7 +87,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
     private void selectActivePageDot(int currentPage) {
         for (int i = 0; i < slideFragments.size(); i++){
-            if(i == currentPage){
+            if(currentPage == i){
                 dots[i].setImageDrawable(ContextCompat.getDrawable(this, R.drawable.selected_dot));
             }
             else{
@@ -98,19 +101,19 @@ public class WelcomeActivity extends AppCompatActivity {
         @Override
         public void onPageSelected(int position) {
             selectActivePageDot(position);
-            if (position == slideFragments.size() - 1) {
-                btnNext.setVisibility(View.GONE);
-                btnSkip.setVisibility(View.GONE);
-                btnSignUp.setVisibility(View.VISIBLE);
-                btnLogin.setVisibility(View.VISIBLE);
-
+            int skipNextVisibility;
+            int loginSignUpVisibility;
+            if (isLastSlide(position)) {
+                skipNextVisibility = View.GONE;
+                loginSignUpVisibility = View.VISIBLE;
             } else {
-                btnNext.setVisibility(View.VISIBLE);
-                btnSkip.setVisibility(View.VISIBLE);
-                btnSignUp.setVisibility(View.GONE);
-                btnLogin.setVisibility(View.GONE);
+                skipNextVisibility = View.VISIBLE;
+                loginSignUpVisibility = View.GONE;
             }
-
+            btnNext.setVisibility(skipNextVisibility);
+            btnSkip.setVisibility(skipNextVisibility);
+            btnSignUp.setVisibility(loginSignUpVisibility);
+            btnLogin.setVisibility(loginSignUpVisibility);
         }
 
         @Override
@@ -119,6 +122,10 @@ public class WelcomeActivity extends AppCompatActivity {
         @Override
         public void onPageScrollStateChanged(int arg0) { }
     };
+
+    private boolean isLastSlide(int position) {
+        return position == slideFragments.size() - 1;
+    }
 
     private int getItem(int i) {
         return viewPager.getCurrentItem() + i;
