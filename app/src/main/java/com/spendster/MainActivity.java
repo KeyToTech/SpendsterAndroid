@@ -19,10 +19,13 @@ public class MainActivity extends AppCompatActivity {
         btnStartWelcomeActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
-                startActivity(intent);
+                launchWelcomeScreen();
             }
         });
+    }
 
+    private void launchWelcomeScreen(){
+        Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
+        startActivity(intent);
     }
 }
