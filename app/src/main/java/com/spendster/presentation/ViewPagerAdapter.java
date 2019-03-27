@@ -4,29 +4,23 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-public class ViewPagerAdapter extends FragmentPagerAdapter {
-    private static int NUM_ITEMS = 3;
+import java.util.ArrayList;
 
-    public ViewPagerAdapter(FragmentManager fragmentManager) {
+public class ViewPagerAdapter extends FragmentPagerAdapter {
+    private ArrayList<Fragment> slideFragments;
+
+    public ViewPagerAdapter(FragmentManager fragmentManager, ArrayList<Fragment> slideFragments) {
         super(fragmentManager);
+        this.slideFragments = slideFragments;
     }
 
     @Override
     public int getCount() {
-        return NUM_ITEMS;
+        return slideFragments.size();
     }
 
     @Override
     public Fragment getItem(int position) {
-        switch (position) {
-            case 0:
-                return new FirstFragment();
-            case 1:
-                return new SecondFragment();
-            case 2:
-                return new ThirdFragment();
-            default:
-                return null;
-        }
+        return slideFragments.get(position);
     }
 }
