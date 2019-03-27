@@ -1,5 +1,6 @@
 package com.spendster.presentation;
 
+import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -10,12 +11,14 @@ import android.widget.ImageView;
 
 import com.spendster.R;
 
+import java.util.ArrayList;
+
 public class WelcomeActivity extends AppCompatActivity {
 
-    private static int FRAGMENT_AMOUNT = 3;
     private ViewPager viewPager;
     private Button btnSkip, btnNext;
     private Button btnSignUp, btnLogin;
+    private ArrayList<Fragment> slideFragments;
     private ImageView[] dots;
     private View dotsLayout;
 
@@ -24,19 +27,8 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-        viewPager = findViewById(R.id.view_pager);
-        btnSkip = findViewById(R.id.btnSkip);
-        btnNext = findViewById(R.id.btnNext);
-        dotsLayout = findViewById(R.id.bottom_nav_dots);
-        btnSignUp = findViewById(R.id.btnSignUp);
-        btnLogin = findViewById(R.id.btnLogin);
-
-        initBottomNavDots();
-        selectActivePageDot(0);
-
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-        viewPager.setAdapter(viewPagerAdapter);
-        viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
+        initWelcomeActivity();
+        initViewPager();
 
         btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,7 +41,7 @@ public class WelcomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int current = getItem(1);
-                if (current < FRAGMENT_AMOUNT) {
+                if (current < slideFragments.size()) {
                     viewPager.setCurrentItem(current);
                 } else {
                     launchThirdScreen();
@@ -58,15 +50,40 @@ public class WelcomeActivity extends AppCompatActivity {
         });
     }
 
+    private void initViewPager() {
+        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), slideFragments);
+        viewPager.setAdapter(viewPagerAdapter);
+        viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
+    }
+
+    private void initWelcomeActivity() {
+        viewPager = findViewById(R.id.view_pager);
+        btnSkip = findViewById(R.id.btnSkip);
+        btnNext = findViewById(R.id.btnNext);
+        dotsLayout = findViewById(R.id.bottom_nav_dots);
+        btnSignUp = findViewById(R.id.btnSignUp);
+        btnLogin = findViewById(R.id.btnLogin);
+        initSlideFragments();
+        initBottomNavDots();
+        selectActivePageDot(0);
+    }
+
+    private void initSlideFragments(){
+        slideFragments = new ArrayList<>();
+        slideFragments.add(SlideFragment.newInstance(R.layout.slide1));
+        slideFragments.add(SlideFragment.newInstance(R.layout.slide2));
+        slideFragments.add(SlideFragment.newInstance(R.layout.slide3));
+    }
+
     private void initBottomNavDots() {
-        dots = new ImageView[FRAGMENT_AMOUNT];
+        dots = new ImageView[slideFragments.size()];
         dots[0] = dotsLayout.findViewById(R.id.bottom_nav_dot_1);
         dots[1] = dotsLayout.findViewById(R.id.bottom_nav_dot_2);
         dots[2] = dotsLayout.findViewById(R.id.bottom_nav_dot_3);
     }
 
     private void selectActivePageDot(int currentPage) {
-        for (int i = 0; i < FRAGMENT_AMOUNT; i++){
+        for (int i = 0; i < slideFragments.size(); i++){
             if(i == currentPage){
                 dots[i].setImageDrawable(ContextCompat.getDrawable(this, R.drawable.selected_dot));
             }
@@ -81,7 +98,7 @@ public class WelcomeActivity extends AppCompatActivity {
         @Override
         public void onPageSelected(int position) {
             selectActivePageDot(position);
-            if (position == 3 - 1) {
+            if (position == slideFragments.size() - 1) {
                 btnNext.setVisibility(View.GONE);
                 btnSkip.setVisibility(View.GONE);
                 btnSignUp.setVisibility(View.VISIBLE);
