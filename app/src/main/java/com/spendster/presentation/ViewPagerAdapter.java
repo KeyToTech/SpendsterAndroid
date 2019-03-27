@@ -1,39 +1,32 @@
 package com.spendster.presentation;
 
-import android.content.Context;
-import android.support.v4.view.PagerAdapter;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 
-public class ViewPagerAdapter extends PagerAdapter {
-    private int[] layouts;
+public class ViewPagerAdapter extends FragmentPagerAdapter {
+    private static int NUM_ITEMS = 3;
 
-    public ViewPagerAdapter(int[] layouts) {
-        this.layouts = layouts;
-    }
-
-    @Override
-    public Object instantiateItem(ViewGroup container, int position) {
-        LayoutInflater layoutInflater = (LayoutInflater) container.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = layoutInflater.inflate(layouts[position], container, false);
-        container.addView(view);
-        return view;
+    public ViewPagerAdapter(FragmentManager fragmentManager) {
+        super(fragmentManager);
     }
 
     @Override
     public int getCount() {
-        return layouts.length;
+        return NUM_ITEMS;
     }
 
     @Override
-    public boolean isViewFromObject(View view, Object obj) {
-        return view == obj;
-    }
-
-    @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
-        View view = (View) object;
-        container.removeView(view);
+    public Fragment getItem(int position) {
+        switch (position) {
+            case 0:
+                return new FirstFragment();
+            case 1:
+                return new SecondFragment();
+            case 2:
+                return new ThirdFragment();
+            default:
+                return null;
+        }
     }
 }
