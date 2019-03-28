@@ -117,7 +117,20 @@ public class WelcomeActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onPageScrolled(int arg0, float arg1, int arg2) { }
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            if (position == 1){
+                // It's gone to right.
+                if (positionOffset > 0.8) {
+                    btnSignUp.setVisibility(View.VISIBLE);
+                    btnLogin.setVisibility(View.VISIBLE);
+                }
+                // Not yet.
+                else {
+                    btnSignUp.setVisibility(View.GONE);
+                    btnLogin.setVisibility(View.GONE);
+                }
+            }
+        }
 
         @Override
         public void onPageScrollStateChanged(int arg0) { }
