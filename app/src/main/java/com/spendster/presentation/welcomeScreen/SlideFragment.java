@@ -6,13 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class SlideLayuot extends Fragment {
+public class SlideFragment extends Fragment {
     private int slide;
 
-    public static SlideLayuot newInstance(int slide){
-        SlideLayuot slideLayuot = new SlideLayuot();
-        slideLayuot.slide = slide;
-        return slideLayuot;
+    public static SlideFragment newInstance(int slide){
+        SlideFragment slideFragment = new SlideFragment();
+        slideFragment.slide = slide;
+        return slideFragment;
     }
 
     @Override

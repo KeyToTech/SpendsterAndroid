@@ -73,9 +73,9 @@ public class WelcomeActivity extends AppCompatActivity {
 
     private void initSlideFragments(){
         slideFragments = new ArrayList<>();
-        slideFragments.add(SlideLayuot.newInstance(R.layout.welcome_slide_1));
-        slideFragments.add(SlideLayuot.newInstance(R.layout.welcome_slide_2));
-        slideFragments.add(SlideLayuot.newInstance(R.layout.welcome_slide_3));
+        slideFragments.add(SlideFragment.newInstance(R.layout.welcome_slide_1));
+        slideFragments.add(SlideFragment.newInstance(R.layout.welcome_slide_2));
+        slideFragments.add(SlideFragment.newInstance(R.layout.welcome_slide_3));
     }
 
     private void initBottomNavDots() {
