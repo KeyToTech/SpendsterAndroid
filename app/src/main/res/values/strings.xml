@@ -1,3 +1,21 @@
 <resources>
-    <string name="app_name">First project</string>
+    <string name="app_name">Spendster</string>
+    <string name="login">LOGIN</string>
+    <string name="sign_up">SIGN UP FREE</string>
+    <string name="skip">SKIP</string>
+    <string name="next">NEXT</string>
+    <string name="welcome_to_bp">Welcome to Budget Planner</string>
+    <string name="take_control_etc">Take control of your money \n and save them by tracking your expenses</string>
+    <string name="budget_planner">Budget Planner</string>
+    <string name="easily_create_etc">Easily create budgets, and see our \n suggestions based on your spending</string>
+    <string name="save_money_etc">Save money with ease</string>
+
+    <string name="pocket_desc">Pocket</string>
+    <string name="coin_box">Pig coin box</string>
+    <string name="man_with_phone">Man who looking at very large phone</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="let_s_get_started">Let\'s get started</string>
+    <string name="retype_password">Retype password</string>
+    <string name="continue_button">Continue</string>
 </resources>
