@@ -13,4 +13,9 @@
     <string name="pocket_desc">Pocket</string>
     <string name="coin_box">Pig coin box</string>
     <string name="man_with_phone">Man who looking at very large phone</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="let_s_get_started">Let\'s get started</string>
+    <string name="retype_password">Retype password</string>
+    <string name="continue_button">Continue</string>
 </resources>
