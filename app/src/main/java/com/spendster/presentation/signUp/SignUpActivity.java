@@ -1,4 +1,4 @@
-package com.spendster.presentation.welcomeScreen.signUp;
+package com.spendster.presentation.signUp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

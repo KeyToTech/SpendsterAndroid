@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.spendster.R;
-import com.spendster.presentation.welcomeScreen.signUp.SignUpActivity;
+import com.spendster.presentation.signUp.SignUpActivity;
 
 import java.util.ArrayList;
 import java.util.List;
