@@ -1,5 +1,6 @@
 package com.spendster.presentation.welcomeScreen;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.spendster.R;
+import com.spendster.presentation.signUp.SignUpActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +50,21 @@ public class WelcomeActivity extends AppCompatActivity {
         selectActivePageDot(0);
         initViewPager();
         initSkipNextButtons();
+        initLoginSignUpButtons();
+    }
+
+    private void initLoginSignUpButtons() {
+        btnSignUp.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                launchSignUpScreen();
+            }
+        } );
+    }
+
+    private void launchSignUpScreen() {
+        Intent intent = new Intent(this, SignUpActivity.class);
+        startActivity(intent);
     }
 
     private void initSkipNextButtons() {
