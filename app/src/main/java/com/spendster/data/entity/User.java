@@ -9,6 +9,14 @@ public class User {
     private final double balance;
     private final Date createdDate;
 
+    public User(int userId, String userName){
+        this.userId = userId;
+        this.userName = userName;
+        this.balance = 0;
+        this.password = null;
+        this.createdDate = new Date();
+    }
+
     public User(int userId, String userName, String password, double balance, Date createdDate) {
         this.userId = userId;
         this.userName = userName;
