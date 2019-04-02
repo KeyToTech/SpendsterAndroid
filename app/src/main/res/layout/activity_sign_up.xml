@@ -5,35 +5,58 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
-    tools:context=".presentation.welcomeScreen.signUp.SignUpActivity">
+    tools:context=".presentation.signUp.SignUpActivity">
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="335dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="130dp"
-        android:autofillHints=""
-        android:background="@null"
-        android:gravity="center"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:targetApi="o" />
-
-    <EditText
-        android:id="@+id/editText3"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout"
         android:layout_width="335dp"
         android:layout_height="46dp"
         android:layout_marginTop="40dp"
-        android:background="@null"
-        android:gravity="center"
-        android:hint="@string/password"
-        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/view">
+
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout2"
+        android:layout_width="335dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/password"
+            android:inputType="textPassword" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="335dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
+
+        <EditText
+            android:id="@+id/etRetypePassword"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/retype_password"
+            android:inputType="textPassword" />
+    </android.support.design.widget.TextInputLayout>
+
 
     <TextView
         android:id="@+id/textView"
@@ -50,19 +73,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editText4"
-        android:layout_width="335dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="40dp"
-        android:background="@null"
-        android:gravity="center"
-        android:hint="@string/retype_password"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
-
     <View
         android:id="@+id/view"
         android:layout_width="0dp"
@@ -74,7 +84,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnContinue"
         android:layout_width="335dp"
         android:layout_height="50dp"
         android:layout_marginBottom="32dp"
