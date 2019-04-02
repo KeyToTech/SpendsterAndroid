@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import com.spendster.R;
 
-public class SignUpActivity extends AppCompatActivity implements SignUpLoginView {
+public class SignUpActivity extends AppCompatActivity implements SignUpView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,14 +28,14 @@ public class SignUpActivity extends AppCompatActivity implements SignUpLoginView
                 String email = etEmail.getText().toString();
                 String password = etPassword.getText().toString();
                 String retypePassword = etRetypePassword.getText().toString();
-                signUpPresenter.validation(email, password, retypePassword);
+                signUpPresenter.signUp(email, password, retypePassword);
             }
         });
     }
 
     @Override
     public void showNextActivity() {
-
+        Toast.makeText(this,"Everything is okay", Toast.LENGTH_SHORT).show();
     }
 
     @Override

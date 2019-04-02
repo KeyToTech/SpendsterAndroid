@@ -1,6 +1,6 @@
 package com.spendster.presentation.signUp;
 
-public interface SignUpLoginView {
+public interface SignUpView {
     void showNextActivity();
 
     void showEmailAtError();
