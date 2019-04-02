@@ -3,11 +3,9 @@ package com.spendster.presentation.signUp;
 public interface SignUpView {
     void showNextActivity();
 
-    void showEmailAtError();
+    void showEmailError(String message);
 
-    void showEmailIsEmptyError();
+    void showPasswordError(String message);
 
-    void showPasswordIsEmptyError();
-
-    void showPasswordNotEqualError();
+    void showRetypePasswordError(String message);
 }

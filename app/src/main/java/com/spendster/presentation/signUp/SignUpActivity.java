@@ -39,22 +39,17 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
     }
 
     @Override
-    public void showEmailAtError() {
-        Toast.makeText(this,"Email must contain @ symbol", Toast.LENGTH_SHORT).show();
+    public void showEmailError(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void showEmailIsEmptyError() {
-        Toast.makeText(this,"Email field is empty", Toast.LENGTH_SHORT).show();
+    public void showPasswordError(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void showPasswordNotEqualError() {
-        Toast.makeText(this,"Passwords is not equal", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void showPasswordIsEmptyError() {
-        Toast.makeText(this,"Password field is empty", Toast.LENGTH_SHORT).show();
+    public void showRetypePasswordError(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }
