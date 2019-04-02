@@ -1,11 +1,11 @@
 package com.spendster.presentation.signUp;
 
 public class SignUpPresenter {
-    private final SignUpActivity signUpActivity;
+    private final SignUpView signUpView;
 
 
-    public SignUpPresenter(SignUpActivity signUpActivity) {
-        this.signUpActivity = signUpActivity;
+    public SignUpPresenter(SignUpView signUpView) {
+        this.signUpView = signUpView;
     }
 
     private boolean emailIsValid(String email){
@@ -20,7 +20,7 @@ public class SignUpPresenter {
             check = false;
         }
         if (!check){
-            signUpActivity.showEmailError(errorMessage);
+            signUpView.showEmailError(errorMessage);
         }
         return check;
     }
@@ -33,7 +33,7 @@ public class SignUpPresenter {
             check = false;
         }
         if (!check){
-            signUpActivity.showPasswordError(errorMessage);
+            signUpView.showPasswordError(errorMessage);
         }
         return check;
     }
@@ -49,14 +49,14 @@ public class SignUpPresenter {
             check = false;
         }
         if (!check) {
-            signUpActivity.showRetypePasswordError(errorMessage);
+            signUpView.showRetypePasswordError(errorMessage);
         }
         return check;
     }
 
     public void signUp(String email, String password, String retypePassword){
         if (emailIsValid(email) && passwordIsValid(password) && retypePasswordIsValid(password ,retypePassword)) {
-            signUpActivity.showNextActivity();
+            signUpView.showNextActivity();
         }
     }
 }
