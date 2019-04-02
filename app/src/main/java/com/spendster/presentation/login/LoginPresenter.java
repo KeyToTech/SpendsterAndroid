@@ -1,6 +1,9 @@
 package com.spendster.presentation.login;
 
 import com.spendster.presentation.AuthView;
+import com.spendster.presentation.validation.ComplexEmailValidator;
+import com.spendster.presentation.validation.ComplexPasswordValidation;
+import com.spendster.presentation.validation.ValidationResource;
 
 public class LoginPresenter {
     private final AuthView loginView;
@@ -12,40 +15,23 @@ public class LoginPresenter {
         this.loginModel = loginModel;
     }
 
-    public void login(String email, String password){
-        if (emailIsValid(email) && passwordIsValid(password)){
+    public void login(String email, String password) {
+        ValidationResource emailValidation = new ComplexEmailValidator(email).validate();
+        ValidationResource passwordValidation = new ComplexPasswordValidation(password).validate();
+        if (!emailValidation.isValid()) {
+            if (loginView != null) {
+                loginView.showEmailError(emailValidation.message());
+            }
+        } else if (!passwordValidation.isValid()) {
+            if (loginView != null) {
+                loginView.showPasswordError(passwordValidation.message());
+            }
+        } else {
+            if (loginModel != null)
             loginModel.getUser(email, password);
-            loginView.showNextActivity();
+            if (loginView != null) {
+                loginView.showNextActivity();
+            }
         }
-    }
-
-    private boolean emailIsValid(String email){
-        boolean check = true;
-        String errorMessage = "";
-        if(email.isEmpty()){
-            errorMessage = "Email field is empty";
-            check = false;
-        }
-        else if (!email.contains("@")){
-            errorMessage = "Email must contain @ symbol";
-            check = false;
-        }
-        if (!check){
-            loginView.showEmailError(errorMessage);
-        }
-        return check;
-    }
-
-    private boolean passwordIsValid(String password){
-        boolean check = true;
-        String errorMessage = "";
-        if(password.isEmpty()){
-            errorMessage = "Password field is empty";
-            check = false;
-        }
-        if (!check){
-            loginView.showPasswordError(errorMessage);
-        }
-        return check;
     }
 }
