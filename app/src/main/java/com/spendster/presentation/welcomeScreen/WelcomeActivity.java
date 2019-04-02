@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.spendster.R;
+import com.spendster.presentation.login.LoginActivity;
 import com.spendster.presentation.signUp.SignUpActivity;
 
 import java.util.ArrayList;
@@ -60,6 +61,17 @@ public class WelcomeActivity extends AppCompatActivity {
                 launchSignUpScreen();
             }
         } );
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchLoginScreen();
+            }
+        });
+    }
+
+    private void launchLoginScreen() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 
     private void launchSignUpScreen() {
