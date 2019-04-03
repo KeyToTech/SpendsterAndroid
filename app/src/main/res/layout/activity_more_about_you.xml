@@ -89,6 +89,7 @@
         android:textAllCaps="false"
         android:textColor="#fff"
         android:textSize="18sp"
+        app:fontFamily="@font/karla_bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -104,6 +105,7 @@
         android:textAllCaps="false"
         android:textColor="#8a8a8a"
         android:textSize="18sp"
+        app:fontFamily="@font/karla_bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

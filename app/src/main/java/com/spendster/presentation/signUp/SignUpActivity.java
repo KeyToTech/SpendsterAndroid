@@ -1,5 +1,6 @@
 package com.spendster.presentation.signUp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.spendster.R;
+import com.spendster.presentation.moreAboutYou.MoreAboutYouActivity;
 
 public class SignUpActivity extends AppCompatActivity implements SignUpView {
 
@@ -35,7 +37,8 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
 
     @Override
     public void showNextActivity() {
-        Toast.makeText(this,"Everything is okay", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, MoreAboutYouActivity.class);
+        startActivity(intent);
     }
 
     @Override
