@@ -16,7 +16,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        final SignUpPresenter signUpPresenter = new SignUpPresenter(this);
+        final SignUpPresenter signUpPresenter = new SignUpPresenter(this, new FakeSignUpModel());
         final Button btnContinue = findViewById(R.id.btnContinue);
         final EditText etEmail = findViewById(R.id.etEmail);
         final EditText etPassword = findViewById(R.id.etPassword);
