@@ -5,16 +5,15 @@ import com.spendster.presentation.AuthView;
 import com.spendster.presentation.validation.ComplexEmailValidator;
 import com.spendster.presentation.validation.ComplexPasswordValidation;
 import com.spendster.presentation.validation.ValidationResource;
-
-import io.reactivex.Scheduler;
-import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
 public class LoginPresenter {
     private final AuthView loginView;
     private final LoginModel loginModel;
+    private final CompositeDisposable compositeDisposable = new CompositeDisposable();
 
 
     public LoginPresenter(AuthView loginView, LoginModel loginModel) {
@@ -35,15 +34,10 @@ public class LoginPresenter {
             }
         } else {
             if (loginModel != null) {
-                loginModel.getUser(email, password)
+                compositeDisposable.add(loginModel.getUser(email, password)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new SingleObserver<User>() {
-                            @Override
-                            public void onSubscribe(Disposable d) {
-
-                            }
-
+                        .subscribeWith(new DisposableSingleObserver<User>() {
                             @Override
                             public void onSuccess(User user) {
                                 if (loginView != null) {
@@ -55,7 +49,7 @@ public class LoginPresenter {
                             public void onError(Throwable e) {
 
                             }
-                        });
+                        }));
             }
         }
     }
