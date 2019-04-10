@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity implements AuthView {
 
     @Override
     public void showNextActivity() {
-        Toast.makeText(this, "Your profile must be there", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Main screen", Toast.LENGTH_SHORT).show();
     }
 
     @Override

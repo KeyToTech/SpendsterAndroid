@@ -23,7 +23,7 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="@dimen/slide_2_image_viewe_width"
+        android:layout_width="@dimen/slide_2_image_view_width"
         android:layout_height="@dimen/slide_2_image_view_height"
         android:layout_marginTop="@dimen/slide_2_image_view_margin_top"
         android:src="@drawable/hand_pork"

@@ -11,7 +11,7 @@
     <dimen name="slide_3_image_view_width">227dp</dimen>
     <dimen name="slide_2_text_view_size">285dp</dimen>
     <dimen name="slide_2_image_view_height">225dp</dimen>
-    <dimen name="slide_2_image_viewe_width">328dp</dimen>
+    <dimen name="slide_2_image_view_width">328dp</dimen>
     <dimen name="slide_2_image_view_margin_top">58dp</dimen>
     <dimen name="slide_2_text_view_margin_top">43dp</dimen>
     <dimen name="slide_1_text_view_width">285dp</dimen>
