@@ -19,6 +19,7 @@ public class MoreAboutYouActivity extends AppCompatActivity {
 
         final Button btnContinue = findViewById(R.id.btnContinue);
         final Button btnMaybeLater = findViewById(R.id.btnMaybeLater);
+        final Button btnCamera = findViewById(R.id.btnCamera);
 
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,6 +31,12 @@ public class MoreAboutYouActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 launchMainActivity();
+            }
+        });
+        btnCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivityForResult(new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI), 3);
             }
         });
     }
