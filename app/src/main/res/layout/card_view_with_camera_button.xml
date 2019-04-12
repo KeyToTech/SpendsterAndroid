@@ -13,13 +13,13 @@
             android:id="@+id/circleView"
             android:layout_width="84dp"
             android:layout_height="84dp"
-            android:innerRadius="0dp"
+            android:innerRadius="20dp"
             android:shape="ring"
             android:thicknessRatio="1.9"
             app:cardCornerRadius="40dp">
 
             <ImageView
-                android:id="@+id/imageView1"
+                android:id="@+id/cat"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerHorizontal="true"
