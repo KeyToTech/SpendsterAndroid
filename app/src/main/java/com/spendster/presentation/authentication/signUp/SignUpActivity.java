@@ -1,4 +1,4 @@
-package com.spendster.presentation.signUp;
+package com.spendster.presentation.authentication.signUp;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

@@ -1,4 +1,4 @@
-package com.spendster.presentation.login;
+package com.spendster.presentation.authentication.login;
 
 import com.spendster.data.entity.User;
 

@@ -25,4 +25,5 @@
     <string name="add_your_personal_details">Add your personal details</string>
     <string name="first_and_last_name">First and Last name</string>
     <string name="phone_number">Phone number</string>
+    <string name="activity">Activity</string>
 </resources>

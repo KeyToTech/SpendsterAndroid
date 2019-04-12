@@ -11,8 +11,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.spendster.R;
-import com.spendster.presentation.login.LoginActivity;
-import com.spendster.presentation.signUp.SignUpActivity;
+import com.spendster.presentation.authentication.login.LoginActivity;
+import com.spendster.presentation.authentication.signUp.SignUpActivity;
 
 import java.util.ArrayList;
 import java.util.List;

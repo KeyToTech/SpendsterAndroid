@@ -15,9 +15,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.spendster.R;
+import com.spendster.presentation.ActivityActivity;
 import com.spendster.presentation.address.AddressActivity;
 
 import java.io.IOException;
@@ -61,7 +61,7 @@ public class MoreAboutYouActivity extends AppCompatActivity {
 
 
     private void launchMainActivity() {
-        Toast.makeText(this, "Main screen", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, ActivityActivity.class));
     }
 
     private void launchAddressScreen() {

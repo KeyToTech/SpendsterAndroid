@@ -1,4 +1,4 @@
-package com.spendster.presentation.login;
+package com.spendster.presentation.authentication.login;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.spendster.R;
-import com.spendster.presentation.AuthView;
+import com.spendster.presentation.authentication.AuthView;
 
 public class LoginActivity extends AppCompatActivity implements AuthView {
 
