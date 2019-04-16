@@ -6,10 +6,10 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import java.util.List;
 
-public class MainPagerAdapter extends FragmentPagerAdapter {
+public class ViewPagerAdapter extends FragmentPagerAdapter {
     private List<Fragment> slideFragments;
 
-    public MainPagerAdapter(FragmentManager fragmentManager, List<Fragment> slideFragments) {
+    public ViewPagerAdapter(FragmentManager fragmentManager, List<Fragment> slideFragments) {
         super(fragmentManager);
         this.slideFragments = slideFragments;
     }

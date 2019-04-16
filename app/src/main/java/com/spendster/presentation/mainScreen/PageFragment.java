@@ -1,4 +1,23 @@
 package com.spendster.presentation.mainScreen;
 
-public class PageFragment {
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+public class PageFragment extends Fragment {
+    private int slide;
+
+    public static PageFragment newInstance(int slide){
+        PageFragment pageFragment = new PageFragment();
+        pageFragment.slide = slide;
+        return pageFragment;
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(this.slide , container, false);
+    }
 }

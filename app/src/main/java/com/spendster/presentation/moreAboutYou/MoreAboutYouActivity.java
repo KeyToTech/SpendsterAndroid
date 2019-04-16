@@ -17,7 +17,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.spendster.R;
-import com.spendster.presentation.ActivityActivity;
+import com.spendster.presentation.mainScreen.ActivityActivity;
 import com.spendster.presentation.address.AddressActivity;
 
 import java.io.IOException;
