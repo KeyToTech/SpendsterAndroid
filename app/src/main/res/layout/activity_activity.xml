@@ -1,6 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.mainScreen.ActivityActivity"
+    android:background="#f7f8fe"
+    android:fitsSystemWindows="true">
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager_main"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_below="@+id/activityToolbar">
+        <android.support.v4.view.PagerTabStrip
+            android:id="@+id/pagerTabStrip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:background="#fff"
+            android:elevation="2dp">
+        </android.support.v4.view.PagerTabStrip>
+    </android.support.v4.view.ViewPager>
+
+    <include
+        layout="@layout/toolbar"
+        android:id="@+id/activityToolbar"/>
+
+    <View
+        android:id="@+id/optionalMenu"
+        android:layout_width="match_parent"
+        android:layout_height="92dp"
+        android:layout_marginBottom="-15dp"
+        android:layout_marginLeft="-17dp"
+        android:layout_marginStart="-17dp"
+        android:layout_marginRight="-17dp"
+        android:layout_marginEnd="-17dp"
+        android:background="@drawable/menu_bar"
+        android:layout_alignParentBottom="true"
+        android:elevation="2dp"/>
+
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_above="@+id/optionalMenu"
+        android:layout_marginBottom="-52dp"
+        android:background="@drawable/add_button"
+        android:layout_centerHorizontal="true"/>
+
+    <include
+        android:id="@+id/activityComponent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        layout="@layout/activity_activity_button_activity"
+        android:layout_above="@+id/optionalMenu"
+        android:layout_marginBottom="-67dp"
+        android:layout_marginLeft="31dp"
+        android:layout_marginStart="31dp" />
+
+    <include
+        android:id="@+id/overviewComponent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        layout="@layout/activity_activity_overview_button"
+        android:layout_above="@+id/optionalMenu"
+        android:layout_marginBottom="-67dp"
+        android:layout_marginLeft="103dp"
+        android:layout_marginStart="103dp" />
+
+    <include
+        android:id="@+id/budgetComponent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        layout="@layout/activity_activity_budget_button"
+        android:layout_above="@+id/optionalMenu"
+        android:layout_marginBottom="-67dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="103dp"
+        android:layout_marginEnd="103dp" />
+
+    <include
+        android:id="@+id/activityComponent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        layout="@layout/activity_activity_profile_button"
+        android:layout_above="@+id/optionalMenu"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="-67dp"
+        android:layout_marginRight="31dp"
+        android:layout_marginEnd="31dp" />
+</RelativeLayout>
