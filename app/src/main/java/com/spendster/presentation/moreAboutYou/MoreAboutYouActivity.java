@@ -105,6 +105,8 @@ public class MoreAboutYouActivity extends AppCompatActivity {
                 String[] permissionRequested = {Manifest.permission.CAMERA};
                 requestPermissions(permissionRequested, CAMERA_REQUEST_CODE);
             }
+        }else {
+            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -123,7 +125,7 @@ public class MoreAboutYouActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_CANCELED) {
-            return;
+            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
         }
         if (requestCode == GALLERY) {
             if (data != null) {
@@ -141,6 +143,8 @@ public class MoreAboutYouActivity extends AppCompatActivity {
             Bitmap thumbnail = null;
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
                 thumbnail = (Bitmap) Objects.requireNonNull(data.getExtras()).get("data");
+            }else {
+                Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
             }
             imageAvatar.setImageBitmap(thumbnail);
         }
