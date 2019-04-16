@@ -6,20 +6,21 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import java.util.List;
 
-public class ViewPagerAdapter extends FragmentPagerAdapter {
+public class MainPagerAdapter extends FragmentPagerAdapter {
     private List<Fragment> slideFragments;
 
-    public ViewPagerAdapter(FragmentManager fragmentManager, List<Fragment> slideFragments) {
+    public MainPagerAdapter(FragmentManager fragmentManager, List<Fragment> slideFragments) {
         super(fragmentManager);
         this.slideFragments = slideFragments;
     }
 
     @Override
     public int getCount() {
-        if (this.slideFragments == null){
-            return 0;
+        int result = 0;
+        if (this.slideFragments != null){
+            result = this.slideFragments.size();
         }
-        return slideFragments.size();
+        return result;
     }
 
     @Override
