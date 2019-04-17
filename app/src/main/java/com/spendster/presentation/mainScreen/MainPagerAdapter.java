@@ -5,26 +5,16 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.spendster.presentation.welcomeScreen.ViewPagerAdapter;
+
 import java.util.List;
 
-public class MainPagerAdapter extends FragmentPagerAdapter {
+public class MainPagerAdapter extends ViewPagerAdapter {
     private List<Fragment> pageFragments;
 
     public MainPagerAdapter(FragmentManager fm, List<Fragment> pageFragments) {
-        super(fm);
+        super(fm, pageFragments);
         this.pageFragments = pageFragments;
-    }
-
-    @Override
-    public Fragment getItem(int position) { return pageFragments.get(position); }
-
-    @Override
-    public int getCount() {
-        int result = 0;
-        if (this.pageFragments != null) {
-            result = this.pageFragments.size();
-        }
-        return result;
     }
 
     @Nullable

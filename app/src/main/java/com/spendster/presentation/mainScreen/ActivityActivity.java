@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.spendster.R;
+import com.spendster.presentation.welcomeScreen.SlideFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,9 +69,9 @@ public class ActivityActivity extends AppCompatActivity implements View.OnClickL
 
     private void initPageFragments(){
         pageFragments = new ArrayList<>();
-        pageFragments.add(PageFragment.newInstance(R.layout.activity_activity_slide1));
-        pageFragments.add(PageFragment.newInstance(R.layout.activity_activity_slide1));
-        pageFragments.add(PageFragment.newInstance(R.layout.activity_activity_slide1));
+        pageFragments.add(SlideFragment.newInstance(R.layout.activity_activity_slide1));
+        pageFragments.add(SlideFragment.newInstance(R.layout.activity_activity_slide1));
+        pageFragments.add(SlideFragment.newInstance(R.layout.activity_activity_slide1));
     }
 
     private void initConstraintLayouts(){
