@@ -1,9 +1,9 @@
 package com.spendster.presentation.validation;
 
-public class ComplexPasswordValidation implements Validation<ValidationResource> {
+public class ComplexPasswordValidator implements Validation<ValidationResource> {
     private final String password;
 
-    public ComplexPasswordValidation(String password) {
+    public ComplexPasswordValidator(String password) {
         this.password = password;
     }
 

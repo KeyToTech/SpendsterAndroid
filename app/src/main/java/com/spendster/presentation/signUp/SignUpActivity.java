@@ -21,6 +21,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
         final SignUpPresenter signUpPresenter = new SignUpPresenter(this, new FakeSignUpModel());
         final Button btnContinue = findViewById(R.id.btnContinue);
         final EditText etEmail = findViewById(R.id.etEmail);
+        final EditText etUsername = findViewById(R.id.etUserName);
         final EditText etPassword = findViewById(R.id.etPassword);
         final EditText etRetypePassword = findViewById(R.id.etRetypePassword);
 
@@ -28,9 +29,10 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
             @Override
             public void onClick(View view) {
                 String email = etEmail.getText().toString();
+                String username = etUsername.getText().toString();
                 String password = etPassword.getText().toString();
                 String retypePassword = etRetypePassword.getText().toString();
-                signUpPresenter.signUp(email, password, retypePassword);
+                signUpPresenter.signUp(email, username, password, retypePassword);
             }
         });
     }
@@ -43,6 +45,11 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
 
     @Override
     public void showEmailError(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showUsernameError(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 

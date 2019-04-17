@@ -3,7 +3,7 @@ package com.spendster.presentation.login;
 import com.spendster.data.entity.User;
 import com.spendster.presentation.AuthView;
 import com.spendster.presentation.validation.ComplexEmailValidator;
-import com.spendster.presentation.validation.ComplexPasswordValidation;
+import com.spendster.presentation.validation.ComplexPasswordValidator;
 import com.spendster.presentation.validation.ValidationResource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -23,7 +23,7 @@ public class LoginPresenter {
 
     public void login(String email, String password) {
         ValidationResource emailValidation = new ComplexEmailValidator(email).validate();
-        ValidationResource passwordValidation = new ComplexPasswordValidation(password).validate();
+        ValidationResource passwordValidation = new ComplexPasswordValidator(password).validate();
         if (!emailValidation.isValid()) {
             if (loginView != null) {
                 loginView.showEmailError(emailValidation.message());

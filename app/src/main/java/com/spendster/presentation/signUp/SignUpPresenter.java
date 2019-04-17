@@ -2,14 +2,12 @@ package com.spendster.presentation.signUp;
 
 import com.spendster.data.entity.User;
 import com.spendster.presentation.validation.ComplexEmailValidator;
-import com.spendster.presentation.validation.ComplexPasswordValidation;
+import com.spendster.presentation.validation.ComplexPasswordValidator;
+import com.spendster.presentation.validation.ComplexUsernameValidator;
 import com.spendster.presentation.validation.ValidationResource;
 
-import io.reactivex.Scheduler;
-import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
@@ -23,9 +21,10 @@ public class SignUpPresenter {
         this.signUpModel = signUpModel;
     }
 
-    public void signUp(String email, String password, String retypePassword){
+    public void signUp(String email, String username, String password, String retypePassword){
         ValidationResource emailValidation = new ComplexEmailValidator(email).validate();
-        ValidationResource passwordValidation = new ComplexPasswordValidation(password).validate();
+        ValidationResource passwordValidation = new ComplexPasswordValidator(password).validate();
+        ValidationResource usernameValidation = new ComplexUsernameValidator(username).validate();
         if (!emailValidation.isValid()) {
             if (signUpView != null) {
                 signUpView.showEmailError(emailValidation.message());
@@ -37,6 +36,10 @@ public class SignUpPresenter {
         } else if (!password.equals(retypePassword)){
             if (signUpView != null) {
                 signUpView.showRetypePasswordError("Password is not equal to retype password");
+            }
+        }else if (!usernameValidation.isValid()){
+            if (signUpView != null) {
+                signUpView.showUsernameError(usernameValidation.message());
             }
         }
         else {
