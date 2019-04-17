@@ -22,7 +22,7 @@ import com.spendster.presentation.welcomeScreen.SlideFragment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActivityActivity extends AppCompatActivity implements View.OnClickListener {
+public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 
     private List<Fragment> pageFragments;
     private ViewPager viewPager;
@@ -32,7 +32,7 @@ public class ActivityActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_activity);
+        setContentView(R.layout.activity_home);
         initUI();
     }
 
@@ -69,9 +69,9 @@ public class ActivityActivity extends AppCompatActivity implements View.OnClickL
 
     private void initPageFragments(){
         pageFragments = new ArrayList<>();
-        pageFragments.add(SlideFragment.newInstance(R.layout.activity_activity_slide1));
-        pageFragments.add(SlideFragment.newInstance(R.layout.activity_activity_slide1));
-        pageFragments.add(SlideFragment.newInstance(R.layout.activity_activity_slide1));
+        pageFragments.add(SlideFragment.newInstance(R.layout.activity_home_slide1));
+        pageFragments.add(SlideFragment.newInstance(R.layout.activity_home_slide1));
+        pageFragments.add(SlideFragment.newInstance(R.layout.activity_home_slide1));
     }
 
     private void initConstraintLayouts(){

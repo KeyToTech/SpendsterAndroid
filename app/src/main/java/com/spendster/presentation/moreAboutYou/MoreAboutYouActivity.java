@@ -17,7 +17,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.spendster.R;
-import com.spendster.presentation.mainScreen.ActivityActivity;
+import com.spendster.presentation.mainScreen.HomeActivity;
 import com.spendster.presentation.address.AddressActivity;
 
 import java.io.IOException;
@@ -61,7 +61,7 @@ public class MoreAboutYouActivity extends AppCompatActivity {
 
 
     private void launchMainActivity() {
-        startActivity(new Intent(this, ActivityActivity.class));
+        startActivity(new Intent(this, HomeActivity.class));
     }
 
     private void launchAddressScreen() {
