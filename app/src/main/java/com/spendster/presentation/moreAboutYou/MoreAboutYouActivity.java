@@ -70,10 +70,10 @@ public class MoreAboutYouActivity extends AppCompatActivity {
 
     private void showPictureDialog() {
         AlertDialog.Builder pictureDialog = new AlertDialog.Builder(this);
-        pictureDialog.setTitle("Select Action");
+        pictureDialog.setTitle(R.string.select_action);
         String[] pictureDialogItems = {
-                "Select photo from gallery",
-                "Capture photo from camera"};
+                getString(R.string.select_photo_from_gallery),
+                getString(R.string.capture_photo_from_camera)};
         pictureDialog.setItems(pictureDialogItems,
                 new DialogInterface.OnClickListener() {
                     @Override
@@ -106,7 +106,7 @@ public class MoreAboutYouActivity extends AppCompatActivity {
                 requestPermissions(permissionRequested, CAMERA_REQUEST_CODE);
             }
         }else {
-            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Error: your version is too low", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -125,7 +125,7 @@ public class MoreAboutYouActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_CANCELED) {
-            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Error: your version is too low", Toast.LENGTH_SHORT).show();
         }
         if (requestCode == GALLERY) {
             if (data != null) {
@@ -144,7 +144,7 @@ public class MoreAboutYouActivity extends AppCompatActivity {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
                 thumbnail = (Bitmap) Objects.requireNonNull(data.getExtras()).get("data");
             }else {
-                Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Error: your version is too low", Toast.LENGTH_SHORT).show();
             }
             imageAvatar.setImageBitmap(thumbnail);
         }
