@@ -50,7 +50,7 @@
         android:layout_centerHorizontal="true"/>
 
     <include
-        android:id="@+id/activityComponent"
+        android:id="@+id/clActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         layout="@layout/activity_activity_button_activity"
@@ -60,7 +60,7 @@
         android:layout_marginStart="31dp" />
 
     <include
-        android:id="@+id/overviewComponent"
+        android:id="@+id/clOverview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         layout="@layout/activity_activity_overview_button"
@@ -70,7 +70,7 @@
         android:layout_marginStart="103dp" />
 
     <include
-        android:id="@+id/budgetComponent"
+        android:id="@+id/clBudget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         layout="@layout/activity_activity_budget_button"
@@ -82,7 +82,7 @@
         android:layout_marginEnd="103dp" />
 
     <include
-        android:id="@+id/activityComponent"
+        android:id="@+id/clProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         layout="@layout/activity_activity_profile_button"
