@@ -24,18 +24,18 @@
     </android.support.v4.view.ViewPager>
 
     <include
-        layout="@layout/toolbar"
-        android:id="@+id/activityToolbar"/>
+        android:id="@+id/activityToolbar"
+        layout="@layout/toolbar" />
 
     <View
         android:id="@+id/optionalMenu"
         android:layout_width="match_parent"
         android:layout_height="92dp"
         android:layout_marginBottom="-15dp"
-        android:layout_marginLeft="-17dp"
-        android:layout_marginStart="-17dp"
-        android:layout_marginRight="-17dp"
-        android:layout_marginEnd="-17dp"
+        android:layout_marginLeft="-18dp"
+        android:layout_marginStart="-18dp"
+        android:layout_marginRight="-18dp"
+        android:layout_marginEnd="-18dp"
         android:background="@drawable/menu_bar"
         android:layout_alignParentBottom="true"
         android:elevation="2dp"/>
@@ -44,52 +44,28 @@
         android:id="@+id/btnAdd"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_above="@+id/optionalMenu"
+        android:layout_above="@+id/bottomNavigationMenu"
         android:layout_marginBottom="-52dp"
         android:background="@drawable/add_button"
         android:layout_centerHorizontal="true"/>
 
-    <include
-        android:id="@+id/clActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        layout="@layout/activity_home_button_activity"
-        android:layout_above="@+id/optionalMenu"
-        android:layout_marginBottom="-67dp"
-        android:layout_marginLeft="31dp"
-        android:layout_marginStart="31dp" />
 
-    <include
-        android:id="@+id/clOverview"
-        android:layout_width="wrap_content"
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottomNavigationMenu"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        layout="@layout/activity_home_overview_button"
-        android:layout_above="@+id/optionalMenu"
-        android:layout_marginBottom="-67dp"
-        android:layout_marginLeft="103dp"
-        android:layout_marginStart="103dp" />
+        app:menu="@menu/bottom_navigation_menu"
+        app:itemTextColor="@drawable/navigation_item_background"
+        app:itemIconTint="@drawable/navigation_item_background"
+        app:labelVisibilityMode="labeled"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/menu_bar"
+        android:layout_marginBottom="-15dp"
+        android:layout_marginLeft="-17dp"
+        android:layout_marginStart="-17dp"
+        android:layout_marginRight="-17dp"
+        android:layout_marginEnd="-17dp">
 
-    <include
-        android:id="@+id/clBudget"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        layout="@layout/activity_home_budget_button"
-        android:layout_above="@+id/optionalMenu"
-        android:layout_marginBottom="-67dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="103dp"
-        android:layout_marginEnd="103dp" />
+    </android.support.design.widget.BottomNavigationView>
 
-    <include
-        android:id="@+id/clProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        layout="@layout/activity_home_profile_button"
-        android:layout_above="@+id/optionalMenu"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="-67dp"
-        android:layout_marginRight="31dp"
-        android:layout_marginEnd="31dp" />
 </RelativeLayout>

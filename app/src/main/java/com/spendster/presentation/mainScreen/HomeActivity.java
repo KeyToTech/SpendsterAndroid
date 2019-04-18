@@ -26,8 +26,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     private List<Fragment> pageFragments;
     private ViewPager viewPager;
-    private ArrayList<ImageView> imageViews;
-    private ArrayList<TextView> textViews;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,30 +39,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         setSupportActionBar(toolbar);
         viewPager = findViewById(R.id.view_pager_main);
         initPageFragments();
-        initTextView();
-        initImageView();
         initViewPager();
-        setColors(0);
-        initConstraintLayouts();
         initButtons();
-    }
-
-    private void initImageView(){
-        ImageView imgActivity = findViewById(R.id.imgActivity);
-        ImageView imgOverview = findViewById(R.id.imgOverview);
-        ImageView imgBudget = findViewById(R.id.imgBudget);
-        ImageView imgProfile = findViewById(R.id.imgProfile);
-        imageViews = new ArrayList<>();
-        imageViews.add(imgActivity);
-        imageViews.add(imgOverview);
-        imageViews.add(imgBudget);
-        imageViews.add(imgProfile);
-    }
-
-    private void initViewPager() {
-        MainPagerAdapter mainPagerAdapter = new MainPagerAdapter(getSupportFragmentManager(), pageFragments);
-        viewPager.setAdapter(mainPagerAdapter);
-        viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
     }
 
     private void initPageFragments(){
@@ -74,27 +50,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         pageFragments.add(SlideFragment.newInstance(R.layout.activity_home_slide1));
     }
 
-    private void initConstraintLayouts(){
-        ConstraintLayout clActivity = findViewById(R.id.clActivity);
-        ConstraintLayout clOverview = findViewById(R.id.clOverview);
-        ConstraintLayout clBudget = findViewById(R.id.clBudget);
-        ConstraintLayout clProfile = findViewById(R.id.clProfile);
-        clActivity.setOnClickListener(this);
-        clOverview.setOnClickListener(this);
-        clBudget.setOnClickListener(this);
-        clProfile.setOnClickListener(this);
-    }
-
-    private void initTextView(){
-        TextView tvActivity = findViewById(R.id.tvActivity);
-        TextView tvOverView = findViewById(R.id.tvOverview);
-        TextView tvBudget = findViewById(R.id.tvBudget);
-        TextView tvProfile = findViewById(R.id.tvProfile);
-        textViews = new ArrayList<>();
-        textViews.add(tvActivity);
-        textViews.add(tvOverView);
-        textViews.add(tvBudget);
-        textViews.add(tvProfile);
+    private void initViewPager() {
+        MainPagerAdapter mainPagerAdapter = new MainPagerAdapter(getSupportFragmentManager(), pageFragments);
+        viewPager.setAdapter(mainPagerAdapter);
+        viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
     }
 
     private void initButtons(){
@@ -105,44 +64,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.clActivity:
-                setColors(0);
-                break;
-            case R.id.clOverview:
-                setColors(1);
-                break;
-            case R.id.clBudget:
-                setColors(2);
-                break;
-            case R.id.clProfile:
-                setColors(3);
-                break;
             case R.id.btnAdd:
-                Toast.makeText(this,"Add expenses", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Add Expenses", Toast.LENGTH_SHORT).show();
         }
-    }
 
-    public void setColors(int number){
-        String active = "#31d19e";
-        String inActive = "#979797";
-        for (int i = 0; i < textViews.size(); i++){
-            if (i == number){
-                textViews.get(i).setTextColor(Color.parseColor(active));
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    imageViews.get(i).setImageTintList(ColorStateList.valueOf(Color.parseColor(active)));
-                }else {
-                    ViewCompat.setBackgroundTintList(imageViews.get(i), ColorStateList.valueOf(Color.parseColor(active)));
-                }
-            }
-            else {
-                textViews.get(i).setTextColor(Color.parseColor(inActive));
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    imageViews.get(i).setImageTintList(ColorStateList.valueOf(Color.parseColor(inActive)));
-                }else {
-                    ViewCompat.setBackgroundTintList(imageViews.get(i), ColorStateList.valueOf(Color.parseColor(inActive)));
-                }
-            }
-        }
     }
 
     ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
