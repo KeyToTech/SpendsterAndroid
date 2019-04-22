@@ -18,7 +18,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.spendster.R;
-import com.spendster.presentation.mainScreen.HomeActivity;
+import com.spendster.presentation.homeScreen.HomeActivity;
 import com.spendster.presentation.address.AddressActivity;
 
 import java.io.IOException;

@@ -1,9 +1,8 @@
-package com.spendster.presentation.mainScreen;
+package com.spendster.presentation.homeScreen;
 
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 
 import com.spendster.presentation.welcomeScreen.ViewPagerAdapter;
 

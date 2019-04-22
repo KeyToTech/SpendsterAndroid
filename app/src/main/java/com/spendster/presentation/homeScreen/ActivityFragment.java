@@ -1,8 +1,7 @@
-package com.spendster.presentation.mainScreen;
+package com.spendster.presentation.homeScreen;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -20,6 +19,10 @@ public class ActivityFragment extends Fragment {
     private List<Fragment> pageFragments;
     private ViewPager viewPager;
 
+    public static ActivityFragment newInstance(){
+        ActivityFragment activityFragment = new ActivityFragment();
+        return activityFragment;
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,

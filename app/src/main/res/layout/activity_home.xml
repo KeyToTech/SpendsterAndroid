@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".presentation.mainScreen.HomeActivity"
+    tools:context=".presentation.homeScreen.HomeActivity"
     android:background="#f7f8fe"
     android:fitsSystemWindows="true">
 

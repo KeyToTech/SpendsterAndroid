@@ -1,29 +1,17 @@
-package com.spendster.presentation.mainScreen;
+package com.spendster.presentation.homeScreen;
 
-import android.content.res.ColorStateList;
-import android.graphics.Color;
-import android.os.Build;
 import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.spendster.R;
-import com.spendster.presentation.welcomeScreen.SlideFragment;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -63,16 +51,16 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         Fragment fragment = null;
         switch (menuItem.getItemId()){
             case R.id.activityItem:
-                fragment = new ActivityFragment();
+                fragment = ActivityFragment.newInstance();
                 break;
             case R.id.overviewItem:
-                fragment = new OverviewFragment();
+                fragment = OverviewFragment.newInstance();
                 break;
             case R.id.budgetItem:
-                fragment = new BudgetFragment();
+                fragment = BudgetFragment.newInstance();
                 break;
             case R.id.profileItem:
-                fragment = new ProfileFragment();
+                fragment = ProfileFragment.newInstance();
                 break;
         }
 
