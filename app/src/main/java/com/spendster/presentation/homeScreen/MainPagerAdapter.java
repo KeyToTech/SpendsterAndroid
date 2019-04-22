@@ -19,6 +19,6 @@ public class MainPagerAdapter extends ViewPagerAdapter {
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        return "Title " + (position + 1);
+        return  pageFragments.get(position).toString();
     }
 }
