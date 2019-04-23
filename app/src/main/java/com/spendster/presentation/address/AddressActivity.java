@@ -17,6 +17,10 @@ public class AddressActivity extends AppCompatActivity implements AddressView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adress);
 
+        initUI();
+    }
+
+    private void initUI(){
         final EditText etFLName = findViewById(R.id.etFLName);
         final EditText etPhone = findViewById(R.id.etPhone);
         final EditText etAddress = findViewById(R.id.etAddress);
@@ -36,8 +40,6 @@ public class AddressActivity extends AppCompatActivity implements AddressView {
             }
         });
     }
-
-
 
     @Override
     public void showFirstLastNameError(String message) {

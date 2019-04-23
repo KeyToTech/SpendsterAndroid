@@ -15,14 +15,6 @@ public class ComplexPhoneValidator implements Validation<ValidationResource>  {
             errorMessage = "First and Last name field is empty";
             isValid = false;
         }
-        else if (this.phone.length() < 10){
-            errorMessage = "Phone number is too short";
-            isValid = false;
-        }
-        else if (this.phone.length() > 10){
-            errorMessage = "Phone number is too long";
-            isValid = false;
-        }
         return new ValidationResource(errorMessage, isValid);
     }
 }
