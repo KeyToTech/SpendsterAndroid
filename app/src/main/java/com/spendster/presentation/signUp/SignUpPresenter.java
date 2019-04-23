@@ -5,11 +5,8 @@ import com.spendster.presentation.validation.ComplexEmailValidator;
 import com.spendster.presentation.validation.ComplexPasswordValidation;
 import com.spendster.presentation.validation.ValidationResource;
 
-import io.reactivex.Scheduler;
-import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
@@ -23,7 +20,7 @@ public class SignUpPresenter {
         this.signUpModel = signUpModel;
     }
 
-    public void signUp(String email, String password, String retypePassword){
+    public void signUp(final String email, String password, String retypePassword){
         ValidationResource emailValidation = new ComplexEmailValidator(email).validate();
         ValidationResource passwordValidation = new ComplexPasswordValidation(password).validate();
         if (!emailValidation.isValid()) {
@@ -51,7 +48,6 @@ public class SignUpPresenter {
                                     signUpView.showNextActivity();
                                 }
                             }
-
                             @Override
                             public void onError(Throwable e) {
 

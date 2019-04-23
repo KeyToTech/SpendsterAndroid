@@ -4,9 +4,11 @@ import com.spendster.data.entity.User;
 
 import io.reactivex.Single;
 
-public class FakeSignUpModel implements SignUpModel {
+public class ServerSignUpModel implements SignUpModel {
+
     @Override
     public Single<User> getUser(String email, String password) {
-        return null;
+        API api = APIClient.getClient().create(API.class);
+        return api.signUp(email, password);
     }
 }
