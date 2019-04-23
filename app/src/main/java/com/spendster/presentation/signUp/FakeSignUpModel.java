@@ -6,7 +6,7 @@ import io.reactivex.Single;
 
 public class FakeSignUpModel implements SignUpModel {
     @Override
-    public Single<User> getUser(String email, String password) {
+    public Single<User> getUser(String email, String userName, String password) {
         return null;
     }
 }

@@ -1,8 +1,10 @@
 package com.spendster.presentation.signUp;
 
 import com.spendster.data.entity.User;
+import com.spendster.presentation.AuthView;
 import com.spendster.presentation.validation.ComplexEmailValidator;
 import com.spendster.presentation.validation.ComplexPasswordValidation;
+import com.spendster.presentation.validation.ComplexUsernameValidator;
 import com.spendster.presentation.validation.ValidationResource;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -11,34 +13,37 @@ import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
 public class SignUpPresenter {
-    private final SignUpView signUpView;
+    private final AuthView signUpView;
     private final SignUpModel signUpModel;
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
 
-    public SignUpPresenter(SignUpView signUpView, SignUpModel signUpModel) {
+    public SignUpPresenter(AuthView signUpView, SignUpModel signUpModel) {
         this.signUpView = signUpView;
         this.signUpModel = signUpModel;
     }
 
-    public void signUp(final String email, String password, String retypePassword){
+    public void signUp(final String email, String password, String retypePassword, String username){
         ValidationResource emailValidation = new ComplexEmailValidator(email).validate();
         ValidationResource passwordValidation = new ComplexPasswordValidation(password).validate();
+        ValidationResource usernameValidation = new ComplexUsernameValidator(username).validate();
         if (!emailValidation.isValid()) {
             if (signUpView != null) {
-                signUpView.showEmailError(emailValidation.message());
+                signUpView.showError(emailValidation.message());
             }
         } else if (!passwordValidation.isValid()) {
             if (signUpView != null) {
-                signUpView.showPasswordError(passwordValidation.message());
+                signUpView.showError(passwordValidation.message());
             }
         } else if (!password.equals(retypePassword)){
             if (signUpView != null) {
-                signUpView.showRetypePasswordError("Password is not equal to retype password");
+                signUpView.showError("Password is not equal to retype password");
             }
+        } else if(!usernameValidation.isValid()){
+            signUpView.showError(passwordValidation.message());
         }
         else {
             if (signUpModel != null){
-                compositeDisposable.add(signUpModel.getUser(email, password)
+                compositeDisposable.add(signUpModel.getUser(email, username, password)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(new DisposableSingleObserver<User>() {

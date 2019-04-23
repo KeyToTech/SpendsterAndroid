@@ -26,11 +26,11 @@ public class LoginPresenter {
         ValidationResource passwordValidation = new ComplexPasswordValidation(password).validate();
         if (!emailValidation.isValid()) {
             if (loginView != null) {
-                loginView.showEmailError(emailValidation.message());
+                loginView.showError(emailValidation.message());
             }
         } else if (!passwordValidation.isValid()) {
             if (loginView != null) {
-                loginView.showPasswordError(passwordValidation.message());
+                loginView.showError(passwordValidation.message());
             }
         } else {
             if (loginModel != null) {
@@ -47,7 +47,7 @@ public class LoginPresenter {
 
                             @Override
                             public void onError(Throwable e) {
-
+                                e.printStackTrace();
                             }
                         }));
             }

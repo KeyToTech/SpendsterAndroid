@@ -21,7 +21,7 @@ public class LoginActivity extends AppCompatActivity implements AuthView {
         final EditText etEmail = findViewById(R.id.etEmail);
         final EditText etPassword = findViewById(R.id.etPassword);
 
-        final LoginPresenter loginPresenter = new LoginPresenter(this, new FakeLoginModel());
+        final LoginPresenter loginPresenter = new LoginPresenter(this, new ServerLoginModel());
 
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,12 +39,7 @@ public class LoginActivity extends AppCompatActivity implements AuthView {
     }
 
     @Override
-    public void showEmailError(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void showPasswordError(String message) {
+    public void showError(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }
