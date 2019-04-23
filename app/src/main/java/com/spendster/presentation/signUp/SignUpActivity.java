@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.spendster.BuildConfig;
 import com.spendster.R;
 import com.spendster.presentation.moreAboutYou.MoreAboutYouActivity;
 
@@ -23,6 +24,12 @@ public class SignUpActivity extends AppCompatActivity implements SignUpView {
         final EditText etEmail = findViewById(R.id.etEmail);
         final EditText etPassword = findViewById(R.id.etPassword);
         final EditText etRetypePassword = findViewById(R.id.etRetypePassword);
+
+        if(BuildConfig.DEBUG){
+            etEmail.setText("test@gmail.com");
+            etPassword.setText("12345678");
+            etRetypePassword.setText("12345678");
+        }
 
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -9,6 +9,6 @@ public class ServerSignUpModel implements SignUpModel {
     @Override
     public Single<User> getUser(String email, String password) {
         API api = APIClient.getClient().create(API.class);
-        return api.signUp(email, password);
+        return api.signUp(new User(email, password));
     }
 }
