@@ -1,4 +1,4 @@
-package com.spendster.presentation.signUp;
+package com.spendster.presentation.authentication.signUp;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,8 +9,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.spendster.R;
-import com.spendster.presentation.APIClient;
-import com.spendster.presentation.AuthView;
+import com.spendster.presentation.authentication.APIClient;
+import com.spendster.presentation.authentication.AuthView;
 import com.spendster.presentation.moreAboutYou.MoreAboutYouActivity;
 
 public class SignUpActivity extends AppCompatActivity implements AuthView {

@@ -1,15 +1,17 @@
-package com.spendster.presentation.login;
+package com.spendster.presentation.authentication.login;
 
-import android.os.Bundle;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.spendster.R;
-import com.spendster.presentation.APIClient;
-import com.spendster.presentation.AuthView;
+import com.spendster.presentation.authentication.APIClient;
+import com.spendster.presentation.authentication.AuthView;
+import com.spendster.presentation.homeScreen.HomeActivity;
 
 public class LoginActivity extends AppCompatActivity implements AuthView {
 
@@ -46,7 +48,7 @@ public class LoginActivity extends AppCompatActivity implements AuthView {
 
     @Override
     public void showNextActivity() {
-        Toast.makeText(this, "Main screen", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
     }
 
     @Override

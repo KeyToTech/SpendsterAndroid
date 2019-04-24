@@ -1,4 +1,4 @@
-package com.spendster.presentation;
+package com.spendster.presentation.authentication;
 
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
