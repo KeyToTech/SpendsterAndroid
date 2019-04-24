@@ -34,7 +34,8 @@
     <string name="select_action">Select Action</string>
     <string name="select_photo_from_gallery">Select photo from gallery</string>
     <string name="capture_photo_from_camera">Capture photo from camera</string>
-
+    <string name="address">Address</string>
+    <string name="get_started">Get started</string>
     <string name="username">Username</string>
     <string name="title_activity_activity">ActivityActivity</string>
     <string name="title_home">Home</string>

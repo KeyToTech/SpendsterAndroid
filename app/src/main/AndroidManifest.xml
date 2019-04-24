@@ -20,19 +20,18 @@
         <activity android:name=".presentation.authentication.login.LoginActivity" />
         <activity android:name=".presentation.authentication.signUp.SignUpActivity" >
         </activity>
-        <activity android:name=".presentation.welcomeScreen.WelcomeActivity"/>
-        <activity android:name=".presentation.launchScreen.LaunchActivity">
+        <activity android:name=".presentation.welcomeScreen.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".presentation.launchScreen.LaunchActivity">
+        </activity>
         <activity android:name=".presentation.homeScreen.HomeActivity">
         </activity>
         <activity android:name=".presentation.address.AddressActivity" />
-        <activity android:name=".presentation.authentication.login.LoginActivity" />
-        <activity android:name=".presentation.authentication.signUp.SignUpActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"

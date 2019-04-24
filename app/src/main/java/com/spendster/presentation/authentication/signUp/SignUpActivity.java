@@ -52,8 +52,7 @@ public class SignUpActivity extends AppCompatActivity implements AuthView {
 
     @Override
     public void showNextActivity() {
-        Intent intent = new Intent(this, MoreAboutYouActivity.class);
-        startActivity(intent);
+        startActivity(new Intent(this, MoreAboutYouActivity.class));
     }
 
     @Override

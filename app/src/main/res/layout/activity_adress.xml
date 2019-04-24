@@ -32,9 +32,9 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/textInputLayout4"
+        android:id="@+id/textInputFirstLastName"
         android:layout_width="335dp"
-        android:layout_height="46dp"
+        android:layout_height="56dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="20dp"
@@ -53,9 +53,9 @@
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/textInputLayout5"
+        android:id="@+id/textInputPhone"
         android:layout_width="335dp"
-        android:layout_height="46dp"
+        android:layout_height="56dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="20dp"
@@ -63,7 +63,7 @@
         android:layout_marginRight="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout4"
+        app:layout_constraintTop_toBottomOf="@+id/textInputFirstLastName"
         >
 
         <EditText
@@ -73,5 +73,44 @@
             android:hint="@string/phone_number"
             android:inputType="phone"/>
     </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputAddress"
+        android:layout_width="335dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputPhone"
+        >
+
+        <EditText
+            android:id="@+id/etAddress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/address"
+            android:maxLines="1"
+            android:inputType="text"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnGetStarted"
+        android:layout_width="@dimen/sign_up_button_width"
+        android:layout_height="@dimen/sign_up_button_height"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/button_shape_sign_up"
+        android:text="@string/get_started"
+        android:textColor="#fff"
+        android:textSize="@dimen/sign_up_button_text_size"
+        android:textAllCaps="false"
+        app:fontFamily="@font/karla_bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
