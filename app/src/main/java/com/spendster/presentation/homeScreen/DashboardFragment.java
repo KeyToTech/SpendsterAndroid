@@ -14,21 +14,21 @@ import com.spendster.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ActivityFragment extends Fragment {
+public class DashboardFragment extends Fragment {
 
     private List<Fragment> pageFragments;
     private ViewPager viewPager;
     private TabLayout tabLayout;
 
-    public static ActivityFragment newInstance(){
-        ActivityFragment activityFragment = new ActivityFragment();
-        return activityFragment;
+    public static DashboardFragment newInstance(){
+        DashboardFragment dashboardFragment = new DashboardFragment();
+        return dashboardFragment;
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_activity, container, false);
+        View view = inflater.inflate(R.layout.dashboard_fragment, container, false);
         viewPager = view.findViewById(R.id.view_pager_main);
         tabLayout = view.findViewById(R.id.sliding_tabs);
         initPageFragments();

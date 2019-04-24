@@ -28,7 +28,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         setSupportActionBar(toolbar);
         final BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationMenu);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
-        loadFragment(new ActivityFragment());
+        loadFragment(new DashboardFragment());
         initButtons();
     }
 
@@ -51,7 +51,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         Fragment fragment = null;
         switch (menuItem.getItemId()){
             case R.id.activityItem:
-                fragment = ActivityFragment.newInstance();
+                fragment = DashboardFragment.newInstance();
                 break;
             case R.id.overviewItem:
                 fragment = OverviewFragment.newInstance();
