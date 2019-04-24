@@ -9,21 +9,32 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.spendster.R;
+import com.spendster.presentation.authentication.APIClient;
 import com.spendster.presentation.authentication.AuthView;
 import com.spendster.presentation.homeScreen.HomeActivity;
 
 public class LoginActivity extends AppCompatActivity implements AuthView {
 
+    private LoginPresenter loginPresenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        loginPresenter = new LoginPresenter(this, new SimpleLoginModel(APIClient.getClient().create(APILogin.class)));
+        initUI();
+    }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        loginPresenter.dispose();
+    }
+
+    private void initUI(){
         final Button btnContinue = findViewById(R.id.btnContinue);
         final EditText etEmail = findViewById(R.id.etEmail);
         final EditText etPassword = findViewById(R.id.etPassword);
-
-        final LoginPresenter loginPresenter = new LoginPresenter(this, new FakeLoginModel());
 
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,12 +52,7 @@ public class LoginActivity extends AppCompatActivity implements AuthView {
     }
 
     @Override
-    public void showEmailError(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void showPasswordError(String message) {
+    public void showError(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }
