@@ -1,7 +1,7 @@
-package com.spendster.presentation.login;
+package com.spendster.presentation.authentication.login;
 
 import com.spendster.data.entity.User;
-import com.spendster.presentation.AuthView;
+import com.spendster.presentation.authentication.AuthView;
 import com.spendster.presentation.validation.ComplexEmailValidator;
 import com.spendster.presentation.validation.ComplexPasswordValidation;
 import com.spendster.presentation.validation.ValidationResource;

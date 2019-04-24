@@ -1,15 +1,12 @@
-package com.spendster.presentation.signUp;
+package com.spendster.presentation.authentication.signUp;
 
 import com.spendster.data.entity.User;
 import com.spendster.presentation.validation.ComplexEmailValidator;
 import com.spendster.presentation.validation.ComplexPasswordValidation;
 import com.spendster.presentation.validation.ValidationResource;
 
-import io.reactivex.Scheduler;
-import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 

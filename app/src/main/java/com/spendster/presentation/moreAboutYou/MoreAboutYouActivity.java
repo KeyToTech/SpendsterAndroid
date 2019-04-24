@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.spendster.R;
+import com.spendster.presentation.homeScreen.HomeActivity;
 import com.spendster.presentation.address.AddressActivity;
 
 import java.io.IOException;
@@ -61,7 +62,7 @@ public class MoreAboutYouActivity extends AppCompatActivity {
 
 
     private void launchMainActivity() {
-        Toast.makeText(this, "Main screen", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, HomeActivity.class));
     }
 
     private void launchAddressScreen() {
@@ -106,7 +107,7 @@ public class MoreAboutYouActivity extends AppCompatActivity {
                 requestPermissions(permissionRequested, CAMERA_REQUEST_CODE);
             }
         }else {
-            Toast.makeText(this, "Error: your version is too low", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.version_error), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -125,7 +126,7 @@ public class MoreAboutYouActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_CANCELED) {
-            Toast.makeText(this, "Error: your version is too low", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.version_error), Toast.LENGTH_SHORT).show();
         }
         if (requestCode == GALLERY) {
             if (data != null) {
@@ -144,7 +145,7 @@ public class MoreAboutYouActivity extends AppCompatActivity {
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
                 thumbnail = (Bitmap) Objects.requireNonNull(data.getExtras()).get("data");
             }else {
-                Toast.makeText(this, "Error: your version is too low", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.version_error), Toast.LENGTH_SHORT).show();
             }
             imageAvatar.setImageBitmap(thumbnail);
         }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layoutDirection="rtl">
+
+    <item android:title="@string/activity"
+        android:id="@+id/activityItem"
+        android:icon="@drawable/activity" />
+
+    <item android:title="@string/overview"
+        android:id="@+id/overviewItem"
+        android:icon="@drawable/overview_light_theme"
+        />
+
+    <item android:title="@string/budget"
+        android:id="@+id/budgetItem"
+        android:icon="@drawable/budget_light_theme"/>
+
+    <item android:title="@string/profile"
+        android:id="@+id/profileItem"
+        android:icon="@drawable/user_light_theme"/>
+
+</menu>
+

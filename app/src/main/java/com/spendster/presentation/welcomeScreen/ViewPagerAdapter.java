@@ -16,10 +16,11 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        if (this.slideFragments == null){
-            return 0;
+        int result = 0;
+        if (this.slideFragments != null){
+            result = this.slideFragments.size();
         }
-        return slideFragments.size();
+        return result;
     }
 
     @Override
