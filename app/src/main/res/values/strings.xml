@@ -34,10 +34,11 @@
     <string name="select_action">Select Action</string>
     <string name="select_photo_from_gallery">Select photo from gallery</string>
     <string name="capture_photo_from_camera">Capture photo from camera</string>
+
+    <string name="username">Username</string>
     <string name="title_activity_activity">ActivityActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="version_error">Error: your version is too low</string>
-
 </resources>
