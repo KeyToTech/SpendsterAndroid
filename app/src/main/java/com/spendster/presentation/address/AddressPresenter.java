@@ -20,15 +20,15 @@ public class AddressPresenter{
 
         if (!fNNameValidation.isValid()) {
             if (addressView != null) {
-                addressView.showFirstLastNameError(fNNameValidation.message());
+                addressView.showError(fNNameValidation.message());
             }
         } else if (!phoneValidation.isValid()) {
             if (addressView != null) {
-                addressView.showPhoneError(phoneValidation.message());
+                addressView.showError(phoneValidation.message());
             }
         }else if (!addressValidation.isValid()) {
             if (addressView != null) {
-                addressView.showAddressError(addressValidation.message());
+                addressView.showError(addressValidation.message());
             }
         } else {
             addressView.showNextScreen();

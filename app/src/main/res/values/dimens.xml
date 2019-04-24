@@ -34,4 +34,7 @@
     <dimen name="sign_up_button_width">335dp</dimen>
     <dimen name="skip_button_text_size">13sp</dimen>
     <dimen name="include_dots_margin_bottom">16dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
 </resources>

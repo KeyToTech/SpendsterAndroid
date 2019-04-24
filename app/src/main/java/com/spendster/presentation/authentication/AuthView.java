@@ -1,4 +1,4 @@
-package com.spendster.presentation;
+package com.spendster.presentation.authentication;
 
 public interface AuthView {
     void showNextActivity();

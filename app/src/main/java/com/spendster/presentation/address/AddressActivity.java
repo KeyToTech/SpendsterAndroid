@@ -1,14 +1,15 @@
 package com.spendster.presentation.address;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.spendster.R;
+import com.spendster.presentation.homeScreen.HomeActivity;
 
 public class AddressActivity extends AppCompatActivity implements AddressView {
 
@@ -42,22 +43,12 @@ public class AddressActivity extends AppCompatActivity implements AddressView {
     }
 
     @Override
-    public void showFirstLastNameError(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void showAddressError(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void showPhoneError(String message) {
+    public void showError(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void showNextScreen() {
-        Toast.makeText(this, "Home screen", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, HomeActivity.class));
     }
 }
