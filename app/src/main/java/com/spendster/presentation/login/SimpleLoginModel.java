@@ -1,7 +1,6 @@
 package com.spendster.presentation.login;
 
 import com.spendster.data.entity.User;
-import com.spendster.presentation.APIClient;
 
 import io.reactivex.Single;
 
@@ -9,8 +8,8 @@ public class SimpleLoginModel implements LoginModel {
 
     private APILogin apiLogin;
 
-    public SimpleLoginModel() {
-        this.apiLogin = APIClient.getClient().create(APILogin.class);
+    public SimpleLoginModel(APILogin apiLogin) {
+        this.apiLogin = apiLogin;
     }
 
     @Override

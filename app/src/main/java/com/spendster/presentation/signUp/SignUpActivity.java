@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.spendster.R;
+import com.spendster.presentation.APIClient;
 import com.spendster.presentation.AuthView;
 import com.spendster.presentation.moreAboutYou.MoreAboutYouActivity;
 
@@ -20,7 +21,7 @@ public class SignUpActivity extends AppCompatActivity implements AuthView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        signUpPresenter = new SignUpPresenter(this, new SimpleSignUpModel());
+        signUpPresenter = new SignUpPresenter(this, new SimpleSignUpModel(APIClient.getClient().create(APISignUp.class)));
         initIU();
     }
 

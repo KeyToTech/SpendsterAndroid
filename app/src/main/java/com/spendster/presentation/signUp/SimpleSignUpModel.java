@@ -1,7 +1,6 @@
 package com.spendster.presentation.signUp;
 
 import com.spendster.data.entity.User;
-import com.spendster.presentation.APIClient;
 
 import io.reactivex.Single;
 
@@ -9,8 +8,8 @@ public class SimpleSignUpModel implements SignUpModel {
 
     private APISignUp apiSignUp;
 
-    public SimpleSignUpModel() {
-        this.apiSignUp = APIClient.getClient().create(APISignUp.class);
+    public SimpleSignUpModel(APISignUp apiSignUp) {
+        this.apiSignUp = apiSignUp;
     }
 
     @Override

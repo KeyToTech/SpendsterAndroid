@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.spendster.R;
+import com.spendster.presentation.APIClient;
 import com.spendster.presentation.AuthView;
 
 public class LoginActivity extends AppCompatActivity implements AuthView {
@@ -18,7 +19,7 @@ public class LoginActivity extends AppCompatActivity implements AuthView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        loginPresenter = new LoginPresenter(this, new SimpleLoginModel());
+        loginPresenter = new LoginPresenter(this, new SimpleLoginModel(APIClient.getClient().create(APILogin.class)));
         initUI();
     }
 
