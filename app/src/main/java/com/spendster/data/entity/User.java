@@ -11,21 +11,11 @@ public class User {
     private final Date createdDate;
 
     public User(String email, String password){
-        this.userId = 0;
-        this.email = email;
-        this.username = null;
-        this.balance = 0;
-        this.password = password;
-        this.createdDate = new Date();
+        this(0,email, null, password, 0.0, new Date());
     }
 
     public User(String email, String username, String password){
-        this.userId = 0;
-        this.email = email;
-        this.username = username;
-        this.balance = 0;
-        this.password = password;
-        this.createdDate = new Date();
+        this(0,email, username, password, 0.0, new Date());
     }
 
 

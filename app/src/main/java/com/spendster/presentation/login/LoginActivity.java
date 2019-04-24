@@ -1,7 +1,7 @@
 package com.spendster.presentation.login;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,16 +12,26 @@ import com.spendster.presentation.AuthView;
 
 public class LoginActivity extends AppCompatActivity implements AuthView {
 
+    private LoginPresenter loginPresenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        loginPresenter = new LoginPresenter(this, new SimpleLoginModel());
+        initUI();
+    }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        loginPresenter.dispose();
+    }
+
+    private void initUI(){
         final Button btnContinue = findViewById(R.id.btnContinue);
         final EditText etEmail = findViewById(R.id.etEmail);
         final EditText etPassword = findViewById(R.id.etPassword);
-
-        final LoginPresenter loginPresenter = new LoginPresenter(this, new ServerLoginModel());
 
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override

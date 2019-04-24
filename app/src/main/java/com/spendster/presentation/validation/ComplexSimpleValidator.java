@@ -1,9 +1,9 @@
 package com.spendster.presentation.validation;
 
-public class ComplexUsernameValidator implements Validation<ValidationResource> {
+public class ComplexSimpleValidator implements Validation<ValidationResource> {
     private final String username;
 
-    public ComplexUsernameValidator(String username) {
+    public ComplexSimpleValidator(String username) {
         this.username = username;
     }
 

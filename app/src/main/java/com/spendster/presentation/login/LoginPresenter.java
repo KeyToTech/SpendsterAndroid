@@ -34,7 +34,7 @@ public class LoginPresenter {
             }
         } else {
             if (loginModel != null) {
-                compositeDisposable.add(loginModel.getUser(email, password)
+                compositeDisposable.add(loginModel.login(email, password)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(new DisposableSingleObserver<User>() {
@@ -52,5 +52,9 @@ public class LoginPresenter {
                         }));
             }
         }
+    }
+
+    public void dispose(){
+        compositeDisposable.dispose();
     }
 }

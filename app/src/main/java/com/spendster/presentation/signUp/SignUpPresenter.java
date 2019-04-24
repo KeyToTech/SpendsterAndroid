@@ -4,7 +4,7 @@ import com.spendster.data.entity.User;
 import com.spendster.presentation.AuthView;
 import com.spendster.presentation.validation.ComplexEmailValidator;
 import com.spendster.presentation.validation.ComplexPasswordValidation;
-import com.spendster.presentation.validation.ComplexUsernameValidator;
+import com.spendster.presentation.validation.ComplexSimpleValidator;
 import com.spendster.presentation.validation.ValidationResource;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -25,7 +25,7 @@ public class SignUpPresenter {
     public void signUp(final String email, String password, String retypePassword, String username){
         ValidationResource emailValidation = new ComplexEmailValidator(email).validate();
         ValidationResource passwordValidation = new ComplexPasswordValidation(password).validate();
-        ValidationResource usernameValidation = new ComplexUsernameValidator(username).validate();
+        ValidationResource usernameValidation = new ComplexSimpleValidator(username).validate();
         if (!emailValidation.isValid()) {
             if (signUpView != null) {
                 signUpView.showError(emailValidation.message());
@@ -43,7 +43,7 @@ public class SignUpPresenter {
         }
         else {
             if (signUpModel != null){
-                compositeDisposable.add(signUpModel.getUser(email, username, password)
+                compositeDisposable.add(signUpModel.signUp(email, username, password)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(new DisposableSingleObserver<User>() {
@@ -60,5 +60,9 @@ public class SignUpPresenter {
                         }));
             }
         }
+    }
+
+    public void dispose(){
+        compositeDisposable.dispose();
     }
 }
