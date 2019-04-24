@@ -6,17 +6,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class PageFragment extends Fragment {
+public class DashboardPageFragment extends Fragment {
     private int slide;
     private String month;
     private String year;
 
-    public static PageFragment newInstance(int slide, String month, String year) {
-        PageFragment pageFragment = new PageFragment();
-        pageFragment.slide = slide;
-        pageFragment.month = month;
-        pageFragment.year = year;
-        return pageFragment;
+    public static DashboardPageFragment newInstance(int slide, String month, String year) {
+        DashboardPageFragment dashboardPageFragment = new DashboardPageFragment();
+        dashboardPageFragment.slide = slide;
+        dashboardPageFragment.month = month;
+        dashboardPageFragment.year = year;
+        return dashboardPageFragment;
     }
 
     @Override

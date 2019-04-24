@@ -42,7 +42,7 @@ public class ActivityFragment extends Fragment {
         final String year = "2019";
         pageFragments = new ArrayList<>();
         for (int i = 0; i < 12; i++){
-            pageFragments.add(PageFragment.newInstance(R.layout.activity_home_slide1, months[i], year));
+            pageFragments.add(DashboardPageFragment.newInstance(R.layout.activity_home_slide1, months[i], year));
         }
     }
 
