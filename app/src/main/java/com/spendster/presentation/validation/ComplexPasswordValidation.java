@@ -14,6 +14,9 @@ public class ComplexPasswordValidation implements Validation<ValidationResource>
         if(password.isEmpty()){
             errorMessage = "Password field is empty";
             isValid = false;
+        }else if(!password.matches("\\w{8,16}")){
+            errorMessage = "Password must contain from 8 to 16 symbols";
+            isValid = false;
         }
         return new ValidationResource(errorMessage, isValid);
     }

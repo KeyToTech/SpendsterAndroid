@@ -15,8 +15,17 @@ public class ComplexEmailValidator implements Validation<ValidationResource> {
             errorMessage = "Email field is empty";
             isValid = false;
         }
-        else if (!this.email.contains("@")){
+        else if (!this.email.matches(".*@.*")){
             errorMessage = "Email must contain @ symbol";
+            isValid = false;
+        }else if (!this.email.matches("^[a-zA-Z\\d_-]+@.+")){
+            errorMessage = "Email must contain text before @ symbol";
+            isValid = false;
+        }else if (!this.email.matches(".+@[a-zA-Z\\d_\\-\\.]+")) {
+            errorMessage = "Email must contain text after @ symbol";
+            isValid = false;
+        }else if (!this.email.matches("^[a-zA-Z\\d_-]+@[a-zA-Z\\d_-]+\\..+")) {
+            errorMessage = "Email must contain something like .com";
             isValid = false;
         }
         return new ValidationResource(errorMessage, isValid);

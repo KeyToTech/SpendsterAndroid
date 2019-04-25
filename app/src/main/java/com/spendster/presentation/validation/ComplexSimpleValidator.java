@@ -14,6 +14,9 @@ public class ComplexSimpleValidator implements Validation<ValidationResource> {
         if(username.isEmpty()){
             errorMessage = "Username field is empty";
             isValid = false;
+        }if(!username.matches("\\w+")){
+            errorMessage = "Forbidden symbols in username";
+            isValid = false;
         }
         return new ValidationResource(errorMessage, isValid);
     }
