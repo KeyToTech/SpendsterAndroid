@@ -2,7 +2,7 @@ package com.spendster.presentation.validation;
 
 public class ComplexSimpleValidator implements Validation<ValidationResource> {
     private final String username;
-    private final String correctSymbols = "\\w+";
+    private final String CORRECT_SYMBOLS = "\\w+";
 
     public ComplexSimpleValidator(String username) {
         this.username = username;
@@ -15,7 +15,7 @@ public class ComplexSimpleValidator implements Validation<ValidationResource> {
         if(username.isEmpty()){
             errorMessage = "Username field is empty";
             isValid = false;
-        }if(!username.matches(correctSymbols)){
+        }if(!username.matches(CORRECT_SYMBOLS)){
             errorMessage = "Forbidden symbols in username";
             isValid = false;
         }
