@@ -39,7 +39,7 @@ public class SignUpPresenter {
                 signUpView.showError("Password is not equal to retype password");
             }
         } else if(!usernameValidation.isValid()){
-            signUpView.showError(passwordValidation.message());
+            signUpView.showError(usernameValidation.message());
         }
         else {
             if (signUpModel != null){
