@@ -1,6 +1,7 @@
 package com.spendster.presentation.authentication.login;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,7 @@ import com.spendster.presentation.homeScreen.HomeActivity;
 public class LoginActivity extends AppCompatActivity implements AuthView {
 
     private LoginPresenter loginPresenter;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +48,16 @@ public class LoginActivity extends AppCompatActivity implements AuthView {
         });
     }
 
+    private void saveAuthUser(){
+        sharedPreferences = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("user_saved", true);
+        editor.apply();
+    }
+
     @Override
     public void showNextActivity() {
+        saveAuthUser();
         startActivity(new Intent(LoginActivity.this, HomeActivity.class));
     }
 
