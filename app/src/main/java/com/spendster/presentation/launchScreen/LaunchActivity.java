@@ -29,7 +29,7 @@ public class LaunchActivity extends AppCompatActivity {
     }
 
     private void startBeginningScreen() {
-        sharedPreferences = getPreferences(MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences( "mysettings", MODE_PRIVATE);
         boolean isUserExist = sharedPreferences.getBoolean("user_saved", false);
         if (isUserExist){
             startHomeScreen();

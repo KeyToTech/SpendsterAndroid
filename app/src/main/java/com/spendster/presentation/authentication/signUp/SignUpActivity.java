@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.spendster.BuildConfig;
 import com.spendster.R;
 import com.spendster.presentation.authentication.APIClient;
 import com.spendster.presentation.authentication.AuthView;
@@ -53,9 +54,9 @@ public class SignUpActivity extends AppCompatActivity implements AuthView {
     }
 
     private void saveAuthUser(){
-        sharedPreferences = getPreferences(MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences(BuildConfig.USER_EXIST, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("user_saved", true);
+        editor.putBoolean(BuildConfig.USER_SAVED, true);
         editor.apply();
     }
 
