@@ -1,14 +1,15 @@
 package com.spendster.presentation.homeScreen;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.spendster.R;
@@ -17,7 +18,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         initUI();
@@ -51,15 +51,19 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         Fragment fragment = null;
         switch (menuItem.getItemId()){
             case R.id.activityItem:
+                setToolbarCaption(R.string.activity);
                 fragment = DashboardFragment.newInstance();
                 break;
             case R.id.overviewItem:
+                setToolbarCaption(R.string.overview);
                 fragment = OverviewFragment.newInstance();
                 break;
             case R.id.budgetItem:
+                setToolbarCaption(R.string.budget);
                 fragment = BudgetFragment.newInstance();
                 break;
             case R.id.profileItem:
+                setToolbarCaption(R.string.profile);
                 fragment = ProfileFragment.newInstance();
                 break;
         }
@@ -76,5 +80,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             return true;
         }
         return false;
+    }
+
+    public void setToolbarCaption(int caption){
+        TextView toolbarCaption = findViewById(R.id.toolbarCaption);
+        toolbarCaption.setText(caption);
     }
 }
