@@ -17,9 +17,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug{
-            buildConfigField 'String', 'USER_SAVED', '"user_saved"'
             buildConfigField 'String', 'BASE_URL', '"https://spendsterapp.herokuapp.com/"'
-            buildConfigField 'String', 'USER_EXIST', '"user_exist"'
         }
     }
 }

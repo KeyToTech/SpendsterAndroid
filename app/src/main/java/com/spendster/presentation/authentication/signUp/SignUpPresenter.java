@@ -1,5 +1,8 @@
 package com.spendster.presentation.authentication.signUp;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import com.spendster.data.entity.User;
 import com.spendster.presentation.authentication.AuthView;
 import com.spendster.presentation.validation.ComplexEmailValidator;
@@ -13,11 +16,14 @@ import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
 public class SignUpPresenter {
+
+    private final Context context;
     private final AuthView signUpView;
     private final SignUpModel signUpModel;
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
 
-    public SignUpPresenter(AuthView signUpView, SignUpModel signUpModel) {
+    public SignUpPresenter(Context context, AuthView signUpView, SignUpModel signUpModel) {
+        this.context = context;
         this.signUpView = signUpView;
         this.signUpModel = signUpModel;
     }
@@ -50,6 +56,7 @@ public class SignUpPresenter {
                             @Override
                             public void onSuccess(User user) {
                                 if (signUpView != null) {
+                                    saveAuthUser(context);
                                     signUpView.showNextActivity();
                                 }
                             }
@@ -60,6 +67,12 @@ public class SignUpPresenter {
                         }));
             }
         }
+    }
+    private void saveAuthUser(Context context){
+        SharedPreferences sharedPreferences = context.getSharedPreferences("user_exist", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("user_saved", true);
+        editor.apply();
     }
 
     public void dispose(){
