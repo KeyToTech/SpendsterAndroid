@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.spendster.R;
 import com.spendster.presentation.authentication.APIClient;
 import com.spendster.presentation.authentication.AuthView;
+import com.spendster.presentation.authentication.SharedPreferencesUserStorage;
 import com.spendster.presentation.homeScreen.HomeActivity;
 
 public class LoginActivity extends AppCompatActivity implements AuthView {
@@ -21,7 +22,8 @@ public class LoginActivity extends AppCompatActivity implements AuthView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        loginPresenter = new LoginPresenter(getBaseContext(), this, new SimpleLoginModel(APIClient.getClient().create(APILogin.class)));
+        loginPresenter = new LoginPresenter(new SharedPreferencesUserStorage(getBaseContext()),
+                this, new SimpleLoginModel(APIClient.getClient().create(APILogin.class)));
         initUI();
     }
 

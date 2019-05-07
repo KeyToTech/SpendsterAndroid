@@ -5,6 +5,6 @@ import com.spendster.data.entity.User;
 public interface SUserStorage {
     void save(User user);
     User read();
-    boolean UserExist();
+    boolean userExist();
     void clear();
 }

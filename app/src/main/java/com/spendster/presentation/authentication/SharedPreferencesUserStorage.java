@@ -35,7 +35,7 @@ public class SharedPreferencesUserStorage implements SUserStorage {
     }
 
     @Override
-    public boolean UserExist() {
+    public boolean userExist() {
         return this.read() != null;
     }
 
