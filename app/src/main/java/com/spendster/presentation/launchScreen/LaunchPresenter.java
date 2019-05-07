@@ -1,5 +1,7 @@
 package com.spendster.presentation.launchScreen;
 
+import android.os.Handler;
+
 import com.spendster.presentation.authentication.SUserStorage;
 
 public class LaunchPresenter {
@@ -12,10 +14,16 @@ public class LaunchPresenter {
     }
 
     public void startBeginningScreen(){
-        if (sUserStorage.userExist()){
-            launchView.startHomeScreen();
-        } else {
-            launchView.startWelcomeScreen();
-        }
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (sUserStorage.userExist()){
+                    launchView.startHomeScreen();
+                } else {
+                    launchView.startWelcomeScreen();
+                }
+            }
+        }, 100);
     }
 }

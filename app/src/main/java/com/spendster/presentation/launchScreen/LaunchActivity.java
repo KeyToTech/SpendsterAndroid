@@ -2,7 +2,6 @@ package com.spendster.presentation.launchScreen;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
 import com.spendster.R;
@@ -19,13 +18,7 @@ public class LaunchActivity extends AppCompatActivity implements LaunchView {
 
         final LaunchPresenter launchPresenter = new LaunchPresenter(this,
                 new SharedPreferencesUserStorage(getBaseContext()));
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                launchPresenter.startBeginningScreen();
-            }
-        }, 100);
+        launchPresenter.startBeginningScreen();
     }
 
     @Override
