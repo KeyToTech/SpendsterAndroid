@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="77dp"
             android:layout_height="wrap_content"
             android:background="@null"
             android:text="@string/cancel"
@@ -54,6 +54,8 @@
             android:textAlignment="textEnd"
             android:textColor="#fff"
             android:textSize="20sp"
+            android:cursorVisible="false"
+            android:inputType="numberDecimal"
             app:fontFamily="@font/karla_bold" />
     </RelativeLayout>
 
@@ -113,6 +115,7 @@
             android:layout_gravity="center"
             android:background="@drawable/button_shape_sign_up"
             android:text="@string/add_transaction"
+            android:textSize="18sp"
             android:textColor="#fff"
             android:textAllCaps="false"/>
     </LinearLayout>
