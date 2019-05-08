@@ -1,4 +1,4 @@
-package com.spendster.presentation.homeScreen;
+package com.spendster.presentation.homeScreen.Profile;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,14 +9,13 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.spendster.R;
-import com.spendster.data.entity.User;
 import com.spendster.presentation.authentication.SharedPreferencesUserStorage;
 
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends Fragment implements ProfileFragmentView {
 
     private EditText etUsername, etProfileEmail;
 
-    public static ProfileFragment newInstance(){
+    public static ProfileFragment newInstance() {
         return new ProfileFragment();
     }
 
@@ -30,11 +29,19 @@ public class ProfileFragment extends Fragment {
         return view;
     }
 
-    private void initUI(){
-        SharedPreferencesUserStorage sharedPreferencesUserStorage = new
-                SharedPreferencesUserStorage(getContext());
-        User user = sharedPreferencesUserStorage.read();
-        etUsername.setText(user.getUsername());
-        etProfileEmail.setText(user.getEmail());
+    private void initUI() {
+        final ProfilePresenter profilePresenter = new ProfilePresenter(this, new
+                SharedPreferencesUserStorage(getContext()));
+        profilePresenter.fillProfileFields();
+    }
+
+    @Override
+    public void setUsername(String username) {
+        etUsername.setText(username);
+    }
+
+    @Override
+    public void setEmail(String email) {
+        etProfileEmail.setText(email);
     }
 }

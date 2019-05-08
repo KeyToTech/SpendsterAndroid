@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <include
-        android:id="@+id/ProfilePhoto"
+        android:id="@+id/profilePhoto"
         layout="@layout/card_view_with_camera_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,7 +21,7 @@
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ProfilePhoto">
+        app:layout_constraintTop_toBottomOf="@+id/profilePhoto">
 
         <EditText
             android:id="@+id/etUsername"

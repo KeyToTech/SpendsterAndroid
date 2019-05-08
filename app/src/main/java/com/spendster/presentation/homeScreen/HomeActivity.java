@@ -13,8 +13,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.spendster.R;
+import com.spendster.presentation.homeScreen.Profile.ProfileFragment;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener {
+
+    private TextView toolbarCaption;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         final Toolbar toolbar = findViewById(R.id.homeToolbar);
         setSupportActionBar(toolbar);
         final BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationMenu);
+        toolbarCaption = findViewById(R.id.toolbarCaption);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         loadFragment(new DashboardFragment());
         initButtons();
@@ -83,7 +87,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void setToolbarCaption(int caption){
-        TextView toolbarCaption = findViewById(R.id.toolbarCaption);
         toolbarCaption.setText(caption);
     }
 }
