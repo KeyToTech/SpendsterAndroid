@@ -10,6 +10,15 @@ public class User {
     private final double balance;
     private final Date createdDate;
 
+    public User() {
+        this.userId = 0;
+        this.email = "";
+        this.username = "";
+        this.password = "";
+        this.balance = 0.0;
+        this.createdDate = new Date();
+    }
+
     public User(String email, String password){
         this(0,email, null, password, 0.0, new Date());
     }
