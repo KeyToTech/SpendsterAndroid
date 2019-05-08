@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.spendster.R;
+import com.spendster.presentation.authentication.SharedPreferencesUserStorage;
 import com.spendster.presentation.welcomeScreen.WelcomeActivity;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener {
@@ -47,7 +48,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnAdd:
                 Toast.makeText(this, "Add Expenses", Toast.LENGTH_SHORT).show();
             case R.id.btnLogOut:
-                startActivity(new Intent(HomeActivity.this, WelcomeActivity.class));
+                makeLogOut();
         }
 
 
@@ -72,6 +73,13 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         return loadFragment(fragment);
+    }
+
+    private void makeLogOut(){
+        SharedPreferencesUserStorage sharedPreferencesUserStorage = new
+                SharedPreferencesUserStorage(getBaseContext());
+        sharedPreferencesUserStorage.clear();
+        startActivity(new Intent(HomeActivity.this, WelcomeActivity.class));
     }
 
     private boolean loadFragment(Fragment fragment) {
