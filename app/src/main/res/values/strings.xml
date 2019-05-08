@@ -45,4 +45,10 @@
     <string name="cancel">Cancel</string>
     <string name="expenses">Expenses</string>
     <string name="add_transaction">Add Transaction</string>
+    <string name="today">Today?</string>
+    <string name="category">Category</string>
+    <string name="_0_0">0.0</string>
+    <string name="currency">Currency</string>
+    <string name="note">Note</string>
+    <string name="details">Details</string>
 </resources>
