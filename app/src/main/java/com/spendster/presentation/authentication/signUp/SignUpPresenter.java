@@ -2,6 +2,7 @@ package com.spendster.presentation.authentication.signUp;
 
 import com.spendster.data.entity.User;
 import com.spendster.presentation.authentication.AuthView;
+import com.spendster.presentation.authentication.SharedPreferencesUserStorage;
 import com.spendster.presentation.validation.ComplexEmailValidator;
 import com.spendster.presentation.validation.ComplexPasswordValidation;
 import com.spendster.presentation.validation.ComplexSimpleValidator;
@@ -13,11 +14,14 @@ import io.reactivex.observers.DisposableSingleObserver;
 import io.reactivex.schedulers.Schedulers;
 
 public class SignUpPresenter {
+
+    private final SharedPreferencesUserStorage sharedPreferencesUserStorage;
     private final AuthView signUpView;
     private final SignUpModel signUpModel;
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
 
-    public SignUpPresenter(AuthView signUpView, SignUpModel signUpModel) {
+    public SignUpPresenter(SharedPreferencesUserStorage sharedPreferencesUserStorage, AuthView signUpView, SignUpModel signUpModel) {
+        this.sharedPreferencesUserStorage = sharedPreferencesUserStorage;
         this.signUpView = signUpView;
         this.signUpModel = signUpModel;
     }
@@ -50,6 +54,7 @@ public class SignUpPresenter {
                             @Override
                             public void onSuccess(User user) {
                                 if (signUpView != null) {
+                                    sharedPreferencesUserStorage.save(user);
                                     signUpView.showNextActivity();
                                 }
                             }
