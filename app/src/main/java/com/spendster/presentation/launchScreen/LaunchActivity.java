@@ -1,30 +1,33 @@
 package com.spendster.presentation.launchScreen;
 
 import android.content.Intent;
-import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.spendster.R;
+import com.spendster.presentation.authentication.SharedPreferencesUserStorage;
 import com.spendster.presentation.homeScreen.HomeActivity;
+import com.spendster.presentation.welcomeScreen.WelcomeActivity;
 
-public class LaunchActivity extends AppCompatActivity {
+public class LaunchActivity extends AppCompatActivity implements LaunchView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launch);
 
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                startHomeScreen();
-            }
-        }, 100);
+        final LaunchPresenter launchPresenter = new LaunchPresenter(this,
+                new SharedPreferencesUserStorage(getBaseContext()));
+        launchPresenter.startBeginningScreen();
     }
 
-    private void startHomeScreen(){
+    @Override
+    public void startHomeScreen(){
         startActivity(new Intent(LaunchActivity.this, HomeActivity.class));
+    }
+
+    @Override
+    public void startWelcomeScreen(){
+        startActivity(new Intent(LaunchActivity.this, WelcomeActivity.class));
     }
 }

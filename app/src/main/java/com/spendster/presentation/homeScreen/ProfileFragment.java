@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.spendster.R;
+import com.spendster.data.entity.User;
+import com.spendster.presentation.authentication.SharedPreferencesUserStorage;
 
 public class ProfileFragment extends Fragment {
 
@@ -24,8 +26,15 @@ public class ProfileFragment extends Fragment {
         View view = inflater.inflate(R.layout.profile_fragment, container, false);
         etUsername = view.findViewById(R.id.etUsername);
         etProfileEmail = view.findViewById(R.id.etProfileEmail);
-        etUsername.setText("Loh Cvetochnyi");
-        etProfileEmail.setText("svatoslavmaga@gamil.com");
+        initUI();
         return view;
+    }
+
+    private void initUI(){
+        SharedPreferencesUserStorage sharedPreferencesUserStorage = new
+                SharedPreferencesUserStorage(getContext());
+        User user = sharedPreferencesUserStorage.read();
+        etUsername.setText(user.getUsername());
+        etProfileEmail.setText(user.getEmail());
     }
 }
