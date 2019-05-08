@@ -42,4 +42,7 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="version_error">Error: your version is too low</string>
+    <string name="cancel">Cancel</string>
+    <string name="expenses">Expenses</string>
+    <string name="add_transaction">Add Transaction</string>
 </resources>

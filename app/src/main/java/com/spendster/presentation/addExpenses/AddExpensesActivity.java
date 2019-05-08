@@ -1,7 +1,9 @@
-package com.spendster.presentation.authentication.signUp;
+package com.spendster.presentation.addExpenses;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import com.spendster.R;
 
 public class AddExpensesActivity extends AppCompatActivity {
 
