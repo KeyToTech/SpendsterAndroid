@@ -3,9 +3,9 @@ package com.spendster.presentation.validation;
 public class ComplexEmailValidator implements Validation<ValidationResource> {
     private final String email;
     private final String CONTAIN_AT = ".*@.*";
-    private final String CONTAIN_TEXT_BEFORE_AT = "^[a-zA-Z\\d_-]+@.+";
+    private final String CONTAIN_TEXT_BEFORE_AT = "^[a-zA-Z\\d\\._-]+@.+";
     private final String CONTAIN_TEXT_AFTER_AT = ".+@[a-zA-Z\\d_\\-\\.]+";
-    private final String CONTAIN_ENDING = "^[a-zA-Z\\d_-]+@[a-zA-Z\\d_-]+\\..+";
+    private final String CONTAIN_ENDING = "^[a-zA-Z\\d\\._-]+@[a-zA-Z\\d_-]+\\..+";
 
     public ComplexEmailValidator(String email) {
         this.email = email;
