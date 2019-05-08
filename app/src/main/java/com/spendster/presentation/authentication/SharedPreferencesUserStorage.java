@@ -11,8 +11,8 @@ import java.util.NoSuchElementException;
 
 public class SharedPreferencesUserStorage implements SUserStorage {
 
-    private final String USER_EXIST = "user_exist";
-    private final String USER_SAVED = "user_saved";
+    private static final String USER_EXIST = "user_exist";
+    private static final String USER_SAVED = "user_saved";
 
     private SharedPreferences sharedPreferences;
 
