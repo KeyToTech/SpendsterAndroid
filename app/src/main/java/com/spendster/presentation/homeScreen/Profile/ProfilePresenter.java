@@ -17,6 +17,8 @@ public class ProfilePresenter {
         User user = sharedPreferencesUserStorage.read();
         if (user != null){
             profileView.fillUserFields(user);
+        }else {
+
         }
     }
 }

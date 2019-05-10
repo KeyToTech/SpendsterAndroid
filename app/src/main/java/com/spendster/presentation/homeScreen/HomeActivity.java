@@ -1,5 +1,6 @@
 package com.spendster.presentation.homeScreen;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -13,9 +14,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.spendster.R;
-import com.spendster.presentation.homeScreen.Profile.Profile;
+import com.spendster.presentation.homeScreen.Profile.ProfileFragment;
+import com.spendster.presentation.welcomeScreen.WelcomeActivity;
 
-public class HomeActivity extends AppCompatActivity implements View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends AppCompatActivity implements View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener, HomeView {
+
+    private HomePresenter homePresenter;
 
     private TextView toolbarCaption;
 
@@ -29,6 +33,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private void initUI() {
         final Toolbar toolbar = findViewById(R.id.homeToolbar);
         setSupportActionBar(toolbar);
+        homePresenter = new HomePresenter(this, getBaseContext());
         final BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationMenu);
         toolbarCaption = findViewById(R.id.toolbarCaption);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
@@ -36,24 +41,27 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         initButtons();
     }
 
-    private void initButtons(){
+    private void initButtons() {
         Button btnAdd = findViewById(R.id.btnAdd);
+        Button btnLogOut = findViewById(R.id.btnLogOut);
         btnAdd.setOnClickListener(this);
+        btnLogOut.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btnAdd:
                 Toast.makeText(this, "Add Expenses", Toast.LENGTH_SHORT).show();
+            case R.id.btnLogOut:
+                homePresenter.logOut();
         }
-
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         Fragment fragment = null;
-        switch (menuItem.getItemId()){
+        switch (menuItem.getItemId()) {
             case R.id.activityItem:
                 setToolbarCaption(R.string.activity);
                 fragment = DashboardFragment.newInstance();
@@ -68,15 +76,20 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.profileItem:
                 setToolbarCaption(R.string.profile);
-                fragment = Profile.newInstance();
+                fragment = ProfileFragment.newInstance();
                 break;
         }
 
         return loadFragment(fragment);
     }
 
-    private boolean loadFragment(Fragment fragment){
-        if (fragment != null){
+    @Override
+    public void goToWelcomeScreen(){
+        startActivity(new Intent(HomeActivity.this, WelcomeActivity.class));
+    }
+
+    private boolean loadFragment(Fragment fragment) {
+        if (fragment != null) {
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.fragment_container, fragment)

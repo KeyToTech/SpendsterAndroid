@@ -12,12 +12,12 @@ import com.spendster.R;
 import com.spendster.data.entity.User;
 import com.spendster.presentation.authentication.SharedPreferencesUserStorage;
 
-public class Profile extends Fragment implements ProfileView {
+public class ProfileFragment extends Fragment implements ProfileView {
 
     private EditText etUsername, etProfileEmail;
 
-    public static Profile newInstance() {
-        return new Profile();
+    public static ProfileFragment newInstance() {
+        return new ProfileFragment();
     }
 
     @Override
