@@ -1,17 +1,18 @@
 package com.spendster.presentation.homeScreen;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.spendster.R;
+import com.spendster.presentation.addExpenses.AddExpensesActivity;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -41,9 +42,13 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btnAdd:
-                Toast.makeText(this, "Add Expenses", Toast.LENGTH_SHORT).show();
+                addExpenses();
         }
 
+    }
+
+    private void addExpenses() {
+        startActivity(new Intent(this, AddExpensesActivity.class));
     }
 
     @Override
