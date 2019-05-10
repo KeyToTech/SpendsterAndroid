@@ -1,7 +1,7 @@
 package com.spendster.presentation.authentication;
 
-public interface AuthView {
-    void showNextActivity();
+import com.spendster.presentation.ErrorsView;
 
-    void showError(String message);
+public interface AuthView extends ErrorsView {
+    void showNextActivity();
 }

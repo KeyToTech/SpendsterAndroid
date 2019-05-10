@@ -15,33 +15,41 @@ import com.spendster.data.entity.Category;
 
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.CategoryViewHolder> {
+public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRecyclerViewAdapter.CategoryViewHolder> {
 
     private Context context;
     private List<Category> categories;
-    private OnItemClickListener onItemClickListener;
+    private OnCategoryClickListener onCategoryClickListener;
 
-    public RecyclerViewAdapter(Context context, List<Category> categories, OnItemClickListener onItemClickListener) {
+    public CategoryRecyclerViewAdapter(Context context, List<Category> categories, OnCategoryClickListener onCategoryClickListener) {
         this.context = context;
         this.categories = categories;
-        this.onItemClickListener = onItemClickListener;
+        this.onCategoryClickListener = onCategoryClickListener;
     }
 
     @NonNull
     @Override
     public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(context).inflate(R.layout.category, viewGroup, false);
+        CategoryViewHolder categoryViewHolder = new CategoryViewHolder(view);
+        categoryViewHolder.bind(categories.get(i), onCategoryClickListener);
         return new CategoryViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CategoryViewHolder categoryViewHolder, int i) {
-        categoryViewHolder.bind(categories.get(i), onItemClickListener);
+
     }
 
     @Override
     public int getItemCount() {
-        return categories.size();
+        int size;
+        if (categories == null){
+            size = 0;
+        }else {
+            size = categories.size();
+        }
+        return size;
     }
 
     public static class CategoryViewHolder extends RecyclerView.ViewHolder{
@@ -54,13 +62,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             categoryIcon = itemView.findViewById(R.id.categoryIcon);
             cardView = itemView.findViewById(R.id.cvCategory);
         }
-        public void bind(final Category item, final OnItemClickListener onItemClickListener){
+        public void bind(final Category item, final OnCategoryClickListener onCategoryClickListener){
             categoryTitle.setText(item.getNameOfCategory());
             categoryIcon.setImageResource(item.getIcon());
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view) {
-                    onItemClickListener.onItemClick(item);
+                    onCategoryClickListener.onCategoryClick(item);
                 }
             });
         }
