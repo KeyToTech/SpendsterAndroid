@@ -13,10 +13,11 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.spendster.R;
-import com.spendster.presentation.authentication.SharedPreferencesUserStorage;
 import com.spendster.presentation.welcomeScreen.WelcomeActivity;
 
-public class HomeActivity extends AppCompatActivity implements View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends AppCompatActivity implements View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener, HomeView {
+
+    private HomePresenter homePresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private void initUI() {
         final Toolbar toolbar = findViewById(R.id.homeToolbar);
         setSupportActionBar(toolbar);
+        homePresenter = new HomePresenter(this, getBaseContext());
         final BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationMenu);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         loadFragment(new DashboardFragment());
@@ -50,8 +52,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnLogOut:
                 makeLogOut();
         }
-
-
     }
 
     @Override
@@ -76,9 +76,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void makeLogOut(){
-        SharedPreferencesUserStorage sharedPreferencesUserStorage = new
-                SharedPreferencesUserStorage(getBaseContext());
-        sharedPreferencesUserStorage.clear();
+        homePresenter.clearData();
         startActivity(new Intent(HomeActivity.this, WelcomeActivity.class));
     }
 
