@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.spendster.R;
-import com.spendster.presentation.homeScreen.Profile.ProfileFragment;
+import com.spendster.presentation.homeScreen.Profile.Profile;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -68,7 +68,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.profileItem:
                 setToolbarCaption(R.string.profile);
-                fragment = ProfileFragment.newInstance();
+                fragment = Profile.newInstance();
                 break;
         }
 

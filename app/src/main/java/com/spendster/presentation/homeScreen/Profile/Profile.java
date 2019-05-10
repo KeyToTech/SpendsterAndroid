@@ -9,14 +9,15 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 import com.spendster.R;
+import com.spendster.data.entity.User;
 import com.spendster.presentation.authentication.SharedPreferencesUserStorage;
 
-public class ProfileFragment extends Fragment implements ProfileFragmentView {
+public class Profile extends Fragment implements ProfileView {
 
     private EditText etUsername, etProfileEmail;
 
-    public static ProfileFragment newInstance() {
-        return new ProfileFragment();
+    public static Profile newInstance() {
+        return new Profile();
     }
 
     @Override
@@ -36,12 +37,8 @@ public class ProfileFragment extends Fragment implements ProfileFragmentView {
     }
 
     @Override
-    public void setUsername(String username) {
-        etUsername.setText(username);
-    }
-
-    @Override
-    public void setEmail(String email) {
-        etProfileEmail.setText(email);
+    public void fillUserFields(User user) {
+        etUsername.setText(user.getUsername());
+        etProfileEmail.setText(user.getEmail());
     }
 }
