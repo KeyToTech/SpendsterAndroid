@@ -13,7 +13,12 @@ public class HomePresenter {
         this.context = context;
     }
 
-    public void clearData(){
+    public void logOut(){
+        clearData();
+        homeView.goToWelcomeScreen();
+    }
+
+    private void clearData(){
         SharedPreferencesUserStorage sharedPreferencesUserStorage = new
                 SharedPreferencesUserStorage(context);
         sharedPreferencesUserStorage.clear();

@@ -50,7 +50,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnAdd:
                 Toast.makeText(this, "Add Expenses", Toast.LENGTH_SHORT).show();
             case R.id.btnLogOut:
-                makeLogOut();
+                homePresenter.logOut();
         }
     }
 
@@ -75,8 +75,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         return loadFragment(fragment);
     }
 
-    private void makeLogOut(){
-        homePresenter.clearData();
+    @Override
+    public void goToWelcomeScreen(){
         startActivity(new Intent(HomeActivity.this, WelcomeActivity.class));
     }
 
