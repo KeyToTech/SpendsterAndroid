@@ -1,5 +1,6 @@
 package com.spendster.presentation.addExpenses;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -43,7 +44,7 @@ public class AddExpensesActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void launchCalendar(){
-        Toast.makeText(this,"Calendar", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, CalendarActivity.class));
     }
 
     private void launchCategoryScreen(){
