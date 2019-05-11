@@ -31,14 +31,19 @@ public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRe
     @Override
     public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(context).inflate(R.layout.category, viewGroup, false);
-        CategoryViewHolder categoryViewHolder = new CategoryViewHolder(view);
-        categoryViewHolder.bind(categories.get(i), onCategoryClickListener);
-        return new CategoryViewHolder(view);
+        final CategoryViewHolder categoryViewHolder = new CategoryViewHolder(view);
+        categoryViewHolder.itemView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                onCategoryClickListener.onCategoryClick(categories.get(categoryViewHolder.getLayoutPosition()));
+            }
+        });
+        return categoryViewHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull CategoryViewHolder categoryViewHolder, int i) {
-
+        categoryViewHolder.bind(categories.get(i));
     }
 
     @Override
@@ -62,15 +67,9 @@ public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRe
             categoryIcon = itemView.findViewById(R.id.categoryIcon);
             cardView = itemView.findViewById(R.id.cvCategory);
         }
-        public void bind(final Category item, final OnCategoryClickListener onCategoryClickListener){
+        public void bind(final Category item){
             categoryTitle.setText(item.getNameOfCategory());
             categoryIcon.setImageResource(item.getIcon());
-            itemView.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View view) {
-                    onCategoryClickListener.onCategoryClick(item);
-                }
-            });
         }
     }
 

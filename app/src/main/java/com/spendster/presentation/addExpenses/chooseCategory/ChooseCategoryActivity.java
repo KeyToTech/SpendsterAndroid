@@ -36,7 +36,8 @@ public class ChooseCategoryActivity extends AppCompatActivity implements Categor
     @Override
     public void bindCategories(List<Category> categories) {
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        CategoryRecyclerViewAdapter categoryRecyclerViewAdapter = new CategoryRecyclerViewAdapter(this, categories, new OnCategoryClickListener() {
+        CategoryRecyclerViewAdapter categoryRecyclerViewAdapter = new CategoryRecyclerViewAdapter(
+                this, categories, new OnCategoryClickListener() {
             @Override
             public void onCategoryClick(Category item) {
                 passData(item);
