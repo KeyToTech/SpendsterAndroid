@@ -19,6 +19,7 @@ public class AddExpensesActivity extends AppCompatActivity implements View.OnCli
     private final static int REQUEST_CODE_CATEGORY = 2;
     private final static int REQUEST_CODE_CURRENCY = 3;
     private TextView tvTitle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +27,7 @@ public class AddExpensesActivity extends AppCompatActivity implements View.OnCli
         initUI();
     }
 
-    private void initUI(){
+    private void initUI() {
         tvTitle = findViewById(R.id.tvTitle);
         ConstraintLayout incToday = findViewById(R.id.incToday);
         ConstraintLayout incCategory = findViewById(R.id.incCategory);
@@ -39,7 +40,7 @@ public class AddExpensesActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.incToday:
                 launchCalendar();
                 break;
@@ -52,23 +53,27 @@ public class AddExpensesActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
-    private void launchCalendar(){
-        Toast.makeText(this,"Calendar", Toast.LENGTH_SHORT).show();
+    private void launchCalendar() {
+        Toast.makeText(this, "Calendar", Toast.LENGTH_SHORT).show();
     }
 
-    private void launchCategoryScreen(){
-        startActivityForResult(new Intent(this, ChooseCategoryActivity.class),
-                REQUEST_CODE_CATEGORY);
+    private void launchCategoryScreen() {
+        try {
+            startActivityForResult(new Intent(this, ChooseCategoryActivity.class),
+                    REQUEST_CODE_CATEGORY);
+        } catch (NullPointerException np) {
+            Toast.makeText(this, np.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 
-    private void launchCurrencyScreen(){
-        Toast.makeText(this,"Currency", Toast.LENGTH_SHORT).show();
+    private void launchCurrencyScreen() {
+        Toast.makeText(this, "Currency", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (data != null) {
-            if(resultCode == RESULT_OK) {
+            if (resultCode == RESULT_OK) {
                 switch (requestCode) {
                     case REQUEST_CODE_CALENDAR:
                         break;
@@ -81,10 +86,10 @@ public class AddExpensesActivity extends AppCompatActivity implements View.OnCli
                     case REQUEST_CODE_CURRENCY:
                         break;
                 }
-            }else {
+            } else {
                 Toast.makeText(this, "Wrong result", Toast.LENGTH_SHORT).show();
             }
-        }else {
+        } else {
             Toast.makeText(this, "Empty Data", Toast.LENGTH_SHORT).show();
         }
     }

@@ -11,24 +11,34 @@ import com.google.gson.Gson;
 import com.spendster.R;
 import com.spendster.data.entity.Category;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ChooseCategoryActivity extends AppCompatActivity implements CategoryView {
 
-    private RecyclerView recyclerView;
+    private CategoryRecyclerViewAdapter categoryRecyclerViewAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_category);
         initUI();
-    }
-
-    private void initUI(){
-        recyclerView = findViewById(R.id.recyclerView);
         ChooseCategoryPresenter chooseCategoryPresenter = new ChooseCategoryPresenter(this,
                 new MockedCategoryModel());
         chooseCategoryPresenter.fetchCategories();
+    }
+
+    private void initUI() {
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
+        categoryRecyclerViewAdapter = new CategoryRecyclerViewAdapter(
+                this, new ArrayList<Category>(), new OnCategoryClickListener() {
+            @Override
+            public void onCategoryClick(Category item) {
+                putCategoryToIntent(item);
+            }
+        });
+        recyclerView.setAdapter(categoryRecyclerViewAdapter);
     }
 
     private void putCategoryToIntent(Category item) {
@@ -42,15 +52,10 @@ public class ChooseCategoryActivity extends AppCompatActivity implements Categor
 
     @Override
     public void bindCategories(List<Category> categories) {
-        CategoryRecyclerViewAdapter categoryRecyclerViewAdapter = new CategoryRecyclerViewAdapter(
-                this, categories, new OnCategoryClickListener() {
-            @Override
-            public void onCategoryClick(Category item) {
-                putCategoryToIntent(item);
-            }
-        });
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
-        recyclerView.setAdapter(categoryRecyclerViewAdapter);
+        if (categories == null){
+            throw new NullPointerException("Empty list of categories");
+        }
+        categoryRecyclerViewAdapter.bind(categories);
     }
 
     @Override

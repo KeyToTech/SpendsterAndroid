@@ -57,6 +57,11 @@ public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRe
         return size;
     }
 
+    public void bind(List<Category> categories){
+        this.categories = categories;
+        notifyItemRangeInserted(0, categories.size());
+    }
+
     public static class CategoryViewHolder extends RecyclerView.ViewHolder {
         TextView categoryTitle;
         ImageView categoryIcon;
