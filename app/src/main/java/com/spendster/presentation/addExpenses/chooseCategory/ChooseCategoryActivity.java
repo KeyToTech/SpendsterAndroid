@@ -57,4 +57,9 @@ public class ChooseCategoryActivity extends AppCompatActivity implements Categor
     public void showError(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void hideError() {
+        //        TODO: https://trello.com/c/qWVqupHK/137-error-interface
+    }
 }
