@@ -53,7 +53,7 @@ public class SignUpActivity extends AppCompatActivity implements AuthView {
     }
 
     @Override
-    public void showNextActivity() {
+    public void showNextScreen() {
         startActivity(new Intent(this, MoreAboutYouActivity.class));
     }
 

@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity implements AuthView {
     }
 
     @Override
-    public void showNextActivity() {
+    public void showNextScreen() {
         startActivity(new Intent(LoginActivity.this, HomeActivity.class));
     }
 

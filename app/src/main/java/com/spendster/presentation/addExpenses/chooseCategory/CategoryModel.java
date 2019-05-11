@@ -5,5 +5,5 @@ import com.spendster.data.entity.Category;
 import java.util.List;
 
 public interface CategoryModel {
-    List<Category> storeCategories();
+    List<Category> getCategories();
 }

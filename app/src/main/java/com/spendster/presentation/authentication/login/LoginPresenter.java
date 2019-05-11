@@ -48,7 +48,7 @@ public class LoginPresenter {
                             public void onSuccess(User user) {
                                 if (loginView != null) {
                                     sharedPreferencesUserStorage.save(user);
-                                    loginView.showNextActivity();
+                                    loginView.showNextScreen();
                                 }
                             }
 

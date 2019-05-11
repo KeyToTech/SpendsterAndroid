@@ -1,5 +1,9 @@
 package com.spendster.presentation.addExpenses.chooseCategory;
 
+import com.spendster.data.entity.Category;
+
+import java.util.List;
+
 public class ChooseCategoryPresenter {
     private final CategoryView categoryView;
     private final CategoryModel categoryModel;
@@ -10,8 +14,9 @@ public class ChooseCategoryPresenter {
     }
 
     public void fetchCategories() {
-        if (categoryModel.storeCategories() != null) {
-            categoryView.bindCategories(categoryModel.storeCategories());
+        List<Category> categories = categoryModel.getCategories();
+        if (categories != null) {
+            categoryView.bindCategories(categories);
         } else {
             categoryView.showError("Bad server connection");
         }

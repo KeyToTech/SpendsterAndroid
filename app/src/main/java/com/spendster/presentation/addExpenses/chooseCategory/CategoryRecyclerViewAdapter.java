@@ -17,9 +17,9 @@ import java.util.List;
 
 public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRecyclerViewAdapter.CategoryViewHolder> {
 
-    private Context context;
+    private final Context context;
     private List<Category> categories;
-    private OnCategoryClickListener onCategoryClickListener;
+    private final OnCategoryClickListener onCategoryClickListener;
 
     public CategoryRecyclerViewAdapter(Context context, List<Category> categories, OnCategoryClickListener onCategoryClickListener) {
         this.context = context;
@@ -32,7 +32,7 @@ public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRe
     public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(context).inflate(R.layout.category, viewGroup, false);
         final CategoryViewHolder categoryViewHolder = new CategoryViewHolder(view);
-        categoryViewHolder.itemView.setOnClickListener(new View.OnClickListener(){
+        categoryViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onCategoryClickListener.onCategoryClick(categories.get(categoryViewHolder.getLayoutPosition()));
@@ -49,31 +49,29 @@ public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRe
     @Override
     public int getItemCount() {
         int size;
-        if (categories == null){
+        if (categories == null) {
             size = 0;
-        }else {
+        } else {
             size = categories.size();
         }
         return size;
     }
 
-    public static class CategoryViewHolder extends RecyclerView.ViewHolder{
+    public static class CategoryViewHolder extends RecyclerView.ViewHolder {
         TextView categoryTitle;
         ImageView categoryIcon;
         CardView cardView;
+
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
             categoryTitle = itemView.findViewById(R.id.categoryTitle);
             categoryIcon = itemView.findViewById(R.id.categoryIcon);
             cardView = itemView.findViewById(R.id.cvCategory);
         }
-        public void bind(final Category item){
+
+        public void bind(final Category item) {
             categoryTitle.setText(item.getNameOfCategory());
             categoryIcon.setImageResource(item.getIcon());
         }
     }
-
-
-
-
 }

@@ -15,16 +15,23 @@ import java.util.List;
 
 public class ChooseCategoryActivity extends AppCompatActivity implements CategoryView {
 
+    private RecyclerView recyclerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_category);
+        initUI();
+    }
+
+    private void initUI(){
+        recyclerView = findViewById(R.id.recyclerView);
         ChooseCategoryPresenter chooseCategoryPresenter = new ChooseCategoryPresenter(this,
-                new SimpleCategoryModel());
+                new MockedCategoryModel());
         chooseCategoryPresenter.fetchCategories();
     }
 
-    private void passData(Category item) {
+    private void putCategoryToIntent(Category item) {
         Gson gson = new Gson();
         String json = gson.toJson(item);
         Intent intent = new Intent();
@@ -35,12 +42,11 @@ public class ChooseCategoryActivity extends AppCompatActivity implements Categor
 
     @Override
     public void bindCategories(List<Category> categories) {
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
         CategoryRecyclerViewAdapter categoryRecyclerViewAdapter = new CategoryRecyclerViewAdapter(
                 this, categories, new OnCategoryClickListener() {
             @Override
             public void onCategoryClick(Category item) {
-                passData(item);
+                putCategoryToIntent(item);
             }
         });
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));

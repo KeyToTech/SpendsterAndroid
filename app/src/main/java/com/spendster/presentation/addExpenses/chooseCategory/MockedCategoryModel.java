@@ -6,9 +6,9 @@ import com.spendster.data.entity.Category;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SimpleCategoryModel implements CategoryModel {
+public class MockedCategoryModel implements CategoryModel {
     @Override
-    public List<Category> storeCategories() {
+    public List<Category> getCategories() {
         List<Category> categories = new ArrayList<>();
         categories.add(new Category("Education", R.drawable.user_light_theme));
         categories.add(new Category("House", R.drawable.activity));

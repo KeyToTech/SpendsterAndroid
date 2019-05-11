@@ -14,7 +14,8 @@ import android.widget.Button;
 import com.spendster.R;
 import com.spendster.presentation.addExpenses.AddExpensesActivity;
 
-public class HomeActivity extends AppCompatActivity implements View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends AppCompatActivity implements View.OnClickListener,
+        BottomNavigationView.OnNavigationItemSelectedListener, HomeView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +48,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    private void addExpenses() {
-        startActivity(new Intent(this, AddExpensesActivity.class));
-    }
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -81,5 +80,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void addExpenses() {
+        startActivity(new Intent(this, AddExpensesActivity.class));
     }
 }
