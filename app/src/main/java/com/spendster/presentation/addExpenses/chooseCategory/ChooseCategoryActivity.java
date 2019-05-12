@@ -5,16 +5,17 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.spendster.R;
 import com.spendster.data.entity.Category;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class ChooseCategoryActivity extends AppCompatActivity implements CategoryView {
+public class ChooseCategoryActivity extends AppCompatActivity implements CategoryView, View.OnClickListener {
 
     private CategoryRecyclerViewAdapter categoryRecyclerViewAdapter;
 
@@ -32,13 +33,15 @@ public class ChooseCategoryActivity extends AppCompatActivity implements Categor
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
         categoryRecyclerViewAdapter = new CategoryRecyclerViewAdapter(
-                this, new ArrayList<Category>(), new OnCategoryClickListener() {
+                this, new OnCategoryClickListener() {
             @Override
             public void onCategoryClick(Category item) {
                 putCategoryToIntent(item);
             }
         });
         recyclerView.setAdapter(categoryRecyclerViewAdapter);
+        Button btnCancel = findViewById(R.id.btnCancelCategory);
+        btnCancel.setOnClickListener(this);
     }
 
     private void putCategoryToIntent(Category item) {
@@ -52,10 +55,12 @@ public class ChooseCategoryActivity extends AppCompatActivity implements Categor
 
     @Override
     public void bindCategories(List<Category> categories) {
-        if (categories == null){
-            throw new NullPointerException("Empty list of categories");
-        }
         categoryRecyclerViewAdapter.bind(categories);
+    }
+
+    @Override
+    public void backToPreviousScreen() {
+        finish();
     }
 
     @Override
@@ -66,5 +71,14 @@ public class ChooseCategoryActivity extends AppCompatActivity implements Categor
     @Override
     public void hideError() {
         //        TODO: https://trello.com/c/qWVqupHK/137-error-interface
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.btnCancelCategory:
+                backToPreviousScreen();
+                break;
+        }
     }
 }

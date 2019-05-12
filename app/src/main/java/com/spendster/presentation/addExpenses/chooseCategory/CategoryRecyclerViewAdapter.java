@@ -4,15 +4,18 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.spendster.BuildConfig;
 import com.spendster.R;
 import com.spendster.data.entity.Category;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRecyclerViewAdapter.CategoryViewHolder> {
@@ -25,6 +28,10 @@ public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRe
         this.context = context;
         this.categories = categories;
         this.onCategoryClickListener = onCategoryClickListener;
+    }
+
+    public CategoryRecyclerViewAdapter(Context context, OnCategoryClickListener onCategoryClickListener) {
+        this(context, new ArrayList<Category>(), onCategoryClickListener);
     }
 
     @NonNull
@@ -57,9 +64,12 @@ public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRe
         return size;
     }
 
-    public void bind(List<Category> categories){
+    public void bind(List<Category> categories) {
         this.categories = categories;
-        notifyItemRangeInserted(0, categories.size());
+        if (categories == null) {
+            Log.d(BuildConfig.MY_LOGS, "Categories equal to null");
+        }
+        notifyItemRangeInserted(0, getItemCount());
     }
 
     public static class CategoryViewHolder extends RecyclerView.ViewHolder {

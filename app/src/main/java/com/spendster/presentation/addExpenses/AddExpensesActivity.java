@@ -4,11 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.spendster.BuildConfig;
 import com.spendster.R;
 import com.spendster.data.entity.Category;
 import com.spendster.presentation.addExpenses.chooseCategory.ChooseCategoryActivity;
@@ -19,6 +22,7 @@ public class AddExpensesActivity extends AppCompatActivity implements View.OnCli
     private final static int REQUEST_CODE_CATEGORY = 2;
     private final static int REQUEST_CODE_CURRENCY = 3;
     private TextView tvTitle;
+    private TextView tvCategory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +33,13 @@ public class AddExpensesActivity extends AppCompatActivity implements View.OnCli
 
     private void initUI() {
         tvTitle = findViewById(R.id.tvTitle);
+        tvCategory = findViewById(R.id.tvCategory);
+        Button btnCancelExpenses = findViewById(R.id.btnCancelExpenses);
         ConstraintLayout incToday = findViewById(R.id.incToday);
         ConstraintLayout incCategory = findViewById(R.id.incCategory);
         ConstraintLayout incNote = findViewById(R.id.incNote);
         ConstraintLayout incCurrency = findViewById(R.id.incCurrency);
+        btnCancelExpenses.setOnClickListener(this);
         incToday.setOnClickListener(this);
         incCategory.setOnClickListener(this);
         incCurrency.setOnClickListener(this);
@@ -41,6 +48,9 @@ public class AddExpensesActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.btnCancelExpenses:
+                backToPreviousScreen();
+                break;
             case R.id.incToday:
                 launchCalendar();
                 break;
@@ -53,17 +63,17 @@ public class AddExpensesActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
+    private void backToPreviousScreen() {
+        finish();
+    }
+
     private void launchCalendar() {
         Toast.makeText(this, "Calendar", Toast.LENGTH_SHORT).show();
     }
 
     private void launchCategoryScreen() {
-        try {
             startActivityForResult(new Intent(this, ChooseCategoryActivity.class),
                     REQUEST_CODE_CATEGORY);
-        } catch (NullPointerException np) {
-            Toast.makeText(this, np.getMessage(), Toast.LENGTH_SHORT).show();
-        }
     }
 
     private void launchCurrencyScreen() {
@@ -82,15 +92,17 @@ public class AddExpensesActivity extends AppCompatActivity implements View.OnCli
                         Gson gson = new Gson();
                         Category category = gson.fromJson(json, Category.class);
                         tvTitle.setText(category.getNameOfCategory());
+                        tvCategory.setText("Re-select category");
+
                         break;
                     case REQUEST_CODE_CURRENCY:
                         break;
                 }
             } else {
-                Toast.makeText(this, "Wrong result", Toast.LENGTH_SHORT).show();
+                Log.d(BuildConfig.MY_LOGS, "Wrong result");
             }
         } else {
-            Toast.makeText(this, "Empty Data", Toast.LENGTH_SHORT).show();
+            Log.d(BuildConfig.MY_LOGS, "Empty Data");
         }
     }
 }

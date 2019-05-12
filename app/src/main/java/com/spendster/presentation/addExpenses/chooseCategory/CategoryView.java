@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface CategoryView extends ErrorsView {
     void bindCategories(List<Category> categories);
+    void backToPreviousScreen();
 }

@@ -18,6 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
+            android:id="@+id/btnCancelExpenses"
             android:layout_width="77dp"
             android:layout_height="wrap_content"
             android:background="@null"
