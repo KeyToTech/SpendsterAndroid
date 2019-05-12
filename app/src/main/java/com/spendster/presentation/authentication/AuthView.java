@@ -1,6 +1,8 @@
 package com.spendster.presentation.authentication;
 
-public interface AuthView {
+import com.spendster.presentation.LoadingView;
+
+public interface AuthView extends LoadingView {
     void showNextActivity();
 
     void showError(String message);

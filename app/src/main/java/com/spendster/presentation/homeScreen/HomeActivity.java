@@ -77,6 +77,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void goToWelcomeScreen(){
+        finish();
         startActivity(new Intent(HomeActivity.this, WelcomeActivity.class));
     }
 
