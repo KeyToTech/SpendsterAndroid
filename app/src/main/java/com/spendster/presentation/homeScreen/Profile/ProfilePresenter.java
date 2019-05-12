@@ -1,5 +1,7 @@
 package com.spendster.presentation.homeScreen.Profile;
 
+import android.util.Log;
+
 import com.spendster.data.entity.User;
 import com.spendster.presentation.authentication.SharedPreferencesUserStorage;
 
@@ -18,7 +20,7 @@ public class ProfilePresenter {
         if (user != null){
             profileView.fillUserFields(user);
         }else {
-
+            Log.d("MyLogs", "User is empty");
         }
     }
 }
