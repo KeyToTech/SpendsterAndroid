@@ -24,14 +24,14 @@
         android:textSize="16sp"
         android:cursorVisible="false"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imgCalendar"
+        app:layout_constraintStart_toEndOf="@+id/imgNote"
         app:layout_constraintTop_toTopOf="parent"
         app:fontFamily="@font/karla_bold" />
 
 
 
     <ImageView
-        android:id="@+id/imgCalendar"
+        android:id="@+id/imgNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/calendar_for_light_theme"
