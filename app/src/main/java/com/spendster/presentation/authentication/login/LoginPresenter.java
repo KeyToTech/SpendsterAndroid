@@ -40,6 +40,7 @@ public class LoginPresenter {
             }
         } else {
             if (loginModel != null) {
+                loginView.showLoading();
                 compositeDisposable.add(loginModel.login(email, password)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
@@ -49,6 +50,7 @@ public class LoginPresenter {
                                 if (loginView != null) {
                                     sharedPreferencesUserStorage.save(user);
                                     loginView.showNextScreen();
+                                    loginView.hideLoading();
                                 }
                             }
 

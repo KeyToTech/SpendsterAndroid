@@ -13,9 +13,11 @@ import android.widget.Button;
 
 import com.spendster.R;
 import com.spendster.presentation.addExpenses.AddExpensesActivity;
+import com.spendster.presentation.welcomeScreen.WelcomeActivity;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener,
         BottomNavigationView.OnNavigationItemSelectedListener, HomeView {
+    private HomePresenter homePresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,24 +30,28 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private void initUI() {
         final Toolbar toolbar = findViewById(R.id.homeToolbar);
         setSupportActionBar(toolbar);
+        homePresenter = new HomePresenter(this, getBaseContext());
         final BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationMenu);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         loadFragment(new DashboardFragment());
         initButtons();
     }
 
-    private void initButtons(){
+    private void initButtons() {
         Button btnAdd = findViewById(R.id.btnAdd);
+        Button btnLogOut = findViewById(R.id.btnLogOut);
         btnAdd.setOnClickListener(this);
+        btnLogOut.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btnAdd:
                 addExpenses();
+            case R.id.btnLogOut:
+                homePresenter.logOut();
         }
-
     }
 
 
@@ -53,7 +59,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         Fragment fragment = null;
-        switch (menuItem.getItemId()){
+        switch (menuItem.getItemId()) {
             case R.id.activityItem:
                 fragment = DashboardFragment.newInstance();
                 break;
@@ -71,8 +77,14 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         return loadFragment(fragment);
     }
 
-    private boolean loadFragment(Fragment fragment){
-        if (fragment != null){
+    @Override
+    public void goToWelcomeScreen(){
+        finish();
+        startActivity(new Intent(HomeActivity.this, WelcomeActivity.class));
+    }
+
+    private boolean loadFragment(Fragment fragment) {
+        if (fragment != null) {
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.fragment_container, fragment)

@@ -1,5 +1,6 @@
 package com.spendster.presentation.authentication.login;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,7 @@ import com.spendster.presentation.homeScreen.HomeActivity;
 public class LoginActivity extends AppCompatActivity implements AuthView {
 
     private LoginPresenter loginPresenter;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +35,9 @@ public class LoginActivity extends AppCompatActivity implements AuthView {
         loginPresenter.dispose();
     }
 
-    private void initUI(){
+    private void initUI() {
+        progressDialog = new ProgressDialog(this, ProgressDialog.THEME_HOLO_DARK);
+        progressDialog.setMessage("Logging in. Please wait.");
         final Button btnContinue = findViewById(R.id.btnContinue);
         final EditText etEmail = findViewById(R.id.etEmail);
         final EditText etPassword = findViewById(R.id.etPassword);
@@ -50,6 +54,7 @@ public class LoginActivity extends AppCompatActivity implements AuthView {
 
     @Override
     public void showNextScreen() {
+        finish();
         startActivity(new Intent(LoginActivity.this, HomeActivity.class));
     }
 
@@ -61,5 +66,14 @@ public class LoginActivity extends AppCompatActivity implements AuthView {
     @Override
     public void hideError() {
 //        TODO: https://trello.com/c/qWVqupHK/137-error-interface
+    }
+
+    public void showLoading() {
+        progressDialog.show();
+    }
+
+    @Override
+    public void hideLoading() {
+        progressDialog.dismiss();
     }
 }
