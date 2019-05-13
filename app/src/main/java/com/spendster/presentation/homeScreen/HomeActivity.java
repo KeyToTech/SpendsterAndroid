@@ -11,14 +11,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.spendster.R;
 import com.spendster.presentation.homeScreen.Profile.ProfileFragment;
+import com.spendster.presentation.addExpenses.AddExpensesActivity;
 import com.spendster.presentation.welcomeScreen.WelcomeActivity;
 
-public class HomeActivity extends AppCompatActivity implements View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener, HomeView {
-
+public class HomeActivity extends AppCompatActivity implements View.OnClickListener,
+        BottomNavigationView.OnNavigationItemSelectedListener, HomeView {
     private HomePresenter homePresenter;
 
     private TextView toolbarCaption;
@@ -52,11 +52,15 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnAdd:
-                Toast.makeText(this, "Add Expenses", Toast.LENGTH_SHORT).show();
+                addExpenses();
+                break;
             case R.id.btnLogOut:
                 homePresenter.logOut();
+                break;
         }
     }
+
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -85,6 +89,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void goToWelcomeScreen(){
+        finish();
         startActivity(new Intent(HomeActivity.this, WelcomeActivity.class));
     }
 
@@ -99,7 +104,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         return false;
     }
 
-    public void setToolbarCaption(int caption){
+    public void setToolbarCaption(int caption) {
         toolbarCaption.setText(caption);
+    }
+
+    @Override
+    public void addExpenses() {
+        startActivity(new Intent(this, AddExpensesActivity.class));
     }
 }

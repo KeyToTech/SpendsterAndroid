@@ -51,4 +51,11 @@
     <string name="currency">Currency</string>
     <string name="note">Note</string>
     <string name="details">Details</string>
+
+    <string name="dateFormat" translatable="false">EE, dd MMM</string>
+    <string name="timeFormat" translatable="false">EE, dd MMM HH:mm</string>
+    <string name="period" translatable="false">%1$s – %2$s</string>
+
+
+    <string name="select_category">Select Category</string>
 </resources>
