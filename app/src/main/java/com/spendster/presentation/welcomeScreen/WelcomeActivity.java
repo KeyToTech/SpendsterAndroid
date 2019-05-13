@@ -70,13 +70,13 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     private void launchLoginScreen() {
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
+        finish();
+        startActivity(new Intent(this, LoginActivity.class));
     }
 
     private void launchSignUpScreen() {
-        Intent intent = new Intent(this, SignUpActivity.class);
-        startActivity(intent);
+        finish();
+        startActivity(new Intent(this, SignUpActivity.class));
     }
 
     private void initSkipNextButtons() {

@@ -23,11 +23,13 @@ public class LaunchActivity extends AppCompatActivity implements LaunchView {
 
     @Override
     public void startHomeScreen(){
+        finish();
         startActivity(new Intent(LaunchActivity.this, HomeActivity.class));
     }
 
     @Override
     public void startWelcomeScreen(){
+        finish();
         startActivity(new Intent(LaunchActivity.this, WelcomeActivity.class));
     }
 }
