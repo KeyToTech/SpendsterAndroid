@@ -32,7 +32,7 @@ public class SharedPreferencesUserStorage implements SUserStorage {
     @Override
     public User read() {
         Gson gson = new Gson();
-        String json = sharedPreferences.getString(USER_EXIST, "");
+        String json = sharedPreferences.getString(USER_SAVED, "");
         User user;
         if (!json.isEmpty()) {
             user = gson.fromJson(json, User.class);

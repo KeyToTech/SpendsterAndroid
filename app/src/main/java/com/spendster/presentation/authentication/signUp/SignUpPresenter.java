@@ -47,6 +47,7 @@ public class SignUpPresenter {
         }
         else {
             if (signUpModel != null){
+                signUpView.showLoading();
                 compositeDisposable.add(signUpModel.signUp(email, username, password)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
@@ -55,7 +56,8 @@ public class SignUpPresenter {
                             public void onSuccess(User user) {
                                 if (signUpView != null) {
                                     sharedPreferencesUserStorage.save(user);
-                                    signUpView.showNextActivity();
+                                    signUpView.showNextScreen();
+                                    signUpView.hideLoading();
                                 }
                             }
                             @Override
