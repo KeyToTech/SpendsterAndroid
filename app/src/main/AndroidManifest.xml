@@ -16,8 +16,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".presentation.addExpenses.AddExpensesActivity"></activity>
-
+        <activity android:name=".presentation.addExpenses.chooseCategory.ChooseCategoryActivity">
+        </activity>
+        <activity android:name=".presentation.addExpenses.AddExpensesActivity">
+        </activity>
         <activity android:name=".presentation.moreAboutYou.MoreAboutYouActivity"></activity>
         <activity android:name=".presentation.authentication.login.LoginActivity" />
         <activity android:name=".presentation.authentication.signUp.SignUpActivity"></activity>
@@ -30,7 +32,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".presentation.homeScreen.HomeActivity"></activity>
         <activity android:name=".presentation.address.AddressActivity" />
 

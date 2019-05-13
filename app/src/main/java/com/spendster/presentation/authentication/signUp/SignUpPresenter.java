@@ -56,8 +56,8 @@ public class SignUpPresenter {
                             public void onSuccess(User user) {
                                 if (signUpView != null) {
                                     sharedPreferencesUserStorage.save(user);
+                                    signUpView.showNextScreen();
                                     signUpView.hideLoading();
-                                    signUpView.showNextActivity();
                                 }
                             }
                             @Override

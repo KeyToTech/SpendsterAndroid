@@ -57,7 +57,7 @@ public class SignUpActivity extends AppCompatActivity implements AuthView {
     }
 
     @Override
-    public void showNextActivity() {
+    public void showNextScreen() {
         finish();
         startActivity(new Intent(this, MoreAboutYouActivity.class));
     }
@@ -68,6 +68,9 @@ public class SignUpActivity extends AppCompatActivity implements AuthView {
     }
 
     @Override
+    public void hideError() {
+        //        TODO: https://trello.com/c/qWVqupHK/137-error-interface
+    }
     public void showLoading() {
         progressDialog.show();
     }
