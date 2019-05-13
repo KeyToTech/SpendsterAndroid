@@ -49,8 +49,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()) {
             case R.id.btnAdd:
                 addExpenses();
+                break;
             case R.id.btnLogOut:
                 homePresenter.logOut();
+                break;
         }
     }
 

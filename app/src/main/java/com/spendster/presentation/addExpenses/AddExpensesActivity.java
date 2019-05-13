@@ -16,7 +16,13 @@ import com.spendster.R;
 import com.spendster.data.entity.Category;
 import com.spendster.presentation.addExpenses.chooseCategory.ChooseCategoryActivity;
 
-public class AddExpensesActivity extends AppCompatActivity implements View.OnClickListener {
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+
+import ru.slybeaver.slycalendarview.SlyCalendarDialog;
+
+public class AddExpensesActivity extends AppCompatActivity implements View.OnClickListener, SlyCalendarDialog.Callback {
 
     private final static int REQUEST_CODE_CALENDAR = 1;
     private final static int REQUEST_CODE_CATEGORY = 2;
@@ -63,21 +69,40 @@ public class AddExpensesActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
-    private void backToPreviousScreen() {
-        finish();
-    }
-
     private void launchCalendar() {
-        Toast.makeText(this, "Calendar", Toast.LENGTH_SHORT).show();
+        new SlyCalendarDialog()
+                .setSingle(false)
+                .setFirstMonday(false)
+                .setCallback(this)
+                .show(getSupportFragmentManager(), "TAG_SLYCALENDAR");
     }
 
     private void launchCategoryScreen() {
-            startActivityForResult(new Intent(this, ChooseCategoryActivity.class),
-                    REQUEST_CODE_CATEGORY);
+        startActivityForResult(new Intent(this, ChooseCategoryActivity.class),
+                REQUEST_CODE_CATEGORY);
     }
 
     private void launchCurrencyScreen() {
         Toast.makeText(this, "Currency", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onCancelled() {
+
+    }
+
+    @Override
+    public void onDataSelected(Calendar firstDate, Calendar secondDate, int hours, int minutes) {
+        TextView tvToday = findViewById(R.id.tvToday);
+        if (firstDate != null) {
+            firstDate.set(Calendar.HOUR_OF_DAY, hours);
+            firstDate.set(Calendar.MINUTE, minutes);
+            tvToday.setText(new SimpleDateFormat(getString(R.string.timeFormat), Locale.getDefault()).format(firstDate.getTime()));
+        }
+    }
+
+    private void backToPreviousScreen() {
+        finish();
     }
 
     @Override
@@ -106,3 +131,4 @@ public class AddExpensesActivity extends AppCompatActivity implements View.OnCli
         }
     }
 }
+
