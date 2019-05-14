@@ -29,6 +29,10 @@ public class Category {
         return icon;
     }
 
+    public int getCategoryId() {
+        return categoryId;
+    }
+
     @Override
     public String toString() {
         return "Category{" +

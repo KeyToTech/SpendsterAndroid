@@ -42,6 +42,7 @@
             app:fontFamily="@font/karla_bold" />
 
         <EditText
+            android:id="@+id/etAmount"
             android:layout_width="100dp"
             android:layout_height="24dp"
             android:layout_alignParentEnd="true"
@@ -112,6 +113,7 @@
             android:layout_gravity="center"/>
 
         <Button
+            android:id="@+id/btnAddTransaction"
             android:layout_width="305dp"
             android:layout_height="50dp"
             android:layout_marginTop="32dp"
