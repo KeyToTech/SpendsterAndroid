@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="#f7f8fe"
+    tools:context=".presentation.addExpenses.AddExpensesActivity">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="111dp"
+        android:background="@drawable/background_add_expenses_top"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/btnCancelExpenses"
+            android:layout_width="77dp"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:text="@string/cancel"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            android:textSize="12sp"
+            app:fontFamily="@font/karla" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="14dp"
+            android:text="@string/expenses"
+            android:textColor="#fff"
+            android:textSize="24sp"
+            app:fontFamily="@font/karla_bold" />
+
+        <EditText
+            android:layout_width="100dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="14dp"
+            android:background="@null"
+            android:gravity="end"
+            android:hint="@string/_0_0"
+            android:textAlignment="textEnd"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            android:cursorVisible="false"
+            android:inputType="numberDecimal"
+            app:fontFamily="@font/karla_bold" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="335dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="20dp"
+        android:background="#fff"
+        android:orientation="vertical"
+        android:elevation="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:text="@string/details"
+            android:textColor="#8a8a8a"
+            android:textSize="18sp"
+            app:fontFamily="@font/karla_bold" />
+
+        <include android:id="@+id/incToday"
+            layout="@layout/add_expenses_calendar"
+            android:layout_marginTop="21dp"
+            android:layout_width="303dp"
+            android:layout_height="46dp"
+            android:layout_gravity="center"/>
+
+        <include android:id="@+id/incCategory"
+            layout="@layout/add_expenses_category"
+            android:layout_marginTop="16dp"
+            android:layout_width="303dp"
+            android:layout_height="46dp"
+            android:layout_gravity="center"/>
+
+        <include android:id="@+id/incNote"
+            layout="@layout/add_expenses_note"
+            android:layout_marginTop="16dp"
+            android:layout_width="303dp"
+            android:layout_height="46dp"
+            android:layout_gravity="center"/>
+
+        <include android:id="@+id/incCurrency"
+            layout="@layout/add_expenses_currency"
+            android:layout_marginTop="16dp"
+            android:layout_width="303dp"
+            android:layout_height="46dp"
+            android:layout_gravity="center"/>
+
+        <Button
+            android:layout_width="305dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="32dp"
+            android:layout_gravity="center"
+            android:background="@drawable/button_shape_sign_up"
+            android:text="@string/add_transaction"
+            android:textSize="18sp"
+            android:textColor="#fff"
+            android:textAllCaps="false"/>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

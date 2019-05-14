@@ -1,3 +1,61 @@
 <resources>
-    <string name="app_name">First project</string>
+    <string name="app_name">Spendster</string>
+    <string name="login">LOGIN</string>
+    <string name="sign_up">SIGN UP FREE</string>
+    <string name="skip">SKIP</string>
+    <string name="next">NEXT</string>
+    <string name="welcome_to_bp">Welcome to Budget Planner</string>
+    <string name="take_control_etc">Take control of your money \n and save them by tracking your expenses</string>
+    <string name="budget_planner">Budget Planner</string>
+    <string name="easily_create_etc">Easily create budgets, and see our \n suggestions based on your spending</string>
+    <string name="save_money_etc">Save money with ease</string>
+
+    <string name="pocket_desc">Pocket</string>
+    <string name="coin_box">Pig coin box</string>
+    <string name="man_with_phone">Man who looking at very large phone</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="let_s_get_started">Let\'s get started</string>
+    <string name="retype_password">Retype password</string>
+    <string name="continue_button">Continue</string>
+    <string name="more_about_you">More about you</string>
+    <string name="btw_you_look_great">Btw, you look great :)</string>
+    <string name="maybe_later">Maybe later</string>
+    <string name="upload_your_profile_picture">Upload your profile picture</string>
+    <string name="add_your_personal_details">Add your personal details</string>
+    <string name="first_and_last_name">First and Last name</string>
+    <string name="phone_number">Phone number</string>
+    <string name="activity">Activity</string>
+    <string name="start_adding_one_by_pressing_n_the_plus_icon_from_the_bottom_menu">Start adding one by pressing \n the plus icon from the bottom menu</string>
+    <string name="you_don_t_have_any_transactions_n_right_now_but_you_can">You don’t have any transactions \n right now, but you can</string>
+    <string name="budget">Budget</string>
+    <string name="overview">Overview</string>
+    <string name="profile">Profile</string>
+    <string name="select_action">Select Action</string>
+    <string name="select_photo_from_gallery">Select photo from gallery</string>
+    <string name="capture_photo_from_camera">Capture photo from camera</string>
+    <string name="address">Address</string>
+    <string name="get_started">Get started</string>
+    <string name="username">Username</string>
+    <string name="title_activity_activity">ActivityActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="version_error">Error: your version is too low</string>
+    <string name="cancel">Cancel</string>
+    <string name="expenses">Expenses</string>
+    <string name="add_transaction">Add Transaction</string>
+    <string name="today">Today?</string>
+    <string name="category">Category</string>
+    <string name="_0_0">0.0</string>
+    <string name="currency">Currency</string>
+    <string name="note">Note</string>
+    <string name="details">Details</string>
+
+    <string name="dateFormat" translatable="false">EE, dd MMM</string>
+    <string name="timeFormat" translatable="false">EE, dd MMM HH:mm</string>
+    <string name="period" translatable="false">%1$s – %2$s</string>
+
+
+    <string name="select_category">Select Category</string>
 </resources>
