@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.spendster.APIClient;
 import com.spendster.R;
 import com.spendster.data.entity.Category;
 
@@ -25,7 +26,7 @@ public class ChooseCategoryActivity extends AppCompatActivity implements Categor
         setContentView(R.layout.activity_choose_category);
         initUI();
         ChooseCategoryPresenter chooseCategoryPresenter = new ChooseCategoryPresenter(this,
-                new MockedCategoryModel());
+                new ServerCategoryModel(APIClient.getClient().create(APICategories.class)));
         chooseCategoryPresenter.fetchCategories();
     }
 

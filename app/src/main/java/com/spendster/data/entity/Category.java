@@ -4,21 +4,23 @@ import java.util.Date;
 
 public class Category {
     private final int categoryId;
+    private final String userId;
     private final String nameOfCategory;
-    private final boolean type;
+    private final String type;
     private final Date createdDate;
     private final int icon;
 
-    public Category(int categoryId, String nameOfCategory, boolean type, Date createdDate, int icon) {
+    public Category(int categoryId, String userId, String nameOfCategory, String type, int icon, Date createdDate) {
         this.categoryId = categoryId;
+        this.userId = userId;
         this.nameOfCategory = nameOfCategory;
         this.type = type;
         this.createdDate = createdDate;
         this.icon = icon;
     }
 
-    public Category(String nameOfCategory, int icon){
-        this(0, nameOfCategory, false, new Date(), icon);
+    public Category(String nameOfCategory, int icon) {
+        this(0, "", nameOfCategory, "", icon, new Date());
     }
 
     public String getNameOfCategory() {
