@@ -3,7 +3,7 @@ package com.spendster.data.entity;
 import java.util.Date;
 
 public class User {
-    private final int userId;
+    private final String userId;
     private final String email;
     private final String username;
     private final String password;
@@ -11,7 +11,7 @@ public class User {
     private final Date createdDate;
 
     public User() {
-        this.userId = 0;
+        this.userId = "";
         this.email = "";
         this.username = "";
         this.password = "";
@@ -20,15 +20,15 @@ public class User {
     }
 
     public User(String email, String password){
-        this(0,email, null, password, 0.0, new Date());
+        this("",email, null, password, 0.0, new Date());
     }
 
     public User(String email, String username, String password){
-        this(0,email, username, password, 0.0, new Date());
+        this("",email, username, password, 0.0, new Date());
     }
 
 
-    public User(int userId, String email, String username, String password, double balance, Date createdDate) {
+    public User(String userId, String email, String username, String password, double balance, Date createdDate) {
         this.userId = userId;
         this.email = email;
         this.username = username;

@@ -3,13 +3,13 @@ package com.spendster.data.entity;
 import java.util.Date;
 
 public class Category {
-    private final int categoryId;
+    private final String categoryId;
     private final String nameOfCategory;
     private final boolean type;
     private final Date createdDate;
-    private final int icon;
+    private final String icon;
 
-    public Category(int categoryId, String nameOfCategory, boolean type, Date createdDate, int icon) {
+    public Category(String categoryId, String nameOfCategory, boolean type, Date createdDate, String icon) {
         this.categoryId = categoryId;
         this.nameOfCategory = nameOfCategory;
         this.type = type;
@@ -17,19 +17,19 @@ public class Category {
         this.icon = icon;
     }
 
-    public Category(String nameOfCategory, int icon){
-        this(0, nameOfCategory, false, new Date(), icon);
+    public Category(String nameOfCategory, String icon){
+        this("", nameOfCategory, false, new Date(), icon);
     }
 
     public String getNameOfCategory() {
         return nameOfCategory;
     }
 
-    public int getIcon() {
+    public String getIcon() {
         return icon;
     }
 
-    public int getCategoryId() {
+    public String getCategoryId() {
         return categoryId;
     }
 

@@ -1,4 +1,6 @@
 package com.spendster.presentation.addExpenses;
 
-public interface AddExpensesView {
+import com.spendster.presentation.ErrorsView;
+
+public interface AddExpensesView extends ErrorsView {
 }
