@@ -12,13 +12,4 @@ public class Income {
         this.amount = amount;
         this.createdDate = createdDate;
     }
-
-    @Override
-    public String toString() {
-        return "Incomes{" +
-                "incomesId=" + incomesId +
-                ", amount=" + amount +
-                ", createdDate=" + createdDate +
-                '}';
-    }
 }

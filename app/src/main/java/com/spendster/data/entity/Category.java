@@ -32,15 +32,4 @@ public class Category {
     public String getCategoryId() {
         return categoryId;
     }
-
-    @Override
-    public String toString() {
-        return "Category{" +
-                "categoryId=" + categoryId +
-                ", nameOfCategory='" + nameOfCategory + '\'' +
-                ", type=" + type +
-                ", createdDate=" + createdDate +
-                ", icon=" + icon +
-                '}';
-    }
 }

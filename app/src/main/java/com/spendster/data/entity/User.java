@@ -36,15 +36,4 @@ public class User {
         this.balance = balance;
         this.createdDate = createdDate;
     }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", balance=" + balance +
-                ", createdDate=" + createdDate +
-                '}';
-    }
 }
