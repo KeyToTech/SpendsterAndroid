@@ -3,39 +3,39 @@ package com.spendster.data.entity;
 import java.util.Date;
 
 public class Category {
-    private final int categoryId;
+    private final String id;
     private final String userId;
-    private final String nameOfCategory;
+    private final String name;
     private final String type;
     private final Date createdDate;
-    private final int icon;
+    private final String icon;
 
-    public Category(int categoryId, String userId, String nameOfCategory, String type, int icon, Date createdDate) {
-        this.categoryId = categoryId;
+    public Category(String id, String userId, String name, String type, String icon, Date createdDate) {
+        this.id = id;
         this.userId = userId;
-        this.nameOfCategory = nameOfCategory;
+        this.name = name;
         this.type = type;
         this.createdDate = createdDate;
         this.icon = icon;
     }
 
-    public Category(String nameOfCategory, int icon) {
-        this(0, "", nameOfCategory, "", icon, new Date());
+    public Category(String name, String icon) {
+        this("", "", name, "", icon, new Date());
     }
 
-    public String getNameOfCategory() {
-        return nameOfCategory;
+    public String getName() {
+        return name;
     }
 
-    public int getIcon() {
+    public String getIcon() {
         return icon;
     }
 
     @Override
     public String toString() {
         return "Category{" +
-                "categoryId=" + categoryId +
-                ", nameOfCategory='" + nameOfCategory + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", type=" + type +
                 ", createdDate=" + createdDate +
                 ", icon=" + icon +
