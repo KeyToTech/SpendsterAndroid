@@ -14,6 +14,7 @@ import com.spendster.presentation.authentication.APIClient;
 import com.spendster.presentation.authentication.AuthView;
 import com.spendster.presentation.authentication.SharedPreferencesUserStorage;
 import com.spendster.presentation.moreAboutYou.MoreAboutYouActivity;
+import com.spendster.presentation.welcomeScreen.WelcomeActivity;
 
 public class SignUpActivity extends AppCompatActivity implements AuthView {
 
@@ -54,12 +55,25 @@ public class SignUpActivity extends AppCompatActivity implements AuthView {
                 signUpPresenter.signUp(email, password, retypePassword, username);
             }
         });
+
+        findViewById(R.id.btnBack).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchPreviousScreen();
+            }
+        });
     }
 
     @Override
     public void showNextScreen() {
         finish();
         startActivity(new Intent(this, MoreAboutYouActivity.class));
+    }
+
+    @Override
+    public void launchPreviousScreen() {
+        finish();
+        startActivity(new Intent(this, WelcomeActivity.class));
     }
 
     @Override
