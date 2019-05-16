@@ -22,6 +22,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         BottomNavigationView.OnNavigationItemSelectedListener, HomeView {
 
     private static final int REQUESTED_EXPENSE_CODE = 1;
+    private static final String EXPENSE = "Expense";
     private HomePresenter homePresenter;
 
     @Override
@@ -112,7 +113,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         if (data != null) {
             if (requestCode == RESULT_OK){
                 if (requestCode == REQUESTED_EXPENSE_CODE){
-                    String json = data.getStringExtra("Expense");
+                    String json = data.getStringExtra(EXPENSE);
                     Gson gson = new Gson();
                     Expense expense = gson.fromJson(json, Expense.class);
                 }

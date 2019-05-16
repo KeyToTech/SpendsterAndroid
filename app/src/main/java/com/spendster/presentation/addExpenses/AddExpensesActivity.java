@@ -15,10 +15,10 @@ import com.spendster.R;
 import com.spendster.data.entity.Category;
 import com.spendster.presentation.addExpenses.chooseCategory.ChooseCategoryActivity;
 import com.spendster.presentation.authentication.APIClient;
+import com.spendster.presentation.authentication.SharedPreferencesUserStorage;
 import com.spendster.presentation.utils.SDate;
 import com.spendster.presentation.utils.TextDate;
 
-import java.text.ParseException;
 import java.util.Calendar;
 
 import ru.slybeaver.slycalendarview.SlyCalendarDialog;
@@ -27,6 +27,8 @@ public class AddExpensesActivity extends AppCompatActivity implements View.OnCli
 
     private final static int REQUEST_CODE_CATEGORY = 1;
     private final static int REQUEST_CODE_CURRENCY = 2;
+    private final static String CATEGORY = "Category";
+    private final static String RE_SELECT_CATEGORY = "Re-select category";
     private String categoryID;
     private AddExpensesPresenter addExpensesPresenter;
     private TextView tvTitle;
@@ -40,7 +42,8 @@ public class AddExpensesActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_expenses);
         this.addExpensesPresenter = new AddExpensesPresenter(this,
-                new ServerAddExpensesModel(APIClient.getClient().create(APIPostExpenses.class)), getBaseContext());
+                new ServerAddExpensesModel(APIClient.getClient().create(APIPostExpenses.class)),
+                new SharedPreferencesUserStorage(getBaseContext()));
         initUI();
     }
 
@@ -64,31 +67,27 @@ public class AddExpensesActivity extends AppCompatActivity implements View.OnCli
                 backToPreviousScreen();
                 break;
             case R.id.btnAddTransaction:
-                try {
-                    this.addExpenses();
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
+                this.addExpenses();
                 break;
             case R.id.incToday:
-                launchCalendar();
+                this.launchCalendar();
                 break;
             case R.id.incCategory:
-                launchCategoryScreen();
+                this.launchCategoryScreen();
                 break;
             case R.id.incCurrency:
-                launchCurrencyScreen();
+                this.launchCurrencyScreen();
                 break;
         }
     }
 
-    private void addExpenses() throws ParseException {
+    private void addExpenses() {
         this.addExpensesPresenter.save(
                 this.amount(),
                 this.title(),
                 this.note(),
                 this.categoryID,
-                new TextDate(this.date()).date().getTime()
+                new TextDate(this.date())
         );
     }
 
@@ -149,7 +148,10 @@ public class AddExpensesActivity extends AppCompatActivity implements View.OnCli
             if (resultCode == RESULT_OK) {
                 switch (requestCode) {
                     case REQUEST_CODE_CATEGORY:
-                        showCategoryInScreen(data);
+                        String json = data.getStringExtra(CATEGORY);
+                        Gson gson = new Gson();
+                        Category category = gson.fromJson(json, Category.class);
+                        showCategorySelected(category);
                         break;
                     case REQUEST_CODE_CURRENCY:
                         break;
@@ -162,12 +164,9 @@ public class AddExpensesActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
-    private void showCategoryInScreen(Intent data) {
-        String json = data.getStringExtra("Category");
-        Gson gson = new Gson();
-        Category category = gson.fromJson(json, Category.class);
+    private void showCategorySelected(Category category) {
         this.tvTitle.setText(category.getNameOfCategory());
-        this.tvCategory.setText("Re-select category");
+        this.tvCategory.setText(RE_SELECT_CATEGORY);
         this.categoryID = category.getCategoryId();
     }
 
