@@ -6,31 +6,19 @@
     android:background="#f7f8fe"
     android:fitsSystemWindows="true">
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/sliding_tabs"
+    <com.kodmap.library.kmrecyclerviewstickyheader.KmRecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#fff"
-        android:elevation="2dp"
-        app:tabMode="scrollable"
-        app:fontFamily="@font/karla"
-        app:tabSelectedTextColor="#1c1c1c"
-        app:tabTextColor="#8a8a8a"
-        app:tabIndicatorColor="#2dc897"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/view_pager_main"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_below="@+id/homeToolbar"
+        android:layout_height="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sliding_tabs">
-
-    </android.support.v4.view.ViewPager>
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
