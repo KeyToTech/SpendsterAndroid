@@ -1,5 +1,6 @@
 package com.spendster.presentation.addExpenses.chooseCategory;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +20,7 @@ import java.util.List;
 public class ChooseCategoryActivity extends AppCompatActivity implements CategoryView, View.OnClickListener {
 
     private CategoryRecyclerViewAdapter categoryRecyclerViewAdapter;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,8 @@ public class ChooseCategoryActivity extends AppCompatActivity implements Categor
     }
 
     private void initUI() {
+        progressDialog = new ProgressDialog(this, ProgressDialog.THEME_HOLO_DARK);
+        progressDialog.setMessage("Saving. Please wait.");
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
         categoryRecyclerViewAdapter = new CategoryRecyclerViewAdapter(
@@ -81,5 +85,15 @@ public class ChooseCategoryActivity extends AppCompatActivity implements Categor
                 backToPreviousScreen();
                 break;
         }
+    }
+
+    @Override
+    public void showLoading() {
+        progressDialog.show();
+    }
+
+    @Override
+    public void hideLoading() {
+        progressDialog.dismiss();
     }
 }
