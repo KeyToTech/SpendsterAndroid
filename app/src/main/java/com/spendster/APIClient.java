@@ -1,7 +1,6 @@
-package com.spendster.presentation.authentication;
+package com.spendster;
 
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import com.spendster.BuildConfig;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

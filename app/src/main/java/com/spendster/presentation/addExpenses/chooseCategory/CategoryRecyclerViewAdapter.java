@@ -86,7 +86,7 @@ public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRe
         }
 
         public void bind(final Category item) {
-            categoryTitle.setText(item.getNameOfCategory());
+            categoryTitle.setText(item.getName());
             categoryIcon.setImageURI(Uri.parse(item.getIcon()));
         }
     }

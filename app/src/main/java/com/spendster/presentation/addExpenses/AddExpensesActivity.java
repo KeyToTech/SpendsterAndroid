@@ -10,11 +10,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.spendster.APIClient;
 import com.spendster.BuildConfig;
 import com.spendster.R;
 import com.spendster.data.entity.Category;
 import com.spendster.presentation.addExpenses.chooseCategory.ChooseCategoryActivity;
-import com.spendster.presentation.authentication.APIClient;
 import com.spendster.presentation.authentication.SharedPreferencesUserStorage;
 import com.spendster.presentation.utils.SDate;
 import com.spendster.presentation.utils.TextDate;
@@ -165,9 +165,9 @@ public class AddExpensesActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void showCategorySelected(Category category) {
-        this.tvTitle.setText(category.getNameOfCategory());
+        this.tvTitle.setText(category.getName());
         this.tvCategory.setText(RE_SELECT_CATEGORY);
-        this.categoryID = category.getCategoryId();
+        this.categoryID = category.getId();
     }
 
     @Override
