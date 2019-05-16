@@ -1,6 +1,7 @@
 package com.spendster.presentation.addExpenses.chooseCategory;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -85,8 +86,8 @@ public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRe
         }
 
         public void bind(final Category item) {
-            categoryTitle.setText(item.getNameOfCategory());
-            categoryIcon.setImageResource(item.getIcon());
+            categoryTitle.setText(item.getName());
+            categoryIcon.setImageURI(Uri.parse(item.getIcon()));
         }
     }
 }

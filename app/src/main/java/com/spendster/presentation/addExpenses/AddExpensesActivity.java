@@ -116,7 +116,7 @@ public class AddExpensesActivity extends AppCompatActivity implements View.OnCli
                         String json = data.getStringExtra("Category");
                         Gson gson = new Gson();
                         Category category = gson.fromJson(json, Category.class);
-                        tvTitle.setText(category.getNameOfCategory());
+                        tvTitle.setText(category.getName());
                         tvCategory.setText("Re-select category");
 
                         break;
