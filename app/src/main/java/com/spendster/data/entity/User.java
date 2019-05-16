@@ -36,4 +36,8 @@ public class User {
         this.balance = balance;
         this.createdDate = createdDate;
     }
+
+    public String getUserId() {
+        return userId;
+    }
 }

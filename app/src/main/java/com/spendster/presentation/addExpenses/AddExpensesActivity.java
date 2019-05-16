@@ -14,6 +14,7 @@ import com.spendster.BuildConfig;
 import com.spendster.R;
 import com.spendster.data.entity.Category;
 import com.spendster.presentation.addExpenses.chooseCategory.ChooseCategoryActivity;
+import com.spendster.presentation.authentication.APIClient;
 import com.spendster.presentation.utils.SDate;
 import com.spendster.presentation.utils.TextDate;
 
@@ -38,7 +39,8 @@ public class AddExpensesActivity extends AppCompatActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_expenses);
-        this.addExpensesPresenter = new AddExpensesPresenter(this);
+        this.addExpensesPresenter = new AddExpensesPresenter(this,
+                new ServerAddExpensesModel(APIClient.getClient().create(APIPostExpenses.class)), getBaseContext());
         initUI();
     }
 
@@ -177,6 +179,18 @@ public class AddExpensesActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void hideError() {
         //        TODO: https://trello.com/c/qWVqupHK/137-error-interface
+    }
+
+    @Override
+    public void successFinish() {
+        Toast.makeText(this, "Expense saved", Toast.LENGTH_SHORT).show();
+        finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        addExpensesPresenter.dispose();
     }
 }
 

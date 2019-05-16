@@ -20,4 +20,8 @@ public class Expense {
     public Expense(double amount, long createdDate, String note, String categoryId) {
         this("", "", amount, createdDate, note, categoryId);
     }
+
+    public Expense(String userId, double amount, long createdDate, String note, String categoryId) {
+        this("", userId, amount, createdDate, note, categoryId);
+    }
 }

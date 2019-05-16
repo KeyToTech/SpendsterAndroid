@@ -14,6 +14,6 @@ public class ServerAddExpensesModel implements AddExpensesModel {
 
     @Override
     public Single<Expense> save(Expense expense) {
-        return null;
+        return apiPostExpenses.save(expense);
     }
 }

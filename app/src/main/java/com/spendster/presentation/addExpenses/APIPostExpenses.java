@@ -9,6 +9,6 @@ import retrofit2.http.POST;
 
 public interface APIPostExpenses {
     @Headers({"Content-Type: application/json"})
-    @POST("expenses")
+    @POST("expenses/save")
     Single<Expense> save(@Body Expense expense);
 }
