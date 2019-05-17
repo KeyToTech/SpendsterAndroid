@@ -29,8 +29,8 @@ public class AddExpensesPresenter {
         this.sUserStorage = sUserStorage;
     }
 
-    public void save(double amount, String title, String note, String categoryId, TextDate textDate) {// validation
-        long date = new Date().getTime();
+    public void save(double amount, String title, String note, String categoryId, TextDate textDate) {
+        long date;
         try {
             date = textDate.date().getTime();
         } catch (ParseException pe) {
