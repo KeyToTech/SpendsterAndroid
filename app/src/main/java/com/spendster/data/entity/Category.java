@@ -31,14 +31,7 @@ public class Category {
         return icon;
     }
 
-    @Override
-    public String toString() {
-        return "Category{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", type=" + type +
-                ", createdDate=" + createdDate +
-                ", icon=" + icon +
-                '}';
+    public String getId() {
+        return id;
     }
 }

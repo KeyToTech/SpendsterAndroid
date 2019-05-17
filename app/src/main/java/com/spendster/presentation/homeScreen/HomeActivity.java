@@ -3,6 +3,7 @@ package com.spendster.presentation.homeScreen;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -11,13 +12,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.gson.Gson;
 import com.spendster.R;
+import com.spendster.data.entity.Expense;
 import com.spendster.presentation.addExpenses.AddExpensesActivity;
 import com.spendster.presentation.homeScreen.Dashboard.DashboardFragment;
 import com.spendster.presentation.welcomeScreen.WelcomeActivity;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener,
         BottomNavigationView.OnNavigationItemSelectedListener, HomeView {
+
+    private static final int REQUESTED_EXPENSE_CODE = 1;
+    private static final String EXPENSE = "Expense";
     private HomePresenter homePresenter;
 
     @Override
@@ -58,7 +64,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         Fragment fragment = null;
@@ -81,7 +86,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void goToWelcomeScreen(){
+    public void goToWelcomeScreen() {
         finish();
         startActivity(new Intent(HomeActivity.this, WelcomeActivity.class));
     }
@@ -99,6 +104,21 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void addExpenses() {
-        startActivity(new Intent(this, AddExpensesActivity.class));
+        startActivityForResult(new Intent(this, AddExpensesActivity.class),
+                REQUESTED_EXPENSE_CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (data != null) {
+            if (requestCode == RESULT_OK){
+                if (requestCode == REQUESTED_EXPENSE_CODE){
+                    String json = data.getStringExtra(EXPENSE);
+                    Gson gson = new Gson();
+                    Expense expense = gson.fromJson(json, Expense.class);
+                }
+            }
+        }
     }
 }
