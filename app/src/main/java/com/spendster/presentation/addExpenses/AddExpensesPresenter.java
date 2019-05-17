@@ -34,7 +34,8 @@ public class AddExpensesPresenter {
         try {
             date = textDate.date().getTime();
         } catch (ParseException pe) {
-            this.addExpensesView.showError("Bad date format");
+            addExpensesView.showError("Date is not valid. That's why current date is set");
+            date = new Date().getTime();
         }
         String userId = this.sUserStorage.read().getUserId();
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
