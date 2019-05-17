@@ -1,4 +1,4 @@
-package com.spendster.presentation.homeScreen;
+package com.spendster.presentation.homeScreen.Dashboard;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
