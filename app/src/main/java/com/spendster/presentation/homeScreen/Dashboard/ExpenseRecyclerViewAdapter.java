@@ -2,13 +2,16 @@ package com.spendster.presentation.homeScreen.Dashboard;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.spendster.BuildConfig;
 import com.spendster.R;
 import com.spendster.data.entity.Expense;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ExpenseRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -18,6 +21,10 @@ public class ExpenseRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVie
 
     public ExpenseRecyclerViewAdapter(List<Expense> expenses) {
         this.expenses = expenses;
+    }
+
+    public ExpenseRecyclerViewAdapter() {
+        this(new ArrayList<Expense>());
     }
 
     @NonNull
@@ -70,5 +77,13 @@ public class ExpenseRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVie
 
     private boolean isPositionHeader(int position) {
         return position == 0;
+    }
+
+    public void bind(List<Expense> expenses) {
+        this.expenses = expenses;
+        if (expenses == null) {
+            Log.d(BuildConfig.MY_LOGS, "Expenses equal to null");
+        }
+        notifyItemRangeInserted(0, getItemCount());
     }
 }

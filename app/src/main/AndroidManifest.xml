@@ -23,13 +23,14 @@
         <activity android:name=".presentation.authentication.signUp.SignUpActivity"/>
         <activity android:name=".presentation.welcomeScreen.WelcomeActivity"/>
         <activity android:name=".presentation.launchScreen.LaunchActivity">
+        </activity>
+        <activity android:name=".presentation.homeScreen.HomeActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.homeScreen.HomeActivity" />
         <activity android:name=".presentation.address.AddressActivity" />
         <activity
             android:name=".MainActivity"
