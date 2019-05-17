@@ -59,9 +59,12 @@ public class ExpenseRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVie
 
     @Override
     public int getItemViewType(int position) {
-        int type = TYPE_ITEM;
+        int type;
         if (this.isPositionHeader(position))
             type = TYPE_HEADER;
+        else {
+            type = TYPE_ITEM;
+        }
         return type;
     }
 
