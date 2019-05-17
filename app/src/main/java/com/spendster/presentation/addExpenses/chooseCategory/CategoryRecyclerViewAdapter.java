@@ -74,9 +74,9 @@ public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRe
     }
 
     public static class CategoryViewHolder extends RecyclerView.ViewHolder {
-        TextView categoryTitle;
-        ImageView categoryIcon;
-        CardView cardView;
+        private TextView categoryTitle;
+        private ImageView categoryIcon;
+        private CardView cardView;
 
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
