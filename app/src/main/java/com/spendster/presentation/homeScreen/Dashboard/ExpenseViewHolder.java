@@ -7,13 +7,13 @@ import android.widget.TextView;
 
 import com.spendster.R;
 
-public class ItemViewHolder extends RecyclerView.ViewHolder{
+public class ExpenseViewHolder extends RecyclerView.ViewHolder{
     private ImageView expenseIcon;
     private TextView expenseTitle;
     private TextView expenseNote;
     private TextView expenseAmount;
 
-    public ItemViewHolder(View itemView) {
+    public ExpenseViewHolder(View itemView) {
         super(itemView);
         expenseIcon = itemView.findViewById(R.id.expenseIcon);
         expenseTitle = itemView.findViewById(R.id.expenseTitle);
