@@ -17,11 +17,23 @@ public class Expense {
         this.categoryId = categoryId;
     }
 
-    public Expense(double amount, long createdDate, String note, String categoryId) {
-        this("", "", amount, createdDate, note, categoryId);
-    }
-
     public Expense(String userId, double amount, long createdDate, String note, String categoryId) {
         this("", userId, amount, createdDate, note, categoryId);
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public long getCreatedDate() {
+        return createdDate;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public String getCategoryId() {
+        return categoryId;
     }
 }
