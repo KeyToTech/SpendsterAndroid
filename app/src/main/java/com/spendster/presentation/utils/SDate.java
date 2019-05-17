@@ -13,7 +13,8 @@ public class SDate implements SDateFormats {
     }
 
     public String dateFormatted() {
-        return new SimpleDateFormat(TIME_FORMAT, Locale.UK).format(date);
+        return new SimpleDateFormat(TIME_FORMAT, Locale.UK).format(this.date);
     }
+
 
 }
