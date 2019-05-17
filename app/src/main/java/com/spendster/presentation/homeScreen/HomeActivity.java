@@ -16,6 +16,7 @@ import com.google.gson.Gson;
 import com.spendster.R;
 import com.spendster.data.entity.Expense;
 import com.spendster.presentation.addExpenses.AddExpensesActivity;
+import com.spendster.presentation.homeScreen.Dashboard.DashboardFragment;
 import com.spendster.presentation.welcomeScreen.WelcomeActivity;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener,

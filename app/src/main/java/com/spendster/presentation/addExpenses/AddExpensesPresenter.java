@@ -40,7 +40,9 @@ public class AddExpensesPresenter {
         String userId = this.sUserStorage.read().getUserId();
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
         amount = Double.valueOf(decimalFormat.format(amount));
-        validation(title, note, categoryId);
+        if (!validation(title, note, categoryId)){
+            return;
+        }
         Expense expense = new Expense(userId, amount, date, note, categoryId);
         if (this.serverAddExpensesModel != null) {
             this.compositeDisposable.add(this.serverAddExpensesModel.save(expense)
@@ -60,13 +62,17 @@ public class AddExpensesPresenter {
         }
     }
 
-    private void validation(String title, String note, String categoryId) {
+    private boolean validation(String title, String note, String categoryId) {
+        boolean check = true;
         if (title.equals(Resources.getSystem().getString(R.string.expenses)) && categoryId.isEmpty()) {
             this.addExpensesView.showError("Category is not selected");
+            check = false;
         }
         if (note.isEmpty()) {
             this.addExpensesView.showError("Write some notes");
+            check = false;
         }
+        return check;
     }
 
     public void dispose() {
