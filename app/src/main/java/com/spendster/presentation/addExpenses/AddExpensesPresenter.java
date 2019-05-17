@@ -6,6 +6,7 @@ import com.spendster.R;
 import com.spendster.data.entity.Expense;
 import com.spendster.presentation.authentication.SUserStorage;
 import com.spendster.presentation.utils.TextDate;
+import com.spendster.presentation.validation.ValidationResource;
 
 import java.text.DecimalFormat;
 import java.text.ParseException;
@@ -40,7 +41,9 @@ public class AddExpensesPresenter {
         String userId = this.sUserStorage.read().getUserId();
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
         amount = Double.valueOf(decimalFormat.format(amount));
-        if (!validation(title, note, categoryId)){
+        ValidationResource validationResource = validation(title, note, categoryId);
+        if (!validationResource.isValid()){
+            addExpensesView.showError(validationResource.message());
             return;
         }
         Expense expense = new Expense(userId, amount, date, note, categoryId);
@@ -62,17 +65,18 @@ public class AddExpensesPresenter {
         }
     }
 
-    private boolean validation(String title, String note, String categoryId) {
-        boolean check = true;
+    private ValidationResource validation(String title, String note, String categoryId) {
+        boolean isValid = true;
+        String message = "";
         if (title.equals(Resources.getSystem().getString(R.string.expenses)) && categoryId.isEmpty()) {
-            this.addExpensesView.showError("Category is not selected");
-            check = false;
+            message = "Category is not selected";
+            isValid = false;
         }
         if (note.isEmpty()) {
-            this.addExpensesView.showError("Write some notes");
-            check = false;
+            message = "Write some notes";
+            isValid = false;
         }
-        return check;
+        return new ValidationResource(message, isValid);
     }
 
     public void dispose() {
