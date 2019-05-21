@@ -144,6 +144,7 @@ public class AddExpensesActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (data != null) {
             if (resultCode == RESULT_OK) {
                 switch (requestCode) {

@@ -9,12 +9,11 @@ import java.util.Date;
 import java.util.List;
 
 import io.reactivex.Observable;
-import io.reactivex.Observer;
 
 public class MockedDashboardModel implements DashboardModel {
 
     @Override
-    public List<Expense> getExpenses() {
+    public Observable<List<Expense>> getExpenses() {
         List<Expense> data = new ArrayList<>();
         data.add(new Expense("1", 100, new Date().getTime(), "Bread", "76"));
         data.add(new Expense("6", 600, new Date().getTime() - 86400000, "Food for cat", "21"));
@@ -36,6 +35,6 @@ public class MockedDashboardModel implements DashboardModel {
         data.add(new Expense("17", 500, new Date().getTime() - 86400000*3, "Bora-Bora", "2"));
         Comparator<Expense> expenseComparator = (o1, o2) -> (int) (o2.getCreatedDate() - o1.getCreatedDate());
         Collections.sort(data, expenseComparator);
-        return data;
+        return Observable.just(data);
     }
 }
