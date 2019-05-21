@@ -8,7 +8,7 @@ import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 public interface APIPostExpenses {
-    @Headers({"Content-Type: application/json"})
+    @Headers({"Content-Type: application/json", "Authorization: 1234"})
     @POST("expenses/save")
     Single<Expense> save(@Body Expense expense);
 }

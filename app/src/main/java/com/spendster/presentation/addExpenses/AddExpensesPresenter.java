@@ -1,8 +1,5 @@
 package com.spendster.presentation.addExpenses;
 
-import android.content.res.Resources;
-
-import com.spendster.R;
 import com.spendster.data.entity.Expense;
 import com.spendster.presentation.authentication.SUserStorage;
 import com.spendster.presentation.utils.TextDate;
@@ -22,6 +19,7 @@ public class AddExpensesPresenter {
     private final AddExpensesView addExpensesView;
     private final ServerAddExpensesModel serverAddExpensesModel;
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
+    private final static String EXPENSE = "Expenses";
 
     public AddExpensesPresenter(AddExpensesView addExpensesView, ServerAddExpensesModel
             serverAddExpensesModel, SUserStorage sUserStorage) {
@@ -30,7 +28,7 @@ public class AddExpensesPresenter {
         this.sUserStorage = sUserStorage;
     }
 
-    public void save(double amount, String title, String note, String categoryId, TextDate textDate) {
+    public void save(String amount, String title, String note, String categoryId, TextDate textDate) {
         long date;
         try {
             date = textDate.date().getTime();
@@ -39,14 +37,14 @@ public class AddExpensesPresenter {
             date = new Date().getTime();
         }
         String userId = this.sUserStorage.read().getUserId();
-        DecimalFormat decimalFormat = new DecimalFormat("#.##");
-        amount = Double.valueOf(decimalFormat.format(amount));
-        ValidationResource validationResource = validation(title, note, categoryId);
-        if (!validationResource.isValid()){
+        ValidationResource validationResource = validation(amount, title, note, categoryId);
+        if (!validationResource.isValid()) {
             addExpensesView.showError(validationResource.message());
             return;
         }
-        Expense expense = new Expense(userId, amount, date, note, categoryId);
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+        double expenseAmount = Double.valueOf(decimalFormat.format(parseAmount(amount)));
+        Expense expense = new Expense(userId, expenseAmount, note, categoryId);
         if (this.serverAddExpensesModel != null) {
             this.compositeDisposable.add(this.serverAddExpensesModel.save(expense)
                     .subscribeOn(Schedulers.io())
@@ -65,10 +63,10 @@ public class AddExpensesPresenter {
         }
     }
 
-    private ValidationResource validation(String title, String note, String categoryId) {
+    private ValidationResource validation(String amount, String title, String note, String categoryId) {
         boolean isValid = true;
         String message = "";
-        if (title.equals(Resources.getSystem().getString(R.string.expenses)) && categoryId.isEmpty()) {
+        if (title.equals(EXPENSE) && categoryId == null) {
             message = "Category is not selected";
             isValid = false;
         }
@@ -76,7 +74,15 @@ public class AddExpensesPresenter {
             message = "Write some notes";
             isValid = false;
         }
+        if (amount.equals("")) {
+            message = "Input amount of Expense";
+            isValid = false;
+        }
         return new ValidationResource(message, isValid);
+    }
+
+    private double parseAmount(String amount) {
+        return Double.parseDouble(amount);
     }
 
     public void dispose() {

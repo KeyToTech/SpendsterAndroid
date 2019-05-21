@@ -9,11 +9,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.spendster.R;
 import com.spendster.APIClient;
+import com.spendster.R;
 import com.spendster.presentation.authentication.AuthView;
 import com.spendster.presentation.authentication.SharedPreferencesUserStorage;
 import com.spendster.presentation.moreAboutYou.MoreAboutYouActivity;
+
 
 public class SignUpActivity extends AppCompatActivity implements AuthView {
 
