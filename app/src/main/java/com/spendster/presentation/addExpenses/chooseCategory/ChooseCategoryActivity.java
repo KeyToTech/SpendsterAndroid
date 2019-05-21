@@ -3,9 +3,6 @@ package com.spendster.presentation.addExpenses.chooseCategory;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -16,6 +13,10 @@ import com.spendster.R;
 import com.spendster.data.entity.Category;
 
 import java.util.List;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class ChooseCategoryActivity extends AppCompatActivity implements CategoryView, View.OnClickListener {
 
