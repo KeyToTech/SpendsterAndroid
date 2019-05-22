@@ -4,8 +4,8 @@ import com.spendster.data.entity.Expense;
 
 import java.util.List;
 
-import io.reactivex.Observable;
+import io.reactivex.Flowable;
 
 public interface DashboardModel {
-    Observable<List<Expense>> getExpenses();
+    Flowable<List<Expense>> getExpenses();
 }
