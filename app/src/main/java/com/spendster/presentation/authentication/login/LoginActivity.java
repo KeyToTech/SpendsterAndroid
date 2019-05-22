@@ -13,6 +13,7 @@ import com.spendster.R;
 import com.spendster.presentation.authentication.AuthView;
 import com.spendster.presentation.authentication.SharedPreferencesUserStorage;
 import com.spendster.presentation.homeScreen.HomeActivity;
+import com.spendster.presentation.welcomeScreen.WelcomeActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -51,12 +52,25 @@ public class LoginActivity extends AppCompatActivity implements AuthView {
                 loginPresenter.login(email, password);
             }
         });
+
+        findViewById(R.id.btnBack).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchPreviousScreen();
+            }
+        });
     }
 
     @Override
     public void showNextScreen() {
         finish();
         startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+    }
+
+    @Override
+    public void launchPreviousScreen() {
+        finish();
+        startActivity(new Intent(this, WelcomeActivity.class));
     }
 
     @Override

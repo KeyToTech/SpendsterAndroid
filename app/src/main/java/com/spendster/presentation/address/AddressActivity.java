@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.spendster.R;
 import com.spendster.presentation.homeScreen.HomeActivity;
+import com.spendster.presentation.moreAboutYou.MoreAboutYouActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -31,6 +32,13 @@ public class AddressActivity extends AppCompatActivity implements AddressView {
 
         final AddressPresenter addressPresenter = new AddressPresenter(this);
 
+        findViewById(R.id.btnBack).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchPreviousScreen();
+            }
+        });
+
         btnGetStarted.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,6 +49,11 @@ public class AddressActivity extends AppCompatActivity implements AddressView {
                 addressPresenter.setAddress(fLName, phone, address);
             }
         });
+    }
+
+    private void launchPreviousScreen() {
+        finish();
+        startActivity(new Intent(this, MoreAboutYouActivity.class));
     }
 
     @Override
