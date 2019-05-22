@@ -21,6 +21,7 @@ public class ProfilePresenter {
             profileView.fillUserFields(user);
         }else {
             Log.d("MyLogs", "User is empty");
+            //TODO: https://trello.com/c/EdvlWVBo/165-log-out-in-profilepresenter
         }
     }
 }
