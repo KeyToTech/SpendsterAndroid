@@ -2,12 +2,13 @@ package com.spendster.presentation.launchScreen;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
 import com.spendster.R;
 import com.spendster.presentation.authentication.SharedPreferencesUserStorage;
 import com.spendster.presentation.homeScreen.HomeActivity;
 import com.spendster.presentation.welcomeScreen.WelcomeActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class LaunchActivity extends AppCompatActivity implements LaunchView {
 

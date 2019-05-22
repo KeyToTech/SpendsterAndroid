@@ -2,26 +2,33 @@ package com.spendster.presentation.homeScreen;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.spendster.R;
+import com.spendster.presentation.homeScreen.Profile.ProfileFragment;
 import com.spendster.presentation.addExpenses.AddExpensesActivity;
+import com.spendster.presentation.homeScreen.Dashboard.DashboardFragment;
 import com.spendster.presentation.welcomeScreen.WelcomeActivity;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener,
         BottomNavigationView.OnNavigationItemSelectedListener, HomeView {
+
+    private static final String EXPENSE = "Expense";
     private HomePresenter homePresenter;
+
+    private TextView toolbarCaption;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         initUI();
@@ -32,6 +39,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         setSupportActionBar(toolbar);
         homePresenter = new HomePresenter(this, getBaseContext());
         final BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationMenu);
+        toolbarCaption = findViewById(R.id.toolbarCaption);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         loadFragment(new DashboardFragment());
         initButtons();
@@ -57,21 +65,24 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         Fragment fragment = null;
         switch (menuItem.getItemId()) {
             case R.id.activityItem:
+                setToolbarCaption(R.string.activity);
                 fragment = DashboardFragment.newInstance();
                 break;
             case R.id.overviewItem:
+                setToolbarCaption(R.string.overview);
                 fragment = OverviewFragment.newInstance();
                 break;
             case R.id.budgetItem:
+                setToolbarCaption(R.string.budget);
                 fragment = BudgetFragment.newInstance();
                 break;
             case R.id.profileItem:
+                setToolbarCaption(R.string.profile);
                 fragment = ProfileFragment.newInstance();
                 break;
         }
@@ -80,7 +91,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void goToWelcomeScreen(){
+    public void goToWelcomeScreen() {
         finish();
         startActivity(new Intent(HomeActivity.this, WelcomeActivity.class));
     }
@@ -94,6 +105,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             return true;
         }
         return false;
+    }
+
+    public void setToolbarCaption(int caption) {
+        toolbarCaption.setText(caption);
     }
 
     @Override

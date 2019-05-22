@@ -1,23 +1,28 @@
 package com.spendster.presentation.addExpenses.chooseCategory;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.spendster.APIClient;
 import com.spendster.R;
 import com.spendster.data.entity.Category;
+import com.spendster.presentation.authentication.SharedPreferencesUserStorage;
 
 import java.util.List;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class ChooseCategoryActivity extends AppCompatActivity implements CategoryView, View.OnClickListener {
 
     private CategoryRecyclerViewAdapter categoryRecyclerViewAdapter;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +30,14 @@ public class ChooseCategoryActivity extends AppCompatActivity implements Categor
         setContentView(R.layout.activity_choose_category);
         initUI();
         ChooseCategoryPresenter chooseCategoryPresenter = new ChooseCategoryPresenter(this,
-                new MockedCategoryModel());
+                new ServerCategoryModel(APIClient.getClient().create(APICategories.class)),
+                new SharedPreferencesUserStorage(getBaseContext()));
         chooseCategoryPresenter.fetchCategories();
     }
 
     private void initUI() {
+        progressDialog = new ProgressDialog(this, ProgressDialog.THEME_HOLO_DARK);
+        progressDialog.setMessage("Saving. Please wait.");
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
         categoryRecyclerViewAdapter = new CategoryRecyclerViewAdapter(
@@ -80,5 +88,15 @@ public class ChooseCategoryActivity extends AppCompatActivity implements Categor
                 backToPreviousScreen();
                 break;
         }
+    }
+
+    @Override
+    public void showLoading() {
+        progressDialog.show();
+    }
+
+    @Override
+    public void hideLoading() {
+        progressDialog.dismiss();
     }
 }

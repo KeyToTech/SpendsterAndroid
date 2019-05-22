@@ -4,6 +4,8 @@ import com.spendster.data.entity.Category;
 
 import java.util.List;
 
+import io.reactivex.Single;
+
 public interface CategoryModel {
-    List<Category> getCategories();
+    Single<List<Category>> getCategories(String token);
 }
