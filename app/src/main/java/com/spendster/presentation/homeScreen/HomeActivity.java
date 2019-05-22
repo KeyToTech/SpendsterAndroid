@@ -2,21 +2,25 @@ package com.spendster.presentation.homeScreen;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.spendster.R;
 import com.spendster.presentation.addExpenses.AddExpensesActivity;
+import com.spendster.presentation.homeScreen.Dashboard.DashboardFragment;
 import com.spendster.presentation.welcomeScreen.WelcomeActivity;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener,
         BottomNavigationView.OnNavigationItemSelectedListener, HomeView {
+
+    private static final String EXPENSE = "Expense";
     private HomePresenter homePresenter;
 
     @Override
@@ -57,7 +61,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         Fragment fragment = null;
@@ -80,7 +83,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void goToWelcomeScreen(){
+    public void goToWelcomeScreen() {
         finish();
         startActivity(new Intent(HomeActivity.this, WelcomeActivity.class));
     }
