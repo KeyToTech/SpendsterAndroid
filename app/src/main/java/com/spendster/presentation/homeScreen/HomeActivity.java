@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.spendster.R;
+import com.spendster.presentation.homeScreen.Profile.ProfileFragment;
 import com.spendster.presentation.addExpenses.AddExpensesActivity;
 import com.spendster.presentation.homeScreen.Dashboard.DashboardFragment;
 import com.spendster.presentation.welcomeScreen.WelcomeActivity;
@@ -23,9 +25,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private static final String EXPENSE = "Expense";
     private HomePresenter homePresenter;
 
+    private TextView toolbarCaption;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         initUI();
@@ -36,6 +39,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         setSupportActionBar(toolbar);
         homePresenter = new HomePresenter(this, getBaseContext());
         final BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationMenu);
+        toolbarCaption = findViewById(R.id.toolbarCaption);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         loadFragment(new DashboardFragment());
         initButtons();
@@ -66,15 +70,19 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         Fragment fragment = null;
         switch (menuItem.getItemId()) {
             case R.id.activityItem:
+                setToolbarCaption(R.string.activity);
                 fragment = DashboardFragment.newInstance();
                 break;
             case R.id.overviewItem:
+                setToolbarCaption(R.string.overview);
                 fragment = OverviewFragment.newInstance();
                 break;
             case R.id.budgetItem:
+                setToolbarCaption(R.string.budget);
                 fragment = BudgetFragment.newInstance();
                 break;
             case R.id.profileItem:
+                setToolbarCaption(R.string.profile);
                 fragment = ProfileFragment.newInstance();
                 break;
         }
@@ -97,6 +105,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             return true;
         }
         return false;
+    }
+
+    public void setToolbarCaption(int caption) {
+        toolbarCaption.setText(caption);
     }
 
     @Override

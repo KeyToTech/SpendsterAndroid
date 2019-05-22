@@ -8,8 +8,8 @@ import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
+import io.reactivex.subscribers.DisposableSubscriber;
 
 public class DashboardPresenter {
     private final static String LOG = "Expenses list";
@@ -29,7 +29,7 @@ public class DashboardPresenter {
                 compositeDisposable.add(dashboardModel.getExpenses()
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeWith(new DisposableObserver<List<Expense>>() {
+                        .subscribeWith(new DisposableSubscriber<List<Expense>>() {
 
                             @Override
                             public void onNext(List<Expense> expenses) {
