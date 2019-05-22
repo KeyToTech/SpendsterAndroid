@@ -1,12 +1,13 @@
 package com.spendster.presentation.homeScreen.Dashboard;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.spendster.R;
 import com.spendster.data.entity.Expense;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 public class ExpenseViewHolder extends RecyclerView.ViewHolder{
     private ImageView expenseIcon;

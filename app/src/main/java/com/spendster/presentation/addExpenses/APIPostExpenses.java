@@ -4,11 +4,12 @@ import com.spendster.data.entity.Expense;
 
 import io.reactivex.Single;
 import retrofit2.http.Body;
+import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 
 public interface APIPostExpenses {
-    @Headers({"Content-Type: application/json", "Authorization: 1234"})
+    @Headers({"Content-Type: application/json"})
     @POST("expenses/save")
-    Single<Expense> save(@Body Expense expense);
+    Single<Expense> save(@Header("Authorization") String token, @Body Expense expense);
 }

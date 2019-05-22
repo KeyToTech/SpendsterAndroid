@@ -13,7 +13,7 @@ public class ServerAddExpensesModel implements AddExpensesModel {
     }
 
     @Override
-    public Single<Expense> save(Expense expense) {
-        return apiPostExpenses.save(expense);
+    public Single<Expense> save(String token ,Expense expense) {
+        return apiPostExpenses.save(token ,expense);
     }
 }

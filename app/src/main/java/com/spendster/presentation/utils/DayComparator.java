@@ -15,7 +15,7 @@ public class DayComparator {
         dateToCompare.setTime(this.date);
         Calendar todayDay = Calendar.getInstance();
         todayDay.setTime(new Date());
-        return dateToCompare.get(Calendar.DAY_OF_MONTH) == todayDay.get(Calendar.DAY_OF_MONTH);
+        return dateToCompare.get(Calendar.DATE) == todayDay.get(Calendar.DATE);
     }
 
     public boolean isYesterday(){
@@ -23,6 +23,12 @@ public class DayComparator {
         dateToCompare.setTime(this.date);
         Calendar yesterdayDay = Calendar.getInstance();
         yesterdayDay.add(Calendar.DATE, -1);
-        return dateToCompare.get(Calendar.DAY_OF_MONTH) == yesterdayDay.get(Calendar.DAY_OF_MONTH);
+        return dateToCompare.get(Calendar.DATE) == yesterdayDay.get(Calendar.DATE);
+    }
+
+    public int day(){
+        Calendar date = Calendar.getInstance();
+        date.setTime(this.date);
+        return date.get(Calendar.DATE);
     }
 }

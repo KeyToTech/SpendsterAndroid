@@ -2,7 +2,6 @@ package com.spendster.presentation.addExpenses;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -21,6 +20,7 @@ import com.spendster.presentation.utils.TextDate;
 
 import java.util.Calendar;
 
+import androidx.appcompat.app.AppCompatActivity;
 import ru.slybeaver.slycalendarview.SlyCalendarDialog;
 
 public class AddExpensesActivity extends AppCompatActivity implements View.OnClickListener, SlyCalendarDialog.Callback, AddExpensesView {
@@ -144,6 +144,7 @@ public class AddExpensesActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (data != null) {
             if (resultCode == RESULT_OK) {
                 switch (requestCode) {

@@ -7,5 +7,5 @@ import java.util.List;
 import io.reactivex.Single;
 
 public interface CategoryModel {
-    Single<List<Category>> getCategories();
+    Single<List<Category>> getCategories(String token);
 }

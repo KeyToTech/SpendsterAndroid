@@ -42,11 +42,10 @@ public class AddExpensesPresenter {
             addExpensesView.showError(validationResource.message());
             return;
         }
-        DecimalFormat decimalFormat = new DecimalFormat("#.##");
-        double expenseAmount = Double.valueOf(decimalFormat.format(parseAmount(amount)));
-        Expense expense = new Expense(userId, expenseAmount, note, categoryId);
+        double expenseAmount = formattingAmount(amount);
+        Expense expense = new Expense(userId, expenseAmount, date, note, categoryId);
         if (this.serverAddExpensesModel != null) {
-            this.compositeDisposable.add(this.serverAddExpensesModel.save(expense)
+            this.compositeDisposable.add(this.serverAddExpensesModel.save(sUserStorage.read().getToken(), expense)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribeWith(new DisposableSingleObserver<Expense>() {
@@ -79,6 +78,11 @@ public class AddExpensesPresenter {
             isValid = false;
         }
         return new ValidationResource(message, isValid);
+    }
+
+    private double formattingAmount(String amount){
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+        return Double.valueOf(decimalFormat.format(parseAmount(amount)));
     }
 
     private double parseAmount(String amount) {
