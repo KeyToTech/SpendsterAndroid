@@ -1,9 +1,5 @@
 package com.spendster.presentation.utils;
 
-import android.content.res.Resources;
-
-import com.spendster.R;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,6 +8,7 @@ import java.util.Locale;
 public class TextDate implements SDateFormats {
 
     private final String textDate;
+    private final static String TODAY = "Today?";
 
     public TextDate(String textDate) {
         this.textDate = textDate;
@@ -19,7 +16,7 @@ public class TextDate implements SDateFormats {
 
     public Date date() throws ParseException {
         Date date = new Date();
-        if (!textDate.equals(Resources.getSystem().getString(R.string.today))){
+        if (!textDate.equals(TODAY)){
             date = new SimpleDateFormat(TIME_FORMAT, Locale.UK).parse(textDate);
         }
         return date;

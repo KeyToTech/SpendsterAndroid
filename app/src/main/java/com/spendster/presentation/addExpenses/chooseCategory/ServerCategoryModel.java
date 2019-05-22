@@ -14,7 +14,7 @@ public class ServerCategoryModel implements CategoryModel {
     }
 
     @Override
-    public Single<List<Category>> getCategories() {
-        return apiCategories.getCategories();
+    public Single<List<Category>> getCategories(String token) {
+        return apiCategories.getCategories(token);
     }
 }

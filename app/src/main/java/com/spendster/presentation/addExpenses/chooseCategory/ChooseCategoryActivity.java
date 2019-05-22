@@ -11,6 +11,7 @@ import com.google.gson.Gson;
 import com.spendster.APIClient;
 import com.spendster.R;
 import com.spendster.data.entity.Category;
+import com.spendster.presentation.authentication.SharedPreferencesUserStorage;
 
 import java.util.List;
 
@@ -29,7 +30,8 @@ public class ChooseCategoryActivity extends AppCompatActivity implements Categor
         setContentView(R.layout.activity_choose_category);
         initUI();
         ChooseCategoryPresenter chooseCategoryPresenter = new ChooseCategoryPresenter(this,
-                new ServerCategoryModel(APIClient.getClient().create(APICategories.class)));
+                new ServerCategoryModel(APIClient.getClient().create(APICategories.class)),
+                new SharedPreferencesUserStorage(getBaseContext()));
         chooseCategoryPresenter.fetchCategories();
     }
 

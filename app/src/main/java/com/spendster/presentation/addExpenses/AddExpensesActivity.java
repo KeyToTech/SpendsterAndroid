@@ -99,8 +99,8 @@ public class AddExpensesActivity extends AppCompatActivity implements View.OnCli
         return this.tvTitle.getText().toString();
     }
 
-    public double amount() {
-        return Double.parseDouble(etAmount.getText().toString());
+    public String amount() {
+        return etAmount.getText().toString();
     }
 
     public String note() {

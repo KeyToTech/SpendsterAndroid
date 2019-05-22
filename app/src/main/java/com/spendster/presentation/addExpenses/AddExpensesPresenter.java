@@ -1,8 +1,5 @@
 package com.spendster.presentation.addExpenses;
 
-import android.content.res.Resources;
-
-import com.spendster.R;
 import com.spendster.data.entity.Expense;
 import com.spendster.presentation.authentication.SUserStorage;
 import com.spendster.presentation.utils.TextDate;
@@ -22,6 +19,7 @@ public class AddExpensesPresenter {
     private final AddExpensesView addExpensesView;
     private final ServerAddExpensesModel serverAddExpensesModel;
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
+    private final static String EXPENSE = "Expenses";
 
     public AddExpensesPresenter(AddExpensesView addExpensesView, ServerAddExpensesModel
             serverAddExpensesModel, SUserStorage sUserStorage) {
@@ -30,18 +28,18 @@ public class AddExpensesPresenter {
         this.sUserStorage = sUserStorage;
     }
 
-    public void save(double amount, String title, String note, String categoryId, TextDate textDate) {
-        long date = convertDate(textDate);
-        String userId = this.sUserStorage.read().getUserId();
-        DecimalFormat decimalFormat = new DecimalFormat("#.##");
-        amount = Double.valueOf(decimalFormat.format(amount));
-        ValidationResource validationResource = validation(title, note, categoryId);
+
+    public void save(String amount, String title, String note, String categoryId, TextDate textDate) {
+        ValidationResource validationResource = validation(amount, title, note, categoryId);
         if (!validationResource.isValid()) {
             addExpensesView.showError(validationResource.message());
         } else {
+            String userId = this.sUserStorage.read().getUserId();
+            long date = convertDate(textDate);
+            double expenseAmount = formattingAmount(amount);
             if (this.serverAddExpensesModel != null) {
-                this.compositeDisposable.add(this.serverAddExpensesModel.save(new
-                        Expense(userId, amount, date, note, categoryId))
+                this.compositeDisposable.add(this.serverAddExpensesModel.save(sUserStorage.read().getAuthToken(), new
+                        Expense(userId, expenseAmount, date, note, categoryId))
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeWith(new DisposableSingleObserver<Expense>() {
@@ -59,10 +57,10 @@ public class AddExpensesPresenter {
         }
     }
 
-    private ValidationResource validation(String title, String note, String categoryId) {
+    private ValidationResource validation(String amount, String title, String note, String categoryId) {
         boolean isValid = true;
         String message = "";
-        if (title.equals(Resources.getSystem().getString(R.string.expenses)) && categoryId.isEmpty()) {
+        if (title.equals(EXPENSE) && categoryId == null) {
             message = "Category is not selected";
             isValid = false;
         }
@@ -70,7 +68,21 @@ public class AddExpensesPresenter {
             message = "Write some notes";
             isValid = false;
         }
+        if (amount.equals("")) {
+            message = "Input amount of Expense";
+            isValid = false;
+        }
         return new ValidationResource(message, isValid);
+    }
+
+
+    private double formattingAmount(String amount){
+        DecimalFormat decimalFormat = new DecimalFormat("#.##");
+        return Double.valueOf(decimalFormat.format(parseAmount(amount)));
+    }
+
+    private double parseAmount(String amount) {
+        return Double.parseDouble(amount);
     }
 
     private long convertDate(TextDate textDate){

@@ -1,5 +1,7 @@
 package com.spendster.data.entity;
 
+import java.util.Date;
+
 public class Expense {
     private final String id;
     private final String userId;
@@ -20,6 +22,11 @@ public class Expense {
     public Expense(String userId, double amount, long createdDate, String note, String categoryId) {
         this("", userId, amount, createdDate, note, categoryId);
     }
+
+    public Expense(String userId, double amount, String note, String categoryId) {
+        this("", userId, amount, new Date().getTime(), note, categoryId);
+    }
+
 
     public double getAmount() {
         return amount;
