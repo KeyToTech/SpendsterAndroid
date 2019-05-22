@@ -74,18 +74,18 @@ public class CategoryRecyclerViewAdapter extends RecyclerView.Adapter<CategoryRe
     }
 
     public static class CategoryViewHolder extends RecyclerView.ViewHolder {
-        private TextView categoryTitle;
-        private ImageView categoryIcon;
+        private TextView tvCategoryTitle;
+        private ImageView imCategoryIcon;
 
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
-            categoryTitle = itemView.findViewById(R.id.categoryTitle);
-            categoryIcon = itemView.findViewById(R.id.categoryIcon);
+            tvCategoryTitle = itemView.findViewById(R.id.categoryTitle);
+            imCategoryIcon = itemView.findViewById(R.id.categoryIcon);
         }
 
         public void bind(final Category item) {
-            categoryTitle.setText(item.getName());
-            categoryIcon.setImageURI(Uri.parse(item.getIcon()));
+            tvCategoryTitle.setText(item.getName());
+            imCategoryIcon.setImageURI(Uri.parse(item.getIcon()));
         }
     }
 }

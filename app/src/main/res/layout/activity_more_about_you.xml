@@ -44,7 +44,7 @@
         app:layout_constraintTop_toBottomOf="@+id/view" />
 
     <include
-        android:id="@+id/include"
+        android:id="@+id/moreAboutYouPhoto"
         layout="@layout/card_view_with_camera_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
         android:text="@string/btw_you_look_great"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include" />
+        app:layout_constraintTop_toBottomOf="@+id/moreAboutYouPhoto" />
 
     <Button
         android:id="@+id/btnContinue"

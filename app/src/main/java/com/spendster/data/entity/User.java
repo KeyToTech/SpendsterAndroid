@@ -44,6 +44,14 @@ public class User {
         this.authToken = authToken;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
     public String getUserId() {
         return userId;
     }

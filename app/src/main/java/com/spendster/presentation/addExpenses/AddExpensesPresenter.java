@@ -28,37 +28,32 @@ public class AddExpensesPresenter {
         this.sUserStorage = sUserStorage;
     }
 
+
     public void save(String amount, String title, String note, String categoryId, TextDate textDate) {
-        long date;
-        try {
-            date = textDate.date().getTime();
-        } catch (ParseException pe) {
-            addExpensesView.showError("Date is not valid. That's why current date is set");
-            date = new Date().getTime();
-        }
-        String userId = this.sUserStorage.read().getUserId();
         ValidationResource validationResource = validation(amount, title, note, categoryId);
         if (!validationResource.isValid()) {
             addExpensesView.showError(validationResource.message());
-            return;
-        }
-        double expenseAmount = formattingAmount(amount);
-        Expense expense = new Expense(userId, expenseAmount, date, note, categoryId);
-        if (this.serverAddExpensesModel != null) {
-            this.compositeDisposable.add(this.serverAddExpensesModel.save(sUserStorage.read().getAuthToken(), expense)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribeWith(new DisposableSingleObserver<Expense>() {
-                        @Override
-                        public void onSuccess(Expense expense) {
-                            addExpensesView.successFinish();
-                        }
+        } else {
+            String userId = this.sUserStorage.read().getUserId();
+            long date = convertDate(textDate);
+            double expenseAmount = formattingAmount(amount);
+            if (this.serverAddExpensesModel != null) {
+                this.compositeDisposable.add(this.serverAddExpensesModel.save(sUserStorage.read().getAuthToken(), new
+                        Expense(userId, expenseAmount, date, note, categoryId))
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeWith(new DisposableSingleObserver<Expense>() {
+                            @Override
+                            public void onSuccess(Expense expense) {
+                                addExpensesView.successFinish();
+                            }
 
-                        @Override
-                        public void onError(Throwable e) {
-                            addExpensesView.showError(e.getMessage());
-                        }
-                    }));
+                            @Override
+                            public void onError(Throwable e) {
+                                addExpensesView.showError(e.getMessage());
+                            }
+                        }));
+            }
         }
     }
 
@@ -80,6 +75,7 @@ public class AddExpensesPresenter {
         return new ValidationResource(message, isValid);
     }
 
+
     private double formattingAmount(String amount){
         DecimalFormat decimalFormat = new DecimalFormat("#.##");
         return Double.valueOf(decimalFormat.format(parseAmount(amount)));
@@ -87,6 +83,17 @@ public class AddExpensesPresenter {
 
     private double parseAmount(String amount) {
         return Double.parseDouble(amount);
+    }
+
+    private long convertDate(TextDate textDate){
+        long date;
+        try {
+            date = textDate.date().getTime();
+        } catch (ParseException pe) {
+            addExpensesView.showError("Date is not valid. That's why current date is set");
+            date = new Date().getTime();
+        }
+        return date;
     }
 
     public void dispose() {
