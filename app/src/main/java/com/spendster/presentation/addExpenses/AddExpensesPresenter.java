@@ -45,7 +45,7 @@ public class AddExpensesPresenter {
         double expenseAmount = formattingAmount(amount);
         Expense expense = new Expense(userId, expenseAmount, date, note, categoryId);
         if (this.serverAddExpensesModel != null) {
-            this.compositeDisposable.add(this.serverAddExpensesModel.save(sUserStorage.read().getToken(), expense)
+            this.compositeDisposable.add(this.serverAddExpensesModel.save(sUserStorage.read().getAuthToken(), expense)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribeWith(new DisposableSingleObserver<Expense>() {

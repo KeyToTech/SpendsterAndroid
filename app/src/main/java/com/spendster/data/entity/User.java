@@ -1,5 +1,7 @@
 package com.spendster.data.entity;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
 public class User {
@@ -9,7 +11,9 @@ public class User {
     private final String password;
     private final double balance;
     private final Date createdDate;
-    private final String token;
+
+    @SerializedName("token")
+    private final String authToken;
 
     public User() {
         this.userId = "";
@@ -18,7 +22,7 @@ public class User {
         this.password = "";
         this.balance = 0.0;
         this.createdDate = new Date();
-        this.token = "";
+        this.authToken = "";
     }
 
     public User(String email, String password) {
@@ -30,21 +34,21 @@ public class User {
     }
 
 
-    public User(String userId, String email, String username, String password, double balance, Date createdDate, String token) {
+    public User(String userId, String email, String username, String password, double balance, Date createdDate, String authToken) {
         this.userId = userId;
         this.email = email;
         this.username = username;
         this.password = password;
         this.balance = balance;
         this.createdDate = createdDate;
-        this.token = token;
+        this.authToken = authToken;
     }
 
     public String getUserId() {
         return userId;
     }
 
-    public String getToken() {
-        return token;
+    public String getAuthToken() {
+        return authToken;
     }
 }

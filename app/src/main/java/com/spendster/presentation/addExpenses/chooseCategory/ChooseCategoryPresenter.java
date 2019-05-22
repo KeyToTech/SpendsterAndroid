@@ -25,7 +25,7 @@ public class ChooseCategoryPresenter {
 
     public void fetchCategories() {
         categoryView.showLoading();
-        compositeDisposable.add(categoryModel.getCategories(sUserStorage.read().getToken())
+        compositeDisposable.add(categoryModel.getCategories(sUserStorage.read().getAuthToken())
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableSingleObserver<List<Category>>(){
