@@ -2,6 +2,7 @@ package com.spendster.presentation.homeScreen.Dashboard;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.spendster.R;
@@ -16,20 +17,29 @@ import java.util.List;
 public class ExpenseRecyclerViewAdapter extends
         SectionedRecyclerViewAdapter<HeaderViewHolder, ExpenseViewHolder> {
     private List<Expense> expenses;
+    private final OnExpenseClickListener onExpenseClickListener;
     private static final String LOG = "Expenses";
 
-    public ExpenseRecyclerViewAdapter(List<Expense> expenses) {
+    public ExpenseRecyclerViewAdapter(List<Expense> expenses, OnExpenseClickListener onExpenseClickListener) {
         this.expenses = expenses;
+        this.onExpenseClickListener = onExpenseClickListener;
     }
 
-    public ExpenseRecyclerViewAdapter() {
-        this(new ArrayList<>());
+    public ExpenseRecyclerViewAdapter(OnExpenseClickListener onExpenseClickListener) {
+        this(new ArrayList<>(), onExpenseClickListener);
     }
 
     @Override
     public ExpenseViewHolder onCreateItemViewHolder(ViewGroup parent, int viewType) {
-        return new ExpenseViewHolder(LayoutInflater.from(parent.getContext())
+        final ExpenseViewHolder expenseViewHolder = new ExpenseViewHolder(LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.expense_layout, parent, false));
+        expenseViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onExpenseClickListener.onExpenseClick(expenses.get(expenseViewHolder.getLayoutPosition()));
+            }
+        });
+        return expenseViewHolder;
     }
 
     @Override

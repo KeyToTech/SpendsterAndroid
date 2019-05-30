@@ -36,7 +36,12 @@ public class DashboardFragment extends Fragment implements DashboardView {
         RecyclerView recyclerView = view.findViewById(R.id.expensesRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyclerView.setHasFixedSize(true);
-        this.expenseRecyclerViewAdapter = new ExpenseRecyclerViewAdapter();
+        this.expenseRecyclerViewAdapter = new ExpenseRecyclerViewAdapter(new OnExpenseClickListener() {
+            @Override
+            public void onExpenseClick(Expense expense) {
+
+            }
+        });
         recyclerView.setAdapter(this.expenseRecyclerViewAdapter);
     }
 
