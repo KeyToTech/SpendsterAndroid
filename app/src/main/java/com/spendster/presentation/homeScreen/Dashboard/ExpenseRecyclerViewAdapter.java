@@ -36,7 +36,7 @@ public class ExpenseRecyclerViewAdapter extends
         expenseViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onExpenseClickListener.onExpenseClick(expenses.get(expenseViewHolder.getLayoutPosition()));
+                onExpenseClickListener.onExpenseClick(expenses.get(expenseViewHolder.getLayoutPosition() - 1));
             }
         });
         return expenseViewHolder;
