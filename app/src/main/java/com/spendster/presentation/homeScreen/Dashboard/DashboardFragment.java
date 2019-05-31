@@ -1,12 +1,15 @@
 package com.spendster.presentation.homeScreen.Dashboard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.gson.Gson;
 import com.spendster.R;
 import com.spendster.data.entity.Expense;
+import com.spendster.presentation.editExpenses.EditExpensesActivity;
 
 import java.util.List;
 
@@ -19,7 +22,7 @@ public class DashboardFragment extends Fragment implements DashboardView {
 
     private ExpenseRecyclerViewAdapter expenseRecyclerViewAdapter;
 
-    public static DashboardFragment newInstance(){
+    public static DashboardFragment newInstance() {
         return new DashboardFragment();
     }
 
@@ -32,12 +35,25 @@ public class DashboardFragment extends Fragment implements DashboardView {
         return view;
     }
 
-    private void initRecyclerView(View view){
+    private void initRecyclerView(View view) {
         RecyclerView recyclerView = view.findViewById(R.id.expensesRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyclerView.setHasFixedSize(true);
-        this.expenseRecyclerViewAdapter = new ExpenseRecyclerViewAdapter();
+        this.expenseRecyclerViewAdapter = new ExpenseRecyclerViewAdapter(new OnExpenseClickListener() {
+            @Override
+            public void onExpenseClick(Expense expense) {
+                showEditExpense(expense);
+            }
+        });
         recyclerView.setAdapter(this.expenseRecyclerViewAdapter);
+    }
+
+    private void showEditExpense(Expense expense) {
+        Gson gson = new Gson();
+        String json = gson.toJson(expense);
+        Intent intent = new Intent(getContext(), EditExpensesActivity.class);
+        intent.putExtra("Expense", json);
+        startActivity(intent);
     }
 
     @Override
